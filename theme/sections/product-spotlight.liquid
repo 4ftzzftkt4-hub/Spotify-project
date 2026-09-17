@@ -121,9 +121,23 @@
 {
   "name": "Product spotlight",
   "settings": [
-    { "type": "product", "id": "product", "label": "Product" },
-    { "type": "text", "id": "index", "label": "Index", "default": "02" },
-    { "type": "text", "id": "label", "label": "Label", "default": "The product" },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "index",
+      "label": "Index",
+      "default": "02"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "The product"
+    },
     {
       "type": "text",
       "id": "fallback_heading",
@@ -142,31 +156,95 @@
       "label": "Body",
       "default": "<p>304 stainless steel. Fully welded construction. A Heelguard wedge-wire grate with tapered cross bars and a full perimeter edge bar. Designed for internal showers, bathrooms and laundries.</p>"
     },
-    { "type": "text", "id": "cta_label", "label": "Primary CTA", "default": "Configure your drain" },
-    { "type": "url", "id": "cta_url", "label": "Primary link" },
-    { "type": "text", "id": "cta2_label", "label": "Secondary CTA", "default": "Technical drawings" },
-    { "type": "url", "id": "cta2_url", "label": "Secondary link" }
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Primary CTA",
+      "default": "Configure your drain"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Primary link"
+    },
+    {
+      "type": "text",
+      "id": "cta2_label",
+      "label": "Secondary CTA",
+      "default": "Technical drawings"
+    },
+    {
+      "type": "url",
+      "id": "cta2_url",
+      "label": "Secondary link"
+    }
   ],
   "blocks": [
     {
       "type": "spec",
       "name": "Specification row",
       "settings": [
-        { "type": "text", "id": "key", "label": "Label" },
-        { "type": "text", "id": "value", "label": "Value" }
+        {
+          "type": "text",
+          "id": "key",
+          "label": "Label"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value"
+        }
       ]
     }
   ],
-  "default": {
-    "blocks": [
-      { "type": "spec", "settings": { "key": "Material", "value": "304 stainless steel" } },
-      { "type": "spec", "settings": { "key": "Construction", "value": "Fully welded" } },
-      { "type": "spec", "settings": { "key": "Grate", "value": "Heelguard wedge wire — 3mm wire, 4mm aperture" } },
-      { "type": "spec", "settings": { "key": "Edge bar", "value": "5 × 20mm deep, full perimeter" } },
-      { "type": "spec", "settings": { "key": "Profiles", "value": "70 × 22mm · 85 × 20mm · 100 × 20mm" } },
-      { "type": "spec", "settings": { "key": "Application", "value": "Internal, pedestrian areas" } }
-    ]
-  },
-  "presets": [{ "name": "Product spotlight" }]
+  "presets": [
+    {
+      "name": "Product spotlight",
+      "blocks": [
+        {
+          "type": "spec",
+          "settings": {
+            "key": "Material",
+            "value": "304 stainless steel"
+          }
+        },
+        {
+          "type": "spec",
+          "settings": {
+            "key": "Construction",
+            "value": "Fully welded"
+          }
+        },
+        {
+          "type": "spec",
+          "settings": {
+            "key": "Grate",
+            "value": "Heelguard wedge wire — 3mm wire, 4mm aperture"
+          }
+        },
+        {
+          "type": "spec",
+          "settings": {
+            "key": "Edge bar",
+            "value": "5 × 20mm deep, full perimeter"
+          }
+        },
+        {
+          "type": "spec",
+          "settings": {
+            "key": "Profiles",
+            "value": "70 × 22mm · 85 × 20mm · 100 × 20mm"
+          }
+        },
+        {
+          "type": "spec",
+          "settings": {
+            "key": "Application",
+            "value": "Internal, pedestrian areas"
+          }
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

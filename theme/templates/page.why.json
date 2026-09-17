@@ -9,7 +9,94 @@
     },
     "why": {
       "type": "why-heelguard",
-      "settings": { "index": "01", "label": "The pattern", "heading": "What the grate changes." }
+      "settings": {
+        "index": "01",
+        "label": "The pattern",
+        "heading": "What the grate changes."
+      },
+      "blocks": {
+        "card-1": {
+          "type": "card",
+          "settings": {
+            "icon": "heel",
+            "title": "Heel friendly",
+            "body": "<p>The wedge wire and tapered cross bars give a more comfortable, practical grate surface underfoot than an open grid.</p>"
+          }
+        },
+        "media-2": {
+          "type": "media",
+          "settings": {
+            "image_url": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-scale-foot.jpg",
+            "image_alt": "A bare foot resting flat on the Heelguard grate, showing the heel-friendly wedge-wire surface"
+          }
+        },
+        "card-3": {
+          "type": "card",
+          "settings": {
+            "icon": "paw",
+            "title": "Pet friendly",
+            "body": "<p>Suitable for bathrooms and laundries where pets use the space alongside you.</p>"
+          }
+        },
+        "card-4": {
+          "type": "card",
+          "settings": {
+            "icon": "flow",
+            "title": "Built for water flow",
+            "body": "<p>The drainage base is formed to direct water toward the outlet, and the cross bars are positioned to maintain flow through the grate.</p>"
+          }
+        },
+        "card-5": {
+          "type": "card",
+          "settings": {
+            "icon": "clean",
+            "title": "Easy to clean",
+            "body": "<p>The grate lifts out, giving direct access to the internal channel for removing hair and debris.</p>"
+          }
+        },
+        "card-6": {
+          "type": "card",
+          "settings": {
+            "icon": "steel",
+            "title": "304 stainless steel",
+            "body": "<p>A premium, durable material choice for internal wet areas, with a brushed finish that suits contemporary tapware.</p>"
+          }
+        },
+        "media-7": {
+          "type": "media",
+          "settings": {
+            "image_url": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-macro-grate.jpg",
+            "image_alt": "Macro detail of the Heelguard wedge-wire grate showing the 3mm wire, 4mm aperture and perimeter edge bar"
+          }
+        },
+        "card-8": {
+          "type": "card",
+          "settings": {
+            "icon": "tools",
+            "title": "Designed for installation",
+            "body": "<p>Profiles, outlet positions and documentation are shaped by real bathroom installation requirements — not retrofitted to them.</p>"
+          }
+        },
+        "card-9": {
+          "type": "card",
+          "settings": {
+            "icon": "ruler",
+            "title": "Specified up front",
+            "body": "<p>Widths, depths, apertures and outlet diameters are published so you can check the drain against your build before ordering.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card-1",
+        "media-2",
+        "card-3",
+        "card-4",
+        "card-5",
+        "card-6",
+        "media-7",
+        "card-8",
+        "card-9"
+      ]
     },
     "engineered": {
       "type": "engineered",
@@ -17,11 +104,137 @@
         "index": "02",
         "label": "Construction",
         "heading": "Built like a drain. Designed like architectural hardware."
-      }
+      },
+      "blocks": {
+        "item-1": {
+          "type": "item",
+          "settings": {
+            "title": "304 stainless steel",
+            "body": "<p>The drain is made from 304 stainless steel and is intended for internal applications — showers, bathrooms and laundries.</p>",
+            "specs": "304 grade, Internal use"
+          }
+        },
+        "item-2": {
+          "type": "item",
+          "settings": {
+            "title": "Wedge wire Heelguard grate",
+            "body": "<p>The Heelguard grate is built from 3mm wedge wire at a 4mm aperture, with welded cross braces and a full perimeter edge bar.</p>",
+            "specs": "3mm wedge wire, 4mm aperture, Welded cross braces"
+          }
+        },
+        "item-3": {
+          "type": "item",
+          "settings": {
+            "title": "Perimeter edge bar",
+            "body": "<p>A 5mm × 20mm deep edge bar runs the full perimeter of the grate, eliminating sharp edges where the grate meets the tile.</p>",
+            "specs": "5mm × 20mm deep"
+          }
+        },
+        "item-4": {
+          "type": "item",
+          "settings": {
+            "title": "Cross bracing",
+            "body": "<p>Cross bars sit at approximately 25mm centres. They hold the wedge wire true and are positioned to maintain water flow through the grate.</p>",
+            "specs": "≈25mm centres"
+          }
+        },
+        "item-5": {
+          "type": "item",
+          "settings": {
+            "title": "Tapered cross bars",
+            "body": "<p>The cross bars are tapered rather than square. The taper is designed to reduce the build-up of dirt and grime inside the grate.</p>",
+            "specs": "Tapered profile"
+          }
+        },
+        "item-6": {
+          "type": "item",
+          "settings": {
+            "title": "Fully welded construction",
+            "body": "<p>The body is fully welded rather than folded and sealed, and the drainage base is formed to direct water toward the outlet.</p>",
+            "specs": "Fully welded, Formed base"
+          }
+        }
+      },
+      "block_order": [
+        "item-1",
+        "item-2",
+        "item-3",
+        "item-4",
+        "item-5",
+        "item-6"
+      ]
     },
     "comparison": {
       "type": "comparison",
-      "settings": { "index": "03", "label": "Choosing", "heading": "Heelguard versus other grate styles." }
+      "settings": {
+        "index": "03",
+        "label": "Choosing",
+        "heading": "Heelguard versus other grate styles."
+      },
+      "blocks": {
+        "row-1": {
+          "type": "row",
+          "settings": {
+            "row": "Appearance",
+            "a": "A fine, even stainless line across the floor",
+            "b": "Visible openings; pattern reads more strongly",
+            "c": "Near-invisible — reads as continuous tile"
+          }
+        },
+        "row-2": {
+          "type": "row",
+          "settings": {
+            "row": "Grate style",
+            "a": "3mm wedge wire at 4mm aperture, tapered bars",
+            "b": "Wider slots or a punched pattern",
+            "c": "Recessed tray that carries a cut tile"
+          }
+        },
+        "row-3": {
+          "type": "row",
+          "settings": {
+            "row": "Underfoot",
+            "a": "Narrow apertures support the heel across the grate",
+            "b": "Wider openings are felt more underfoot",
+            "c": "Feels like the surrounding tile"
+          }
+        },
+        "row-4": {
+          "type": "row",
+          "settings": {
+            "row": "Cleaning",
+            "a": "Grate lifts out; tapered bars shed grime",
+            "b": "Grate lifts out; openings are easy to see into",
+            "c": "Tray lifts out, but is heavier with the tile fitted"
+          }
+        },
+        "row-5": {
+          "type": "row",
+          "settings": {
+            "row": "Best suited to",
+            "a": "Bathrooms where the floor is walked on barefoot",
+            "b": "Utility spaces and high-debris areas",
+            "c": "Floors where the drain should disappear"
+          }
+        },
+        "row-6": {
+          "type": "row",
+          "settings": {
+            "row": "Installation",
+            "a": "Standard linear install; confirm depth and outlet",
+            "b": "Standard linear install",
+            "c": "Requires tile cutting and extra build-up allowance"
+          }
+        }
+      },
+      "block_order": [
+        "row-1",
+        "row-2",
+        "row-3",
+        "row-4",
+        "row-5",
+        "row-6"
+      ]
     },
     "spotlight": {
       "type": "product-spotlight",
@@ -31,9 +244,71 @@
         "label": "The product",
         "intro": "One drain, specified three ways.",
         "cta_label": "Configure your drain"
-      }
+      },
+      "blocks": {
+        "spec-1": {
+          "type": "spec",
+          "settings": {
+            "key": "Material",
+            "value": "304 stainless steel"
+          }
+        },
+        "spec-2": {
+          "type": "spec",
+          "settings": {
+            "key": "Construction",
+            "value": "Fully welded"
+          }
+        },
+        "spec-3": {
+          "type": "spec",
+          "settings": {
+            "key": "Grate",
+            "value": "Heelguard wedge wire — 3mm wire, 4mm aperture"
+          }
+        },
+        "spec-4": {
+          "type": "spec",
+          "settings": {
+            "key": "Edge bar",
+            "value": "5 × 20mm deep, full perimeter"
+          }
+        },
+        "spec-5": {
+          "type": "spec",
+          "settings": {
+            "key": "Profiles",
+            "value": "70 × 22mm · 85 × 20mm · 100 × 20mm"
+          }
+        },
+        "spec-6": {
+          "type": "spec",
+          "settings": {
+            "key": "Application",
+            "value": "Internal, pedestrian areas"
+          }
+        }
+      },
+      "block_order": [
+        "spec-1",
+        "spec-2",
+        "spec-3",
+        "spec-4",
+        "spec-5",
+        "spec-6"
+      ]
     },
-    "custom": { "type": "custom-cta", "settings": {} }
+    "custom": {
+      "type": "custom-cta",
+      "settings": {}
+    }
   },
-  "order": ["hero", "why", "engineered", "comparison", "spotlight", "custom"]
+  "order": [
+    "hero",
+    "why",
+    "engineered",
+    "comparison",
+    "spotlight",
+    "custom"
+  ]
 }

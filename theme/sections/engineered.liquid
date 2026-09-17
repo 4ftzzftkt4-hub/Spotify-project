@@ -54,8 +54,18 @@
 {
   "name": "Engineered construction",
   "settings": [
-    { "type": "text", "id": "index", "label": "Index", "default": "03" },
-    { "type": "text", "id": "label", "label": "Label", "default": "How it's made" },
+    {
+      "type": "text",
+      "id": "index",
+      "label": "Index",
+      "default": "03"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "How it's made"
+    },
     {
       "type": "text",
       "id": "heading",
@@ -68,9 +78,23 @@
       "label": "Intro",
       "default": "Every element below is part of the published specification — not a marketing claim."
     },
-    { "type": "text", "id": "caption", "label": "Image caption", "default": "Fully welded body · formed drainage base · removable grate" },
-    { "type": "image_picker", "id": "image", "label": "Image" },
-    { "type": "text", "id": "image_url", "label": "Image URL", "default": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-engineering-base.jpg" },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Image caption",
+      "default": "Fully welded body · formed drainage base · removable grate"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_url",
+      "label": "Image URL",
+      "default": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-engineering-base.jpg"
+    },
     {
       "type": "text",
       "id": "image_alt",
@@ -83,64 +107,79 @@
       "type": "item",
       "name": "Construction detail",
       "settings": [
-        { "type": "text", "id": "title", "label": "Title" },
-        { "type": "richtext", "id": "body", "label": "Body" },
-        { "type": "text", "id": "specs", "label": "Spec chips", "info": "Comma separated." }
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "Body"
+        },
+        {
+          "type": "text",
+          "id": "specs",
+          "label": "Spec chips",
+          "info": "Comma separated."
+        }
       ]
     }
   ],
-  "default": {
-    "blocks": [
-      {
-        "type": "item",
-        "settings": {
-          "title": "304 stainless steel",
-          "body": "<p>The drain is made from 304 stainless steel and is intended for internal applications — showers, bathrooms and laundries.</p>",
-          "specs": "304 grade, Internal use"
+  "presets": [
+    {
+      "name": "Engineered construction",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {
+            "title": "304 stainless steel",
+            "body": "<p>The drain is made from 304 stainless steel and is intended for internal applications — showers, bathrooms and laundries.</p>",
+            "specs": "304 grade, Internal use"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "title": "Wedge wire Heelguard grate",
+            "body": "<p>The Heelguard grate is built from 3mm wedge wire at a 4mm aperture, with welded cross braces and a full perimeter edge bar.</p>",
+            "specs": "3mm wedge wire, 4mm aperture, Welded cross braces"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "title": "Perimeter edge bar",
+            "body": "<p>A 5mm × 20mm deep edge bar runs the full perimeter of the grate, eliminating sharp edges where the grate meets the tile.</p>",
+            "specs": "5mm × 20mm deep"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "title": "Cross bracing",
+            "body": "<p>Cross bars sit at approximately 25mm centres. They hold the wedge wire true and are positioned to maintain water flow through the grate.</p>",
+            "specs": "≈25mm centres"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "title": "Tapered cross bars",
+            "body": "<p>The cross bars are tapered rather than square. The taper is designed to reduce the build-up of dirt and grime inside the grate.</p>",
+            "specs": "Tapered profile"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "title": "Fully welded construction",
+            "body": "<p>The body is fully welded rather than folded and sealed, and the drainage base is formed to direct water toward the outlet.</p>",
+            "specs": "Fully welded, Formed base"
+          }
         }
-      },
-      {
-        "type": "item",
-        "settings": {
-          "title": "Wedge wire Heelguard grate",
-          "body": "<p>The Heelguard grate is built from 3mm wedge wire at a 4mm aperture, with welded cross braces and a full perimeter edge bar.</p>",
-          "specs": "3mm wedge wire, 4mm aperture, Welded cross braces"
-        }
-      },
-      {
-        "type": "item",
-        "settings": {
-          "title": "Perimeter edge bar",
-          "body": "<p>A 5mm × 20mm deep edge bar runs the full perimeter of the grate, eliminating sharp edges where the grate meets the tile.</p>",
-          "specs": "5mm × 20mm deep"
-        }
-      },
-      {
-        "type": "item",
-        "settings": {
-          "title": "Cross bracing",
-          "body": "<p>Cross bars sit at approximately 25mm centres. They hold the wedge wire true and are positioned to maintain water flow through the grate.</p>",
-          "specs": "≈25mm centres"
-        }
-      },
-      {
-        "type": "item",
-        "settings": {
-          "title": "Tapered cross bars",
-          "body": "<p>The cross bars are tapered rather than square. The taper is designed to reduce the build-up of dirt and grime inside the grate.</p>",
-          "specs": "Tapered profile"
-        }
-      },
-      {
-        "type": "item",
-        "settings": {
-          "title": "Fully welded construction",
-          "body": "<p>The body is fully welded rather than folded and sealed, and the drainage base is formed to direct water toward the outlet.</p>",
-          "specs": "Fully welded, Formed base"
-        }
-      }
-    ]
-  },
-  "presets": [{ "name": "Engineered construction" }]
+      ]
+    }
+  ]
 }
 {% endschema %}
