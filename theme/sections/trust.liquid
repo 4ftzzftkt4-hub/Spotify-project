@@ -1,0 +1,87 @@
+{%- comment -%}
+  Trust through specificity, not numbers we can't back up. There are no
+  invented customer counts, awards or years of experience anywhere in here.
+{%- endcomment -%}
+<section class="section section--charcoal on-dark" id="trade-audience">
+  <div class="wrap">
+    <div class="split-media" style="margin-bottom:clamp(2rem,4vw,3.5rem)">
+      <div class="reveal">
+        <div class="sec-head">
+          <div class="sec-head__meta">
+            <span class="index">{{ section.settings.index }}</span>
+            <span class="label">{{ section.settings.label }}</span>
+          </div>
+          <h2 class="h1">{{ section.settings.heading }}</h2>
+        </div>
+        <div class="body-copy lede" style="margin-top:1.5rem;max-width:48ch">{{ section.settings.body }}</div>
+      </div>
+
+      <div class="frame frame--32 frame--dark reveal" data-reveal-delay="80">
+        {%- render 'media',
+          image: section.settings.image,
+          url: section.settings.image_url,
+          alt: section.settings.image_alt,
+          sizes: '(min-width: 64em) 48vw, 100vw',
+          placeholder_label: 'Trade photography'
+        -%}
+      </div>
+    </div>
+
+    <div class="audience reveal">
+      {%- for block in section.blocks -%}
+        <div class="audience__cell" {{ block.shopify_attributes }}>
+          <p class="audience__role">{{ block.settings.role }}</p>
+          <p class="audience__need">{{ block.settings.need }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Built for the people who build",
+  "settings": [
+    { "type": "text", "id": "index", "label": "Index", "default": "13" },
+    { "type": "text", "id": "label", "label": "Label", "default": "Who we serve" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Built for the people who build." },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>Professionals choose specialist products because the specification is published, the parts are consistent, and there is someone to call who understands the product.</p><p>That is the whole proposition here. One drain, documented properly, with the technical information you need to install it the first time.</p>"
+    },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "image_url", "label": "Image URL", "default": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-trade-hands.jpg" },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Alt text",
+      "default": "A tradesperson holding a long stainless steel wedge-wire drain grate on a bathroom renovation site"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "audience",
+      "name": "Audience",
+      "settings": [
+        { "type": "text", "id": "role", "label": "Role" },
+        { "type": "text", "id": "need", "label": "What they need" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "audience", "settings": { "role": "Plumbers", "need": "Outlet diameters and positions confirmed before the slab goes down." } },
+      { "type": "audience", "settings": { "role": "Builders", "need": "A drain that arrives right so the trades behind it aren't held up." } },
+      { "type": "audience", "settings": { "role": "Tilers", "need": "A known edge bar and a flush finish to set the tile against." } },
+      { "type": "audience", "settings": { "role": "Waterproofers", "need": "A body that stays where it was set and a defined junction to detail." } },
+      { "type": "audience", "settings": { "role": "Designers", "need": "A fine stainless line that suits large-format floors." } },
+      { "type": "audience", "settings": { "role": "Architects", "need": "Published dimensions and drawings that can go into a specification." } },
+      { "type": "audience", "settings": { "role": "Renovators", "need": "Outlet options that work around plumbing already in the floor." } },
+      { "type": "audience", "settings": { "role": "Homeowners", "need": "A plain explanation of which size to order, and why." } }
+    ]
+  },
+  "presets": [{ "name": "Built for the people who build" }]
+}
+{% endschema %}

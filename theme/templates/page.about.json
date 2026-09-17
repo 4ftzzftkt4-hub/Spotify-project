@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "heading": "One product. Done properly.",
+        "lede": "We specialise in stainless steel linear drainage. That is the whole business."
+      }
+    },
+    "story": {
+      "type": "rich-text",
+      "settings": {
+        "index": "01",
+        "label": "What we do",
+        "heading": "Specialists, not a catalogue.",
+        "body": "<p>Most places that sell a linear drain sell nine hundred other things as well. The drain is a line item, the person answering the phone has never installed one, and the technical information is whatever the supplier sent through.</p><p>We sell one drain. Because of that we can publish the dimensions, draw the sections, document the outlet options and answer the question you actually have — which is usually \"will this fit, and which one do I order?\"</p><p>If the Heelguard drain is the wrong product for your job, we will tell you. That is easier to do when you are not trying to hit a target across a catalogue.</p>",
+        "max_width": "46rem"
+      }
+    },
+    "trust": {
+      "type": "trust",
+      "settings": { "index": "02", "label": "Who we serve", "heading": "Built for the people who build." }
+    },
+    "detail": {
+      "type": "rich-text",
+      "settings": {
+        "index": "03",
+        "label": "How we talk about the product",
+        "heading": "What you won't find here.",
+        "body": "<p>No flow rates, load ratings or standards-compliance claims — we publish what we specify and nothing more. No customer counts, awards or years-in-business figures. No reviews we wrote ourselves.</p><p>When we have those things and can back them up, they'll appear. Until then, the specification and the drawings are the argument.</p>",
+        "cta_label": "See the specification",
+        "cta_url": "/pages/technical",
+        "max_width": "46rem"
+      }
+    },
+    "cta": { "type": "custom-cta", "settings": {} }
+  },
+  "order": ["hero", "story", "trust", "detail", "cta"]
+}

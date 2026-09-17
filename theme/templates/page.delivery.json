@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "heading": "Delivery.",
+        "lede": "Shipped Australia-wide. Cost is calculated at checkout from your address."
+      }
+    },
+    "delivery": {
+      "type": "delivery",
+      "settings": { "index": "01", "label": "Shipping", "heading": "Shipped Australia-wide." }
+    },
+    "note": {
+      "type": "rich-text",
+      "settings": {
+        "index": "02",
+        "label": "Long items",
+        "heading": "Why a linear drain ships differently.",
+        "body": "<p>A drain up to a metre and a half long is oversized freight. That changes how it is packed, who can carry it and where it can be delivered — a street address rather than a parcel locker, and someone on site to receive it.</p><p>If your site has access restrictions or a delivery window, tell us when you order rather than after it has been dispatched.</p>",
+        "cta_label": "Ask about your delivery",
+        "cta_url": "/pages/contact",
+        "max_width": "44rem"
+      }
+    }
+  },
+  "order": ["hero", "delivery", "note"]
+}

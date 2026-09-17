@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "heading": "Why Heelguard.",
+        "lede": "Linear drains mostly differ at the grate. Here is what this pattern changes, and how it is built."
+      }
+    },
+    "why": {
+      "type": "why-heelguard",
+      "settings": { "index": "01", "label": "The pattern", "heading": "What the grate changes." }
+    },
+    "engineered": {
+      "type": "engineered",
+      "settings": {
+        "index": "02",
+        "label": "Construction",
+        "heading": "Built like a drain. Designed like architectural hardware."
+      }
+    },
+    "comparison": {
+      "type": "comparison",
+      "settings": { "index": "03", "label": "Choosing", "heading": "Heelguard versus other grate styles." }
+    },
+    "spotlight": {
+      "type": "product-spotlight",
+      "settings": {
+        "product": "stainless-steel-linear-drain-heelguard-pattern",
+        "index": "04",
+        "label": "The product",
+        "intro": "One drain, specified three ways.",
+        "cta_label": "Configure your drain"
+      }
+    },
+    "custom": { "type": "custom-cta", "settings": {} }
+  },
+  "order": ["hero", "why", "engineered", "comparison", "spotlight", "custom"]
+}

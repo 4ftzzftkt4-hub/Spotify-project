@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "heading": "Care guide.",
+        "lede": "Stainless steel stays looking new if it's cleaned properly and not attacked with the wrong products."
+      }
+    },
+    "care": {
+      "type": "care",
+      "settings": { "index": "01", "label": "Cleaning", "heading": "Keep it clean. Keep it looking new." }
+    },
+    "note": {
+      "type": "rich-text",
+      "settings": {
+        "index": "02",
+        "label": "Materials",
+        "heading": "Why the wrong cleaner is the real risk.",
+        "body": "<p>304 stainless steel is durable, but it is not indifferent to what you put on it. Abrasive pads cut across the brushed grain and leave marks that don't polish out. Chlorine-based and strongly acidic cleaners can attack the surface.</p><p>Mild cleaners made for stainless steel, worked along the grain and rinsed off, are all this drain needs.</p>",
+        "max_width": "44rem"
+      }
+    }
+  },
+  "order": ["hero", "care", "note"]
+}

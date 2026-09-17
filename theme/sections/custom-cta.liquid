@@ -1,0 +1,84 @@
+<section class="section section--tight" id="custom">
+  <div class="wrap">
+    <div
+      class="reveal"
+      style="background:var(--ink);color:var(--paper);padding:clamp(2rem,5vw,4.5rem);border-radius:var(--radius-lg)">
+      <div class="on-dark cta-band" style="align-items:center">
+        <div>
+          <p class="label label--accent" style="color:var(--steel)">{{ section.settings.label }}</p>
+          <h2 class="h1" style="margin-top:1rem">{{ section.settings.heading }}</h2>
+          <div class="body-copy" style="margin-top:1.25rem;max-width:48ch">{{ section.settings.body }}</div>
+        </div>
+
+        <div style="display:grid;gap:1.5rem">
+          <div class="ticks">
+            {%- assign items = section.settings.items | split: ',' -%}
+            {%- for i in items -%}
+              {%- assign i = i | strip -%}
+              {%- if i != blank -%}
+                <span class="tick">
+                  <span class="tick__mark" aria-hidden="true" style="color:var(--steel)">{%- render 'icon', name: 'check' -%}</span>
+                  {{ i }}
+                </span>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          <div class="cta-band__actions">
+            {%- assign help = settings.help_url -%}
+            {%- if help != blank or settings.email != blank -%}
+              <a
+                class="btn btn--light"
+                href="{% if help != blank %}{{ help }}{% else %}mailto:{{ settings.email }}?subject=Custom%20drain%20enquiry{% endif %}">
+                {{ section.settings.cta_label }}
+              </a>
+            {%- endif -%}
+            {%- if settings.quote_url != blank or settings.trade_email != blank -%}
+              <a
+                class="btn btn--outline-light"
+                href="{% if settings.quote_url != blank %}{{ settings.quote_url }}{% else %}mailto:{{ settings.trade_email }}?subject=Custom%20quote%20request{% endif %}">
+                {{ section.settings.cta2_label }}
+              </a>
+            {%- endif -%}
+          </div>
+
+          {%- if section.settings.caveat != blank -%}
+            <p class="form-note" style="color:var(--steel)">{{ section.settings.caveat }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom drains CTA",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Label", "default": "Custom" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Need something different? We can help." },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>Not every bathroom fits a standard size, and not every waste sits where you would put it. Tell us what the site is doing and we'll tell you what can be made.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "items",
+      "label": "What may be possible",
+      "info": "Comma separated. Only list what you can actually supply.",
+      "default": "Custom lengths, Outlet positioning, Outlet sizing, Project-specific requirements"
+    },
+    { "type": "text", "id": "cta_label", "label": "Primary CTA", "default": "Talk to a drainage specialist" },
+    { "type": "text", "id": "cta2_label", "label": "Secondary CTA", "default": "Request a custom quote" },
+    {
+      "type": "text",
+      "id": "caveat",
+      "label": "Caveat",
+      "default": "Customisation is confirmed case by case. We'll tell you plainly if something can't be made."
+    }
+  ],
+  "presets": [{ "name": "Custom drains CTA" }]
+}
+{% endschema %}

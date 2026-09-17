@@ -1,0 +1,72 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "eyebrow": "Heelguard pattern · 304 stainless steel",
+        "short_description": "Fully welded 304 stainless steel linear drainage with the Heelguard wedge-wire grate. Choose your profile, length and outlet below.",
+        "delivery_url": "/pages/delivery"
+      }
+    },
+    "why": {
+      "type": "why-heelguard",
+      "settings": {
+        "index": "",
+        "label": "Why Heelguard",
+        "heading": "Why this grate pattern.",
+        "intro": "The grate is the part you stand on, clean and look at every day."
+      }
+    },
+    "engineered": {
+      "type": "engineered",
+      "settings": {
+        "index": "",
+        "label": "Specification",
+        "heading": "Built like a drain. Designed like architectural hardware.",
+        "intro": "Every element below is part of the published specification — not a marketing claim."
+      }
+    },
+    "drawings": {
+      "type": "drawings",
+      "settings": {
+        "index": "",
+        "label": "Drawings",
+        "heading": "Check it against your build.",
+        "intro": "Plan, elevation and section for the profile you are ordering. Confirm the depth against your floor build-up and the outlet against your plumbing."
+      }
+    },
+    "included": {
+      "type": "whats-included",
+      "settings": { "index": "", "label": "What you get", "heading": "Exactly what arrives." }
+    },
+    "installation": {
+      "type": "installation",
+      "settings": { "index": "", "label": "Installation", "heading": "Installation, without the guesswork." }
+    },
+    "care": {
+      "type": "care",
+      "settings": { "index": "", "label": "Care", "heading": "Keep it clean. Keep it looking new." }
+    },
+    "checklist": {
+      "type": "checklist",
+      "settings": { "index": "", "label": "Checklist", "heading": "Before you buy." }
+    },
+    "delivery": {
+      "type": "delivery",
+      "settings": { "index": "", "label": "Delivery", "heading": "Shipped Australia-wide.", "cta_url": "/pages/delivery" }
+    },
+    "custom": { "type": "custom-cta", "settings": {} }
+  },
+  "order": [
+    "main",
+    "why",
+    "engineered",
+    "drawings",
+    "included",
+    "installation",
+    "care",
+    "checklist",
+    "delivery",
+    "custom"
+  ]
+}

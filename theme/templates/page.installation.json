@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "heading": "Installation.",
+        "lede": "Correct installation depends on your specific floor construction and plumbing configuration. Here is the shape of it, and where a qualified trade is required."
+      }
+    },
+    "installation": {
+      "type": "installation",
+      "settings": { "index": "01", "label": "Sequence", "heading": "Installation, without the guesswork." }
+    },
+    "drawings": {
+      "type": "drawings",
+      "settings": {
+        "index": "02",
+        "label": "Drawings",
+        "heading": "Dimensions you'll need on site.",
+        "intro": "Profile depth, outlet diameter and the grate section, per profile."
+      }
+    },
+    "checklist": {
+      "type": "checklist",
+      "settings": { "index": "03", "label": "Checklist", "heading": "Before you buy." }
+    }
+  },
+  "order": ["hero", "installation", "drawings", "checklist"]
+}

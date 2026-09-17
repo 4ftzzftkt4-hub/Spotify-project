@@ -1,0 +1,71 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "heading": "Technical information.",
+        "lede": "Dimensions, drawings and documentation for all three Heelguard profiles. Check them against your build before you order."
+      }
+    },
+    "drawings": {
+      "type": "drawings",
+      "settings": {
+        "index": "01",
+        "label": "Drawings",
+        "heading": "Plan, elevation and section.",
+        "intro": "Select a profile. Each sheet carries the dimensions we publish — nothing has been added to fill the drawing out."
+      }
+    },
+    "specs": {
+      "type": "spec-table",
+      "settings": { "index": "02", "label": "Specification", "heading": "Full specification", "dark": true },
+      "blocks": {
+        "r1": { "type": "spec", "settings": { "key": "Material", "value": "304 stainless steel" } },
+        "r2": { "type": "spec", "settings": { "key": "Construction", "value": "Fully welded" } },
+        "r3": { "type": "spec", "settings": { "key": "Grate pattern", "value": "Heelguard wedge wire" } },
+        "r4": { "type": "spec", "settings": { "key": "Wedge wire", "value": "3 mm" } },
+        "r5": { "type": "spec", "settings": { "key": "Aperture", "value": "4 mm" } },
+        "r6": { "type": "spec", "settings": { "key": "Perimeter edge bar", "value": "5 × 20 mm deep, full perimeter" } },
+        "r7": { "type": "spec", "settings": { "key": "Cross bars", "value": "Tapered, welded at approximately 25 mm centres" } },
+        "r8": { "type": "spec", "settings": { "key": "Profile — 70 mm", "value": "70 mm wide × 22 mm deep" } },
+        "r9": { "type": "spec", "settings": { "key": "Profile — 85 mm", "value": "85 mm wide × 20 mm deep" } },
+        "r10": { "type": "spec", "settings": { "key": "Profile — 100 mm", "value": "100 mm wide × 20 mm deep" } },
+        "r11": { "type": "spec", "settings": { "key": "Outlets — 70 mm", "value": "50.8 OD centre outlet · DIY 50 mm outlet option" } },
+        "r12": { "type": "spec", "settings": { "key": "Outlets — 85 mm", "value": "50.8 OD centre outlet · end outlet, 50 mm from end to centre · DIY 50 mm outlet · DIY 76 mm outlet with flange" } },
+        "r13": { "type": "spec", "settings": { "key": "Outlets — 100 mm", "value": "80 mm OD centre outlet · DIY 50 mm outlet · DIY 76 mm outlet with flange" } },
+        "r14": { "type": "spec", "settings": { "key": "Drainage base", "value": "Formed to direct water toward the outlet" } },
+        "r15": { "type": "spec", "settings": { "key": "Grate", "value": "Removable, for access to the internal channel" } },
+        "r16": { "type": "spec", "settings": { "key": "Length", "value": "Selected at order · custom lengths on request" } },
+        "r17": { "type": "spec", "settings": { "key": "Application", "value": "Internal, pedestrian areas — showers, bathrooms, laundries" } },
+        "r18": { "type": "spec", "settings": { "key": "Not suitable for", "value": "External areas · vehicle traffic" } }
+      },
+      "block_order": [
+        "r1", "r2", "r3", "r4", "r5", "r6", "r7",
+        "r8", "r9", "r10",
+        "r11", "r12", "r13",
+        "r14", "r15", "r16", "r17", "r18"
+      ]
+    },
+    "note": {
+      "type": "rich-text",
+      "settings": {
+        "index": "03",
+        "label": "Using this page",
+        "heading": "What we publish, and what we don't.",
+        "body": "<p>The values above are the ones we specify. You will not find flow rates, load ratings or standards-compliance claims on this page, because we do not publish figures we cannot stand behind.</p><p>If your project needs a figure that isn't here, ask us. We will either give you the number or tell you we don't have it.</p>",
+        "cta_label": "Ask a technical question",
+        "cta_url": "/pages/contact",
+        "max_width": "44rem"
+      }
+    },
+    "installation": {
+      "type": "installation",
+      "settings": { "index": "04", "label": "Installation", "heading": "Installation, without the guesswork." }
+    },
+    "care": {
+      "type": "care",
+      "settings": { "index": "05", "label": "Care", "heading": "Keep it clean. Keep it looking new." }
+    }
+  },
+  "order": ["hero", "drawings", "specs", "note", "installation", "care"]
+}

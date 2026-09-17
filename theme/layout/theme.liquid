@@ -1,0 +1,80 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0B0C0E">
+    <link rel="canonical" href="{{ canonical_url }}">
+    {%- if settings.brand_logo -%}
+      <link rel="icon" type="image/png" href="{{ settings.brand_logo | image_url: width: 48 }}">
+    {%- endif -%}
+
+    {%- render 'meta-tags' -%}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      media="print"
+      onload="this.media='all'">
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+    </noscript>
+
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'layout.css' | asset_url | stylesheet_tag }}
+    {{ 'sections.css' | asset_url | stylesheet_tag }}
+
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+
+    {{ content_for_header }}
+  </head>
+
+  <body
+    class="template-{{ template.name | default: 'index' }}{% unless settings.enable_reveal %} reveal-off{% endunless %}"
+    data-money-format="{{ shop.money_format | strip_html | escape }}">
+    <a class="skip-link" href="#main">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+    {% section 'announcement' %}
+    {% section 'header' %}
+
+    <main id="main" role="main">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+    {% section 'floating-help' %}
+
+    {%- comment -%} Shared image lightbox — used by the product gallery. {%- endcomment -%}
+    <div class="lightbox" data-lightbox role="dialog" aria-modal="true" aria-label="Enlarged product image" aria-hidden="true">
+      <button class="lightbox__close" type="button" data-lightbox-close aria-label="{{ 'general.accessibility.close' | t }}">
+        {%- render 'icon', name: 'close' -%}
+      </button>
+      <img data-lightbox-img src="" alt="" loading="lazy">
+      <p class="label" data-lightbox-cap style="position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);color:var(--steel)"></p>
+    </div>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": {{ settings.brand_name | default: shop.name | json }},
+        "url": {{ shop.url | json }},
+        "description": {{ settings.brand_blurb | default: 'Specialists in stainless steel linear drainage.' | json }}
+        {%- if settings.brand_logo %},
+          "logo": {{ settings.brand_logo | image_url: width: 512 | prepend: 'https:' | json }}
+        {%- endif -%}
+        {%- if settings.phone %},
+          "telephone": {{ settings.phone | json }}
+        {%- endif -%}
+        {%- if settings.email %},
+          "email": {{ settings.email | json }}
+        {%- endif -%}
+      }
+    </script>
+  </body>
+</html>

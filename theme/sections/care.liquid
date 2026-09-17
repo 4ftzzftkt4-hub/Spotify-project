@@ -1,0 +1,81 @@
+<section class="section" id="care">
+  <div class="wrap">
+    <div class="care">
+      <div class="reveal">
+        <div class="sec-head" style="margin-bottom:2rem">
+          <div class="sec-head__meta">
+            <span class="index">{{ section.settings.index }}</span>
+            <span class="label">{{ section.settings.label }}</span>
+          </div>
+          <h2 class="h1">{{ section.settings.heading }}</h2>
+        </div>
+        <div class="body-copy lede" style="max-width:48ch">{{ section.settings.intro }}</div>
+
+        <div style="margin-top:2rem;max-width:24rem">
+          {%- render 'doc-link', url: settings.doc_care_guide, label: 'Stainless steel care guide', meta: 'PDF' -%}
+        </div>
+      </div>
+
+      <div class="reveal" data-reveal-delay="80">
+        <ol class="steps">
+          {%- for block in section.blocks -%}
+            <li class="step" style="grid-template-columns:3.5rem minmax(0,1fr)" {{ block.shopify_attributes }}>
+              <span class="step__n" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+              <div>
+                <h3 class="h4">{{ block.settings.title }}</h3>
+                <div class="body-copy" style="font-size:var(--fs-sm);margin-top:0.35rem">{{ block.settings.body }}</div>
+              </div>
+            </li>
+          {%- endfor -%}
+        </ol>
+
+        {%- if section.settings.warning != blank -%}
+          <div class="banner banner--err" style="margin-top:1.5rem">{{ section.settings.warning }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cleaning & maintenance",
+  "settings": [
+    { "type": "text", "id": "index", "label": "Index", "default": "09" },
+    { "type": "text", "id": "label", "label": "Label", "default": "Care" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Keep it clean. Keep it looking new." },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Intro",
+      "default": "<p>The grate lifts out, so the channel underneath is easy to reach. A minute every few weeks is the difference between a drain that looks new and one that doesn't.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "warning",
+      "label": "Warning",
+      "default": "Avoid abrasive pads and harsh or chlorine-based chemicals. They can mark the brushed finish and damage stainless steel. Follow the care guide for the products we recommend."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "richtext", "id": "body", "label": "Body" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "step", "settings": { "title": "Remove the grate", "body": "<p>Lift the grate clear of the body. It is designed to come out without tools.</p>" } },
+      { "type": "step", "settings": { "title": "Remove hair and debris", "body": "<p>Clear whatever has collected in the channel and around the outlet.</p>" } },
+      { "type": "step", "settings": { "title": "Clean the internal channel", "body": "<p>Flush the channel and wipe it out so nothing is left sitting against the steel.</p>" } },
+      { "type": "step", "settings": { "title": "Clean the stainless steel", "body": "<p>Use a mild cleaning product suitable for stainless steel, working with the grain, then rinse and dry.</p>" } },
+      { "type": "step", "settings": { "title": "Refit the grate", "body": "<p>Seat the grate back into the body and check it sits flush before use.</p>" } }
+    ]
+  },
+  "presets": [{ "name": "Cleaning & maintenance" }]
+}
+{% endschema %}

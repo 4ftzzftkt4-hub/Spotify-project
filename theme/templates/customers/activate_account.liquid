@@ -1,0 +1,24 @@
+<section class="section">
+  <div class="wrap wrap--narrow">
+    <div style="max-width:26rem;display:grid;gap:1.5rem">
+      <h1 class="h2">Activate your account</h1>
+      {%- form 'activate_customer_password', novalidate: 'novalidate' -%}
+        {%- if form.errors -%}
+          <div class="banner banner--err" role="alert">{{ form.errors | default_errors }}</div>
+        {%- endif -%}
+        <div style="display:grid;gap:1.25rem">
+          <div class="field">
+            <label class="field__label" for="ac-1">Password</label>
+            <input class="field__input" id="ac-1" type="password" name="customer[password]" autocomplete="new-password">
+          </div>
+          <div class="field">
+            <label class="field__label" for="ac-2">Confirm password</label>
+            <input class="field__input" id="ac-2" type="password" name="customer[password_confirmation]" autocomplete="new-password">
+          </div>
+          <button class="btn btn--full" type="submit">Activate account</button>
+          <button class="btn btn--ghost btn--full" type="submit" name="decline">Decline invitation</button>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</section>

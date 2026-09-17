@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "heading": "Custom drains.",
+        "lede": "Not every bathroom fits a standard size, and not every waste sits where you would put it."
+      }
+    },
+    "custom": { "type": "custom-cta", "settings": {} },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "index": "01",
+        "label": "Custom enquiry",
+        "heading": "Tell us what the site is doing.",
+        "body": "<p>Length, outlet position, outlet size, and anything unusual about the floor. The more you tell us, the more useful the first reply is.</p>",
+        "submit_label": "Send custom enquiry"
+      }
+    }
+  },
+  "order": ["hero", "custom", "form"]
+}

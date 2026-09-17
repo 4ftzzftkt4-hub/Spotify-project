@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "heading": "Trade and projects.",
+        "lede": "For plumbers, builders, tilers, designers and anyone buying more than one."
+      }
+    },
+    "trade": {
+      "type": "trade",
+      "settings": { "index": "01", "label": "What we do for trade", "heading": "Buying for a project?" }
+    },
+    "trust": {
+      "type": "trust",
+      "settings": { "index": "02", "label": "Who we serve", "heading": "Built for the people who build." }
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "index": "03",
+        "label": "Project enquiry",
+        "heading": "Send us the schedule.",
+        "body": "<p>Quantities, lengths, outlet positions and your program. We'll come back with a written quote and the documentation to go with it.</p>",
+        "submit_label": "Send project enquiry",
+        "dark": true
+      }
+    }
+  },
+  "order": ["hero", "trade", "trust", "form"]
+}
