@@ -298,7 +298,7 @@
 
   /* ------------------------------------------------------- form validation */
   (function forms() {
-    all('[data-validate]').forEach(function (form) {
+    all('[data-validate], .contact-form').forEach(function (form) {
       on(form, 'submit', function (e) {
         var invalid = null;
         all('[required]', form).forEach(function (field) {

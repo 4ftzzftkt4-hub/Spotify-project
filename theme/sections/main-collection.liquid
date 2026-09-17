@@ -8,6 +8,7 @@
       {%- endif -%}
     </div>
 
+    {%- paginate collection.products by 24 -%}
     {%- if collection.products.size == 0 -%}
       <p class="lede">Nothing in this collection yet.</p>
     {%- else -%}
@@ -45,6 +46,7 @@
         </nav>
       {%- endif -%}
     {%- endif -%}
+    {%- endpaginate -%}
   </div>
 </section>
 

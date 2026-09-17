@@ -44,7 +44,7 @@
       </div>
 
       <div class="reveal" data-reveal-delay="80">
-        {%- form 'contact', class: 'contact-form', novalidate: 'novalidate', data-validate: '' -%}
+        {%- form 'contact', class: 'contact-form', novalidate: 'novalidate' -%}
           {%- if form.posted_successfully? -%}
             <div class="banner banner--ok" role="status" style="margin-bottom:1.5rem">
               {{ 'general.form.post_success' | t }}
