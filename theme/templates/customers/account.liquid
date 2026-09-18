@@ -1,0 +1,41 @@
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:2rem">
+      <div class="sec-head__meta"><span class="label">Account</span></div>
+      <h1 class="h1">{{ customer.name | default: 'Your account' }}</h1>
+    </div>
+
+    <div class="pdp" style="align-items:start">
+      <div>
+        <h2 class="h3" style="margin-bottom:1rem">Orders</h2>
+        {%- if customer.orders.size == 0 -%}
+          <p class="lede">No orders yet.</p>
+        {%- else -%}
+          <table class="spec-table">
+            <thead class="visually-hidden">
+              <tr><th>Order</th><th>Date</th><th>Total</th></tr>
+            </thead>
+            <tbody>
+              {%- for order in customer.orders -%}
+                <tr>
+                  <th scope="row"><a class="tlink" href="{{ order.customer_url }}">{{ order.name }}</a></th>
+                  <td>{{ order.created_at | date: '%-d %b %Y' }} — {{ order.total_price | money }}</td>
+                </tr>
+              {%- endfor -%}
+            </tbody>
+          </table>
+        {%- endif -%}
+      </div>
+
+      <div class="cart-summary">
+        <h2 class="h4">Details</h2>
+        <p style="font-size:var(--fs-sm)">{{ customer.email }}</p>
+        {%- if customer.default_address -%}
+          <div style="font-size:var(--fs-sm);color:var(--ink-60)">{{ customer.default_address | format_address }}</div>
+        {%- endif -%}
+        <a class="btn btn--ghost btn--full" href="{{ routes.account_addresses_url }}">Manage addresses</a>
+        <a class="tlink" href="{{ routes.account_logout_url }}" style="justify-self:start">Sign out</a>
+      </div>
+    </div>
+  </div>
+</section>

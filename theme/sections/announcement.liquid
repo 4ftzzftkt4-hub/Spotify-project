@@ -1,0 +1,28 @@
+<div class="announce">
+  <div class="wrap">
+    <div class="announce__inner">
+      {%- if section.settings.text != blank -%}
+        <span>{{ section.settings.text }}</span>
+      {%- endif -%}
+      {%- if section.settings.link_label != blank and section.settings.link_url != blank -%}
+        <a href="{{ section.settings.link_url }}">{{ section.settings.link_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Announcement",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Specialists in stainless steel linear drainage · Shipped Australia-wide"
+    },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Talk to a specialist" },
+    { "type": "url", "id": "link_url", "label": "Link" }
+  ]
+}
+{% endschema %}

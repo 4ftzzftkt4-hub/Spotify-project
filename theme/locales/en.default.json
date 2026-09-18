@@ -1,0 +1,77 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Skip to content",
+      "close": "Close",
+      "previous": "Previous",
+      "next": "Next",
+      "menu": "Menu",
+      "cart": "Cart",
+      "search": "Search",
+      "zoom": "Zoom image",
+      "selected": "Selected"
+    },
+    "meta": { "tags": "Tagged \"{{ tags }}\"", "page": "Page {{ page }}" },
+    "pagination": { "label": "Pagination", "previous": "Previous", "next": "Next" },
+    "search": {
+      "heading": "Search",
+      "placeholder": "Search the site",
+      "submit": "Search",
+      "results_for": "Results for \"{{ terms }}\"",
+      "no_results": "No results for \"{{ terms }}\".",
+      "no_results_help": "Check the spelling, or start from the product page — we only make one thing."
+    },
+    "form": {
+      "required": "Required",
+      "error_required": "This field is required.",
+      "error_email": "Enter a valid email address.",
+      "post_success": "Thanks — we've got your message and will be in touch.",
+      "errors_heading": "Please check the following:"
+    },
+    "404": {
+      "title": "Page not found",
+      "body": "That page doesn't exist. The drain, however, does.",
+      "cta": "View the Heelguard drain"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart",
+      "sold_out": "Unavailable",
+      "unavailable": "Unavailable in this configuration",
+      "quantity": "Quantity",
+      "decrease": "Decrease quantity",
+      "increase": "Increase quantity",
+      "sku": "SKU",
+      "in_stock": "Available to order",
+      "price": "Price",
+      "from_price": "From",
+      "view_details": "View details",
+      "gallery": "Product images",
+      "thumbnail": "Show image {{ index }}"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Cart",
+      "empty": "Your cart is empty.",
+      "continue": "Back to the product",
+      "subtotal": "Subtotal",
+      "shipping_note": "Shipping and taxes are calculated at checkout.",
+      "checkout": "Checkout",
+      "remove": "Remove",
+      "quantity": "Quantity",
+      "product": "Product",
+      "total": "Total",
+      "update": "Update cart"
+    }
+  },
+  "layout": {
+    "cart": { "title": "Cart", "items_count": "{{ count }} item in cart", "items_count_plural": "{{ count }} items in cart" },
+    "footer": { "copyright": "All rights reserved." }
+  },
+  "sections": {
+    "header": { "menu": "Menu", "close_menu": "Close menu" },
+    "faq": { "heading": "Frequently asked questions" }
+  }
+}

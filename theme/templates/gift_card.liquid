@@ -1,0 +1,13 @@
+<section class="section">
+  <div class="wrap wrap--narrow">
+    <div style="display:grid;gap:1.5rem;max-width:30rem">
+      <p class="label">Gift card</p>
+      <h1 class="h2">{{ gift_card.balance | money }}</h1>
+      <p class="mono">{{ gift_card.code | format_code }}</p>
+      {%- if gift_card.expired -%}
+        <div class="banner banner--err">This gift card has expired.</div>
+      {%- endif -%}
+      <a class="btn" href="{{ shop.url }}" style="justify-self:start">Visit the store</a>
+    </div>
+  </div>
+</section>

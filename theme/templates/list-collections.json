@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": { "heading": "Collections", "lede": "We make one thing, so there isn't much to browse." }
+    }
+  },
+  "order": ["hero"]
+}

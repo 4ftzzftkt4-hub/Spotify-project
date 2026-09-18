@@ -1,0 +1,66 @@
+{%- comment -%}
+  SEO meta. Page-specific copy wins; otherwise we fall back to specialist-brand defaults.
+  Keyword themes are covered once each, in natural sentences — no stuffing.
+{%- endcomment -%}
+{%- liquid
+  assign brand = settings.brand_name | default: shop.name
+  assign default_desc = 'Stainless steel linear drains with the Heelguard wedge-wire grate. 304 stainless steel, fully welded construction, three profiles and multiple outlet configurations. Shipped Australia-wide.'
+
+  case template.name
+    when 'product'
+      assign seo_title = product.title | append: ' — 304 Stainless Steel | ' | append: brand
+      if product.description != blank
+        assign seo_desc = product.description | strip_html | truncate: 300
+      else
+        assign seo_desc = default_desc
+      endif
+    when 'collection'
+      assign seo_title = collection.title | append: ' | ' | append: brand
+      assign seo_desc = collection.description | default: default_desc | strip_html | truncate: 300
+    when 'page'
+      assign seo_title = page.title | append: ' | ' | append: brand
+      assign seo_desc = page.metafields.custom.meta_description | default: page.content | strip_html | truncate: 300
+      if seo_desc == blank
+        assign seo_desc = default_desc
+      endif
+    when 'article'
+      assign seo_title = article.title | append: ' | ' | append: brand
+      assign seo_desc = article.excerpt_or_content | strip_html | truncate: 300
+    when 'search'
+      assign seo_title = 'Search | ' | append: brand
+      assign seo_desc = default_desc
+    when '404'
+      assign seo_title = 'Page not found | ' | append: brand
+      assign seo_desc = default_desc
+    else
+      assign seo_title = brand | append: ' — Stainless Steel Linear Drains, Heelguard Pattern'
+      assign seo_desc = default_desc
+  endcase
+
+  assign share_image = null
+  if template.name == 'product' and product.featured_image
+    assign share_image = product.featured_image
+  elsif settings.brand_logo
+    assign share_image = settings.brand_logo
+  endif
+-%}
+<title>{{ seo_title }}</title>
+<meta name="description" content="{{ seo_desc | escape }}">
+
+<meta property="og:site_name" content="{{ brand | escape }}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:title" content="{{ seo_title | escape }}">
+<meta property="og:description" content="{{ seo_desc | escape }}">
+<meta property="og:type" content="{% if template.name == 'product' %}product{% else %}website{% endif %}">
+{%- if share_image -%}
+  <meta property="og:image" content="{{ share_image | image_url: width: 1200 }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="{{ 1200 | divided_by: share_image.aspect_ratio | round }}">
+{%- endif -%}
+{%- if template.name == 'product' -%}
+  <meta property="product:price:amount" content="{{ product.price | divided_by: 100.0 }}">
+  <meta property="product:price:currency" content="{{ cart.currency.iso_code }}">
+{%- endif -%}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ seo_title | escape }}">
+<meta name="twitter:description" content="{{ seo_desc | escape }}">

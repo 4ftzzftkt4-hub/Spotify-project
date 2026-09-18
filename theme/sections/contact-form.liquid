@@ -1,0 +1,214 @@
+{%- comment -%}
+  Enquiry form. The fields are the ones we actually need to specify a drain, so
+  the first reply can be an answer rather than a list of questions.
+{%- endcomment -%}
+<section class="section{% if section.settings.dark %} section--dark on-dark{% endif %}" id="enquire">
+  <div class="wrap">
+    <div class="split-media" style="align-items:start">
+      <div class="reveal">
+        <div class="sec-head">
+          {%- if section.settings.label != blank -%}
+            <div class="sec-head__meta">
+              {%- if section.settings.index != blank -%}<span class="index">{{ section.settings.index }}</span>{%- endif -%}
+              <span class="label">{{ section.settings.label }}</span>
+            </div>
+          {%- endif -%}
+          <h2 class="h1">{{ section.settings.heading }}</h2>
+        </div>
+        <div class="body-copy lede" style="margin-top:1.5rem;max-width:44ch">{{ section.settings.body }}</div>
+
+        <div style="display:grid;gap:0.75rem;margin-top:2rem">
+          {%- if settings.phone != blank -%}
+            {%- assign phone_href = settings.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' -%}
+            <a class="tlink" href="tel:{{ phone_href }}" style="justify-self:start">
+              <span style="width:15px">{%- render 'icon', name: 'phone' -%}</span>
+              {{ settings.phone }}
+            </a>
+          {%- endif -%}
+          {%- if settings.email != blank -%}
+            <a class="tlink" href="mailto:{{ settings.email }}" style="justify-self:start">
+              <span style="width:15px">{%- render 'icon', name: 'mail' -%}</span>
+              {{ settings.email }}
+            </a>
+          {%- endif -%}
+          {%- if settings.phone_hours != blank -%}
+            <p class="label">{{ settings.phone_hours }}</p>
+          {%- endif -%}
+          {%- if settings.phone == blank and settings.email == blank -%}
+            <p class="form-note">
+              Contact details have not been added to this store yet. Add a phone number and email under
+              Theme settings → Contact and they will appear here.
+            </p>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="reveal" data-reveal-delay="80">
+        {%- form 'contact', class: 'contact-form', novalidate: 'novalidate' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="banner banner--ok" role="status" style="margin-bottom:1.5rem">
+              {{ 'general.form.post_success' | t }}
+            </div>
+          {%- elsif form.errors -%}
+            <div class="banner banner--err" role="alert" style="margin-bottom:1.5rem">
+              <p><strong>{{ 'general.form.errors_heading' | t }}</strong></p>
+              <ul style="margin-top:0.5rem">
+                {%- for field in form.errors -%}
+                  <li>
+                    {%- if field == 'form' -%}
+                      {{ form.errors.messages[field] }}
+                    {%- else -%}
+                      {{ form.errors.translated_fields[field] | capitalize }} — {{ form.errors.messages[field] }}
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+
+          <div style="display:grid;gap:1.25rem">
+            <div class="grid grid--2" style="gap:1.25rem">
+              <div class="field">
+                <label class="field__label" for="cf-name">Name <span aria-hidden="true">*</span></label>
+                <input
+                  class="field__input"
+                  id="cf-name"
+                  type="text"
+                  name="contact[name]"
+                  autocomplete="name"
+                  required
+                  data-error="Tell us your name so we know who we're talking to."
+                  value="{{ form.name }}">
+                <span class="field__error" data-error-for="contact[name]"></span>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="cf-email">Email <span aria-hidden="true">*</span></label>
+                <input
+                  class="field__input"
+                  id="cf-email"
+                  type="email"
+                  name="contact[email]"
+                  autocomplete="email"
+                  required
+                  data-error="We need a valid email to reply to."
+                  value="{{ form.email }}">
+                <span class="field__error" data-error-for="contact[email]"></span>
+              </div>
+            </div>
+
+            <div class="grid grid--2" style="gap:1.25rem">
+              <div class="field">
+                <label class="field__label" for="cf-phone">Phone</label>
+                <input
+                  class="field__input"
+                  id="cf-phone"
+                  type="tel"
+                  name="contact[phone]"
+                  autocomplete="tel"
+                  value="{{ form.phone }}">
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="cf-role">You are</label>
+                <select class="field__select" id="cf-role" name="contact[I am a]">
+                  <option value="">Select…</option>
+                  <option>Homeowner</option>
+                  <option>Builder</option>
+                  <option>Plumber</option>
+                  <option>Tiler</option>
+                  <option>Designer or architect</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid--3" style="gap:1.25rem">
+              <div class="field">
+                <label class="field__label" for="cf-profile">Profile</label>
+                <select class="field__select" id="cf-profile" name="contact[Profile]">
+                  <option value="">Not sure</option>
+                  <option>70mm</option>
+                  <option>85mm</option>
+                  <option>100mm</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="cf-length">Length required</label>
+                <input class="field__input" id="cf-length" type="text" name="contact[Length required]" placeholder="e.g. 900mm">
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="cf-outlet">Outlet position</label>
+                <select class="field__select" id="cf-outlet" name="contact[Outlet position]">
+                  <option value="">Not sure</option>
+                  <option>Centre</option>
+                  <option>Near one end</option>
+                  <option>Already set in the slab</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="cf-application">Application</label>
+              <select class="field__select" id="cf-application" name="contact[Application]">
+                <option value="">Select…</option>
+                <option>New shower</option>
+                <option>Bathroom renovation</option>
+                <option>Laundry</option>
+                <option>Other internal application</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="cf-body">
+                What are you trying to do? <span aria-hidden="true">*</span>
+              </label>
+              <textarea
+                class="field__textarea"
+                id="cf-body"
+                name="contact[body]"
+                required
+                data-error="A sentence or two about the job helps us answer properly."
+                placeholder="Shower size, floor construction, where the waste sits, and anything you're unsure about.">{{ form.body }}</textarea>
+              <span class="field__error" data-error-for="contact[body]"></span>
+            </div>
+
+            <button class="btn btn--lg{% if section.settings.dark %} btn--light{% endif %}" type="submit">
+              {{ section.settings.submit_label }}
+            </button>
+
+            <p class="form-note">{{ section.settings.privacy_note }}</p>
+          </div>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Enquiry form",
+  "settings": [
+    { "type": "text", "id": "index", "label": "Index" },
+    { "type": "text", "id": "label", "label": "Label", "default": "Contact" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Talk to a drainage specialist." },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>Send us the shower size, the floor construction and where your waste sits. We'll tell you which profile, length and outlet to order — or that you need something custom.</p>"
+    },
+    { "type": "text", "id": "submit_label", "label": "Submit label", "default": "Send enquiry" },
+    {
+      "type": "text",
+      "id": "privacy_note",
+      "label": "Privacy note",
+      "default": "We use your details to answer your enquiry. Nothing else."
+    },
+    { "type": "checkbox", "id": "dark", "label": "Dark background", "default": false }
+  ],
+  "presets": [{ "name": "Enquiry form" }]
+}
+{% endschema %}

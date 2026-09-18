@@ -1,0 +1,182 @@
+{
+  "current": {
+    "brand_name": "SLATESTREAM",
+    "brand_descriptor": "Linear Drainage",
+    "brand_blurb": "Specialists in stainless steel linear drainage. One product, done properly.",
+    "abn": "14 168 574 032",
+    "phone": "0488 551 384",
+    "phone_hours": "Mon–Fri 8am–4pm AEST",
+    "email": "SlateStream20@gmail.com",
+    "trade_email": "SlateStream20@gmail.com",
+    "ship_lead_stock": "Ships within 2 business days",
+    "ship_lead_custom": "10–15 business days",
+    "ship_pickup": "Not available",
+    "ship_note": "Shipping is calculated at checkout based on your delivery address.",
+    "help_url": "/pages/contact",
+    "quote_url": "/pages/trade",
+    "enable_reveal": true,
+    "sections": {
+      "announcement": {
+        "type": "announcement",
+        "settings": {
+          "text": "Specialists in stainless steel linear drainage · Shipped Australia-wide",
+          "link_label": "Talk to a specialist",
+          "link_url": "/pages/contact"
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "cta_label": "Shop the drain",
+          "cta_url": "/products/stainless-steel-linear-drain-heelguard-pattern"
+        },
+        "blocks": {
+          "nav1": {
+            "type": "link",
+            "settings": {
+              "label": "Product",
+              "url": "/products/stainless-steel-linear-drain-heelguard-pattern"
+            }
+          },
+          "nav2": {
+            "type": "link",
+            "settings": {
+              "label": "Why Heelguard",
+              "url": "/pages/why-heelguard"
+            }
+          },
+          "nav3": {
+            "type": "menu",
+            "settings": {
+              "label": "Technical",
+              "url": "/pages/technical",
+              "child_1_label": "Specifications",
+              "child_1_url": "/pages/technical",
+              "child_1_desc": "Every dimension we publish",
+              "child_2_label": "Drawings",
+              "child_2_url": "/pages/technical#technical",
+              "child_2_desc": "Plan, elevation and section per profile",
+              "child_3_label": "Installation",
+              "child_3_url": "/pages/installation",
+              "child_3_desc": "Sequence, and who has to do what",
+              "child_4_label": "Care guide",
+              "child_4_url": "/pages/care-guide",
+              "child_4_desc": "Cleaning stainless steel properly"
+            }
+          },
+          "nav4": {
+            "type": "link",
+            "settings": {
+              "label": "Custom",
+              "url": "/pages/custom"
+            }
+          },
+          "nav5": {
+            "type": "link",
+            "settings": {
+              "label": "Trade",
+              "url": "/pages/trade"
+            }
+          },
+          "nav6": {
+            "type": "link",
+            "settings": {
+              "label": "Contact",
+              "url": "/pages/contact"
+            }
+          }
+        },
+        "block_order": [
+          "nav1",
+          "nav2",
+          "nav3",
+          "nav4",
+          "nav5",
+          "nav6"
+        ]
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {},
+        "blocks": {
+          "col1": {
+            "type": "column",
+            "settings": {
+              "title": "Product",
+              "show_policies": false,
+              "link_1_label": "The Heelguard drain",
+              "link_1_url": "/products/stainless-steel-linear-drain-heelguard-pattern",
+              "link_2_label": "Configure your drain",
+              "link_2_url": "/products/stainless-steel-linear-drain-heelguard-pattern",
+              "link_3_label": "Why Heelguard",
+              "link_3_url": "/pages/why-heelguard",
+              "link_4_label": "Applications",
+              "link_4_url": "/pages/why-heelguard#applications",
+              "link_5_label": "Custom drains",
+              "link_5_url": "/pages/custom"
+            }
+          },
+          "col2": {
+            "type": "column",
+            "settings": {
+              "title": "Technical",
+              "show_policies": false,
+              "link_1_label": "Specifications",
+              "link_1_url": "/pages/technical",
+              "link_2_label": "Technical drawings",
+              "link_2_url": "/pages/technical#technical",
+              "link_3_label": "Installation",
+              "link_3_url": "/pages/installation",
+              "link_4_label": "Care guide",
+              "link_4_url": "/pages/care-guide"
+            }
+          },
+          "col3": {
+            "type": "column",
+            "settings": {
+              "title": "Buying",
+              "show_policies": false,
+              "link_1_label": "Delivery",
+              "link_1_url": "/pages/delivery",
+              "link_2_label": "Before you buy",
+              "link_2_url": "/pages/installation#before-you-buy",
+              "link_3_label": "FAQs",
+              "link_3_url": "/pages/faq",
+              "link_4_label": "Trade enquiries",
+              "link_4_url": "/pages/trade"
+            }
+          },
+          "col4": {
+            "type": "column",
+            "settings": {
+              "title": "Company",
+              "show_policies": true,
+              "link_1_label": "About",
+              "link_1_url": "/pages/about",
+              "link_2_label": "Contact",
+              "link_2_url": "/pages/contact",
+              "link_3_label": "Legal notice",
+              "link_3_url": "/pages/legal-notice"
+            }
+          }
+        },
+        "block_order": [
+          "col1",
+          "col2",
+          "col3",
+          "col4"
+        ]
+      },
+      "floating-help": {
+        "type": "floating-help",
+        "settings": {
+          "enabled": true,
+          "toggle_label": "Need help choosing?",
+          "panel_heading": "Not sure which drain you need?",
+          "panel_body": "Tell us the shower size, the floor construction and where your waste sits. We'll tell you which profile, length and outlet to order."
+        }
+      }
+    }
+  },
+  "presets": {}
+}

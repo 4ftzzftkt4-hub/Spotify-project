@@ -1,0 +1,531 @@
+{%- comment -%}
+  Product page. The gallery is data-driven from product media; the configurator
+  is driven by the product's own option values so lengths are never hardcoded.
+  Outlet options are editable per profile because they differ by profile and
+  are a manufacturing decision, not a variant.
+{%- endcomment -%}
+{%- liquid
+  assign opt_profile_index = 0
+  assign opt_length_index = 0
+  for opt in product.options_with_values
+    assign name_down = opt.name | downcase
+    if name_down contains 'profile' or name_down contains 'width'
+      assign opt_profile_index = forloop.index
+      assign profile_option = opt
+    endif
+    if name_down contains 'length'
+      assign opt_length_index = forloop.index
+      assign length_option = opt
+    endif
+  endfor
+
+  comment
+    Fall back to positional options if the merchant renames them.
+  endcomment
+  if opt_profile_index == 0 and product.options_with_values.size > 0
+    assign opt_profile_index = 1
+    assign profile_option = product.options_with_values[0]
+  endif
+  if opt_length_index == 0 and product.options_with_values.size > 1
+    assign opt_length_index = 2
+    assign length_option = product.options_with_values[1]
+  endif
+
+  assign depth_pairs = section.settings.profile_depths | split: ','
+-%}
+
+<section class="section section--tight" data-configurator>
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom:2rem;color:var(--ink-60)">
+      <a href="{{ routes.root_url }}">Home</a>
+      <span class="breadcrumb__sep" aria-hidden="true">/</span>
+      <span>{{ product.title }}</span>
+    </nav>
+
+    <div class="pdp">
+      {%- comment -%} ------------------------------------------- GALLERY {%- endcomment -%}
+      <div class="gal" data-gallery>
+        <div class="gal__stage">
+          <div class="gal__slides" data-gal-slides tabindex="0" role="group" aria-label="{{ 'products.product.gallery' | t }}">
+            {%- if product.media.size > 0 -%}
+              {%- for media in product.media -%}
+                <div class="gal__slide" data-gal-slide data-caption="{{ media.alt | escape }}">
+                  {%- render 'media',
+                    image: media.preview_image,
+                    alt: media.alt,
+                    sizes: '(min-width: 80em) 52vw, (min-width: 64em) 55vw, 100vw',
+                    ratio: '4/3',
+                    zoomable: true,
+                    priority: forloop.first
+                  -%}
+                </div>
+              {%- endfor -%}
+            {%- else -%}
+              <div class="gal__slide">
+                <div class="frame frame--43">
+                  {%- render 'media', placeholder_label: 'Product photography', placeholder_note: 'Add images to this product' -%}
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
+
+          {%- if product.media.size > 1 -%}
+            <div class="gal__arrows">
+              <button class="gal__arrow" type="button" data-gal-prev aria-label="{{ 'general.accessibility.previous' | t }}">
+                {%- render 'icon', name: 'arrow-left' -%}
+              </button>
+              <button class="gal__arrow" type="button" data-gal-next aria-label="{{ 'general.accessibility.next' | t }}">
+                {%- render 'icon', name: 'arrow-right' -%}
+              </button>
+            </div>
+          {%- endif -%}
+
+          {%- if product.media.size > 0 -%}
+            <button class="gal__zoom js-only" type="button" data-gal-zoom>
+              <span style="width:14px">{%- render 'icon', name: 'zoom' -%}</span>
+              Zoom
+            </button>
+          {%- endif -%}
+        </div>
+
+        {%- if product.media.size > 1 -%}
+          <div class="gal__dots js-only">
+            {%- for media in product.media -%}
+              <button
+                class="gal__dot"
+                type="button"
+                data-gal-dot
+                aria-label="{{ 'products.product.thumbnail' | t: index: forloop.index }}"></button>
+            {%- endfor -%}
+          </div>
+
+          <div class="gal__thumbs">
+            {%- for media in product.media limit: 6 -%}
+              <button
+                class="gal__thumb"
+                type="button"
+                data-gal-thumb
+                aria-label="{{ 'products.product.thumbnail' | t: index: forloop.index }}">
+                <img
+                  src="{{ media.preview_image | image_url: width: 240 }}"
+                  alt=""
+                  width="240"
+                  height="240"
+                  loading="lazy">
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} -------------------------------------- CONFIGURATOR {%- endcomment -%}
+      <div class="cfg" data-atc-anchor>
+        <div class="cfg__head">
+          <p class="label label--accent">{{ section.settings.eyebrow }}</p>
+          <h1 class="cfg__title">{{ product.title }}</h1>
+          {%- if section.settings.short_description != blank -%}
+            <p class="cfg__sub">{{ section.settings.short_description }}</p>
+          {%- endif -%}
+
+          <div class="cfg__price-row">
+            <span class="cfg__price" data-cfg-price>
+              {{ product.selected_or_first_available_variant.price | money }}
+            </span>
+            <span class="cfg__price-note">{{ cart.currency.iso_code }} · delivery calculated at checkout</span>
+          </div>
+          <p class="cfg__sku" data-cfg-sku>
+            {%- if product.selected_or_first_available_variant.sku != blank -%}
+              SKU {{ product.selected_or_first_available_variant.sku }}
+            {%- endif -%}
+          </p>
+        </div>
+
+        <form method="post" action="{{ routes.cart_add_url }}" data-cfg-form id="cfg-form">
+          <input type="hidden" name="form_type" value="product">
+          <input type="hidden" name="utf8" value="✓">
+          <input
+            type="hidden"
+            name="id"
+            data-cfg-variant-id
+            value="{{ product.selected_or_first_available_variant.id }}">
+          <input type="hidden" name="properties[Outlet configuration]" data-cfg-outlet-input value="">
+
+          {%- comment -%} STEP 01 — profile {%- endcomment -%}
+          {%- if profile_option -%}
+            <div class="cfg__step">
+              <div class="cfg__step-head">
+                <span class="cfg__step-title"><span class="cfg__step-n">01</span>Profile / width</span>
+                <span class="cfg__step-value" data-cfg-step-value="profile"></span>
+              </div>
+              <div class="opt-profiles" role="group" aria-label="Profile">
+                {%- for value in profile_option.values -%}
+                  {%- liquid
+                    assign w_num = value | remove: 'mm' | remove: ' ' | plus: 0
+                    assign depth = ''
+                    for pair in depth_pairs
+                      assign bits = pair | split: ':'
+                      assign key = bits[0] | strip
+                      if key == value
+                        assign depth = bits[1] | strip
+                      endif
+                    endfor
+                    assign bar_w = w_num | times: 0.42
+                  -%}
+                  <button
+                    class="opt-profile"
+                    type="button"
+                    data-cfg-profile="{{ value | escape }}"
+                    aria-pressed="false">
+                    <span class="opt-profile__w">{{ value }}</span>
+                    <span class="opt-profile__glyph" aria-hidden="true">
+                      <span class="opt-profile__bar" style="width:{{ bar_w }}px"></span>
+                    </span>
+                    <span class="opt-profile__d">
+                      {%- if depth != blank -%}
+                        {{ w_num }}mm wide<br>× {{ depth }}mm deep
+                      {%- else -%}
+                        {{ w_num }}mm wide
+                      {%- endif -%}
+                    </span>
+                  </button>
+                {%- endfor -%}
+              </div>
+              {%- if section.settings.profile_help != blank -%}
+                <p class="form-note">{{ section.settings.profile_help }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          {%- comment -%} STEP 02 — length, straight from the product data {%- endcomment -%}
+          {%- if length_option -%}
+            <div class="cfg__step">
+              <div class="cfg__step-head">
+                <span class="cfg__step-title"><span class="cfg__step-n">02</span>Length</span>
+                <span class="cfg__step-value" data-cfg-step-value="length"></span>
+              </div>
+              <div class="opt-chips" role="group" aria-label="Length">
+                {%- for value in length_option.values -%}
+                  <button
+                    class="opt-chip"
+                    type="button"
+                    data-cfg-length="{{ value | escape }}"
+                    data-available="true"
+                    aria-pressed="false">
+                    {{ value }}
+                  </button>
+                {%- endfor -%}
+              </div>
+              {%- if section.settings.length_help != blank -%}
+                <p class="form-note">{{ section.settings.length_help }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          {%- comment -%} STEP 03 — outlet, filtered by profile {%- endcomment -%}
+          <div class="cfg__step">
+            <div class="cfg__step-head">
+              <span class="cfg__step-title"><span class="cfg__step-n">03</span>Outlet configuration</span>
+              <span class="cfg__step-value" data-cfg-step-value="outlet"></span>
+            </div>
+            <div class="opt-outlets" data-cfg-outlets-list role="group" aria-label="Outlet configuration"></div>
+            <noscript>
+              <p class="form-note">
+                Outlet options differ by profile. With JavaScript disabled, add your required outlet in the order
+                notes at checkout or contact us before ordering.
+              </p>
+            </noscript>
+            {%- if section.settings.outlet_help != blank -%}
+              <p class="form-note">{{ section.settings.outlet_help }}</p>
+            {%- endif -%}
+          </div>
+
+          {%- comment -%} STEP 04 — quantity + purchase {%- endcomment -%}
+          <div class="cfg__step">
+            <div class="cfg__step-head">
+              <span class="cfg__step-title"><span class="cfg__step-n">04</span>Quantity</span>
+            </div>
+            <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+              <div class="qty" data-qty>
+                <button type="button" data-qty-step="-1" aria-label="{{ 'products.product.decrease' | t }}">
+                  {%- render 'icon', name: 'minus' -%}
+                </button>
+                <label class="visually-hidden" for="cfg-qty">{{ 'products.product.quantity' | t }}</label>
+                <input id="cfg-qty" name="quantity" type="number" value="1" min="1" inputmode="numeric">
+                <button type="button" data-qty-step="1" aria-label="{{ 'products.product.increase' | t }}">
+                  {%- render 'icon', name: 'plus' -%}
+                </button>
+              </div>
+
+              <p class="cfg__availability">
+                <span class="cfg__dot" data-cfg-dot data-state="in" aria-hidden="true"></span>
+                <span
+                  data-cfg-availability
+                  data-label-available="{{ section.settings.label_available }}"
+                  data-label-unavailable="{{ section.settings.label_unavailable }}">
+                  {{ section.settings.label_available }}
+                </span>
+              </p>
+            </div>
+
+            <p class="label" style="margin-top:0.25rem">
+              Your configuration: <span class="mono" data-cfg-summary style="color:var(--ink);letter-spacing:0"></span>
+            </p>
+
+            <div class="cfg__actions">
+              <button
+                class="btn btn--lg btn--full"
+                type="submit"
+                data-cfg-submit
+                data-label-available="{{ 'products.product.add_to_cart' | t }}"
+                data-label-unavailable="{{ 'products.product.unavailable' | t }}">
+                {{ 'products.product.add_to_cart' | t }}
+              </button>
+
+              {%- if settings.help_url != blank or settings.email != blank -%}
+                <a
+                  class="btn btn--ghost btn--full"
+                  href="{% if settings.help_url != blank %}{{ settings.help_url }}{% else %}mailto:{{ settings.email }}?subject=Help%20with%20a%20Heelguard%20order{% endif %}">
+                  Request help with this order
+                </a>
+              {%- endif -%}
+            </div>
+          </div>
+
+          {%- comment -%} Assurances — only facts from the specification {%- endcomment -%}
+          <div class="cfg__assurances">
+            {%- assign ticks = section.settings.assurances | split: ',' -%}
+            <div class="ticks">
+              {%- for t in ticks -%}
+                {%- assign t = t | strip -%}
+                {%- if t != blank -%}
+                  <span class="tick">
+                    <span class="tick__mark" aria-hidden="true">{%- render 'icon', name: 'check' -%}</span>
+                    {{ t }}
+                  </span>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+
+          {%- comment -%} Delivery — nothing invented; blank settings stay hidden {%- endcomment -%}
+          <div class="cfg__ship">
+            <p class="label">Delivery</p>
+            {%- if settings.ship_lead_stock != blank -%}
+              <p>Standard sizes: {{ settings.ship_lead_stock }}</p>
+            {%- endif -%}
+            {%- if settings.ship_lead_custom != blank -%}
+              <p>Custom drains: {{ settings.ship_lead_custom }}</p>
+            {%- endif -%}
+            {%- if settings.ship_note != blank -%}
+              <p>{{ settings.ship_note }}</p>
+            {%- endif -%}
+            {%- if section.settings.delivery_url != blank -%}
+              <p><a href="{{ section.settings.delivery_url }}">Check shipping</a></p>
+            {%- endif -%}
+          </div>
+        </form>
+
+        {%- comment -%} Configurator data contracts {%- endcomment -%}
+        <script type="application/json" data-cfg-variants>
+          [
+            {%- for v in product.variants -%}
+              {
+                "id": {{ v.id | json }},
+                "profile": {{ v.options[0] | json }},
+                "length": {{ v.options[1] | json }},
+                "price": {{ v.price | money | strip_html | json }},
+                "sku": {{ v.sku | json }},
+                "available": {{ v.available | json }}
+              }{% unless forloop.last %},{% endunless %}
+            {%- endfor -%}
+          ]
+        </script>
+
+        <script type="application/json" data-cfg-outlets>
+          {%- comment -%}
+            Assembled with string appends only, so a blank field can never leave
+            a trailing comma and break the JSON the configurator depends on.
+            One line per option: Name | Description | position
+          {%- endcomment -%}
+          {%- liquid
+            assign profile_keys = 'outlets_70,outlets_85,outlets_100' | split: ','
+            assign profile_names = section.settings.outlet_profile_names | split: ','
+            assign entries = ''
+
+            for key in profile_keys
+              assign pname = profile_names[forloop.index0] | strip
+              assign raw = section.settings[key]
+
+              if raw != blank and pname != blank
+                assign options = ''
+                assign lines = raw | strip | newline_to_br | split: '<br />'
+
+                for line in lines
+                  assign line = line | strip
+                  if line != blank
+                    assign bits = line | split: '|'
+                    assign o_name = bits[0] | strip | json
+                    assign o_desc = bits[1] | strip | json
+                    assign o_pos = bits[2] | strip | default: 'centre' | json
+
+                    assign option_json = '{"name":' | append: o_name
+                    assign option_json = option_json | append: ',"desc":' | append: o_desc
+                    assign option_json = option_json | append: ',"pos":' | append: o_pos | append: '}'
+
+                    if options != ''
+                      assign options = options | append: ','
+                    endif
+                    assign options = options | append: option_json
+                  endif
+                endfor
+
+                if options != ''
+                  assign entry_json = pname | json | append: ':[' | append: options | append: ']'
+                  if entries != ''
+                    assign entries = entries | append: ','
+                  endif
+                  assign entries = entries | append: entry_json
+                endif
+              endif
+            endfor
+
+            assign outlets_json = '{' | append: entries | append: '}'
+          -%}
+          {{ outlets_json }}
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} ------------------------------------------- STICKY MOBILE ATC {%- endcomment -%}
+<div class="sticky-atc js-only" data-sticky-atc>
+  <div class="sticky-atc__meta">
+    <span class="sticky-atc__config" data-sticky-config></span>
+    <span class="sticky-atc__price" data-sticky-price>
+      {{ product.selected_or_first_available_variant.price | money }}
+    </span>
+  </div>
+  <button class="btn" type="submit" form="cfg-form">{{ 'products.product.add_to_cart' | t }}</button>
+</div>
+
+<script src="{{ 'configurator.js' | asset_url }}" defer></script>
+
+{%- comment -%} Product structured data, built from real values only {%- endcomment -%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": {{ product.title | json }},
+    "description": {{ product.description | strip_html | truncate: 500 | json }},
+    "sku": {{ product.selected_or_first_available_variant.sku | json }},
+    "brand": { "@type": "Brand", "name": {{ product.vendor | default: settings.brand_name | json }} },
+    "material": "304 stainless steel",
+    "url": {{ product.url | prepend: shop.url | json }},
+    {%- if product.featured_image -%}
+      "image": [
+        {%- for media in product.media limit: 6 -%}
+          {{ media.preview_image | image_url: width: 1600 | prepend: 'https:' | json }}
+          {%- unless forloop.last %},{% endunless -%}
+        {%- endfor -%}
+      ],
+    {%- endif -%}
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": {{ cart.currency.iso_code | json }},
+      "lowPrice": {{ product.price_min | divided_by: 100.0 | json }},
+      "highPrice": {{ product.price_max | divided_by: 100.0 | json }},
+      "offerCount": {{ product.variants.size | json }},
+      "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+      "url": {{ product.url | prepend: shop.url | json }}
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Product configurator",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Heelguard pattern · 304 stainless steel" },
+    {
+      "type": "textarea",
+      "id": "short_description",
+      "label": "Short description",
+      "default": "Fully welded 304 stainless steel linear drainage with the Heelguard wedge-wire grate. Choose your profile, length and outlet below."
+    },
+    { "type": "header", "content": "Step guidance" },
+    {
+      "type": "text",
+      "id": "profile_help",
+      "label": "Profile help text",
+      "default": "The profile sets the grate width and the body depth. Check the depth against your floor build-up."
+    },
+    {
+      "type": "text",
+      "id": "length_help",
+      "label": "Length help text",
+      "default": "Lengths shown are the sizes currently available. Need something else? Ask about a custom length."
+    },
+    {
+      "type": "text",
+      "id": "outlet_help",
+      "label": "Outlet help text",
+      "default": "Outlet options differ by profile. Confirm the position against your plumbing before ordering."
+    },
+    { "type": "header", "content": "Outlet configurations" },
+    {
+      "type": "paragraph",
+      "content": "One option per line, in the form: Name | Description | position. Position may be centre, end or diy and only changes the small diagram."
+    },
+    {
+      "type": "text",
+      "id": "outlet_profile_names",
+      "label": "Profile option values",
+      "info": "Comma separated, in the same order as the three fields below. These must match the product's Profile option values exactly.",
+      "default": "70mm, 85mm, 100mm"
+    },
+    {
+      "type": "textarea",
+      "id": "outlets_70",
+      "label": "70mm outlets",
+      "default": "50.8 OD centre outlet | Factory-fitted centre outlet, 50.8mm outside diameter | centre\nDIY 50mm outlet | Supplied for you to position on site | diy"
+    },
+    {
+      "type": "textarea",
+      "id": "outlets_85",
+      "label": "85mm outlets",
+      "default": "50.8 OD centre outlet | Factory-fitted centre outlet, 50.8mm outside diameter | centre\nEnd outlet | 50mm from the end of the drain to the outlet centre | end\nDIY 50mm outlet | Supplied for you to position on site | diy\nDIY 76mm outlet with flange | Supplied with flange, for you to position on site | diy"
+    },
+    {
+      "type": "textarea",
+      "id": "outlets_100",
+      "label": "100mm outlets",
+      "default": "80mm OD centre outlet | Factory-fitted centre outlet, 80mm outside diameter | centre\nDIY 50mm outlet | Supplied for you to position on site | diy\nDIY 76mm outlet with flange | Supplied with flange, for you to position on site | diy"
+    },
+    { "type": "header", "content": "Profile depths" },
+    {
+      "type": "text",
+      "id": "profile_depths",
+      "label": "Profile depth map",
+      "info": "Format: value:depth, comma separated. Used on the profile cards.",
+      "default": "70mm:22, 85mm:20, 100mm:20"
+    },
+    { "type": "header", "content": "Labels" },
+    { "type": "text", "id": "label_available", "label": "Available label", "default": "Available to order" },
+    {
+      "type": "text",
+      "id": "label_unavailable",
+      "label": "Unavailable label",
+      "default": "Not available in this combination — talk to us"
+    },
+    {
+      "type": "textarea",
+      "id": "assurances",
+      "label": "Assurances",
+      "info": "Comma separated. Facts only.",
+      "default": "304 stainless steel, Fully welded construction, Heelguard wedge-wire grate, Three profile widths, Multiple outlet configurations, Custom options available"
+    },
+    { "type": "url", "id": "delivery_url", "label": "Delivery page" }
+  ]
+}
+{% endschema %}

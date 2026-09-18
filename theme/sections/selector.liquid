@@ -1,0 +1,213 @@
+{%- comment -%}
+  Guided selector. Question wording is editable; the answer→option mapping is
+  fixed because it encodes real product logic. Length options are read from the
+  product's own option values, so the selector can never offer a length the
+  store does not sell.
+{%- endcomment -%}
+{%- liquid
+  assign product = section.settings.product
+  assign length_values = ''
+  if product != blank
+    for opt in product.options_with_values
+      assign name_down = opt.name | downcase
+      if name_down contains 'length'
+        for v in opt.values
+          if length_values != ''
+            assign length_values = length_values | append: ','
+          endif
+          assign length_values = length_values | append: v
+        endfor
+      endif
+    endfor
+  endif
+  assign length_list = length_values | split: ','
+-%}
+
+<section class="section section--paper2" id="selector">
+  <div class="wrap wrap--narrow">
+    <div class="sec-head reveal" style="margin-bottom:2rem">
+      <div class="sec-head__meta">
+        <span class="index">{{ section.settings.index }}</span>
+        <span class="label">{{ section.settings.label }}</span>
+      </div>
+      <h2 class="h1">{{ section.settings.heading }}</h2>
+      <p class="lede" style="max-width:56ch">{{ section.settings.intro }}</p>
+    </div>
+
+    <div
+      class="wiz reveal"
+      data-wizard
+      data-product-url="{% if product != blank %}{{ product.url }}{% endif %}"
+      data-help-url="{{ settings.help_url | default: section.settings.help_url }}">
+      <div class="wiz__bar" aria-hidden="true"><span class="wiz__fill" data-wiz-fill style="width:0%"></span></div>
+      <div class="wiz__body" data-wiz-body aria-live="polite">
+        <noscript>
+          <p class="wiz__q">Tell us about the install and we'll specify it.</p>
+          <p class="wiz__hint">
+            The guided selector needs JavaScript. You can still get the same answer from a person —
+            send us the shower size, the floor construction and where your waste sits.
+          </p>
+          {%- if settings.help_url != blank -%}
+            <a class="btn" href="{{ settings.help_url }}">Ask a drainage specialist</a>
+          {%- endif -%}
+        </noscript>
+      </div>
+    </div>
+
+    <script type="application/json" data-wiz-steps>
+      [
+        {
+          "key": "application",
+          "question": {{ section.settings.q1 | json }},
+          "hint": {{ section.settings.q1_hint | json }},
+          "options": [
+            { "value": "new-shower", "label": "New shower", "desc": "New build or a new wet area" },
+            { "value": "renovation", "label": "Bathroom renovation", "desc": "Replacing an existing floor" },
+            { "value": "laundry", "label": "Laundry", "desc": "Internal laundry floor waste" },
+            { "value": "other", "label": "Other internal application", "desc": "We'll take a look at it" }
+          ]
+        },
+        {
+          "key": "width",
+          "question": {{ section.settings.q2 | json }},
+          "hint": {{ section.settings.q2_hint | json }},
+          "options": [
+            { "value": "70mm", "label": "70mm", "desc": "70mm wide × 22mm deep" },
+            { "value": "85mm", "label": "85mm", "desc": "85mm wide × 20mm deep" },
+            { "value": "100mm", "label": "100mm", "desc": "100mm wide × 20mm deep" },
+            { "value": "unsure", "label": "Not sure yet", "desc": "We'll suggest a starting point" }
+          ]
+        },
+        {
+          "key": "outlet",
+          "question": {{ section.settings.q3 | json }},
+          "hint": {{ section.settings.q3_hint | json }},
+          "options": [
+            { "value": "centre", "label": "Centre of the drain", "desc": "Most common where plumbing is new" },
+            { "value": "end", "label": "Near one end", "desc": "Where the waste is already fixed" },
+            { "value": "unsure", "label": "Not sure", "desc": "Ask your plumber, or ask us" }
+          ]
+        },
+        {
+          "key": "length",
+          "question": {{ section.settings.q4 | json }},
+          "hint": {{ section.settings.q4_hint | json }},
+          "options": [
+            {%- for v in length_list -%}
+              { "value": {{ v | strip | json }}, "label": {{ v | strip | json }} },
+            {%- endfor -%}
+            { "value": "unsure", "label": "Not sure / custom", "desc": "Talk to us about a custom length" }
+          ]
+        },
+        {
+          "key": "role",
+          "question": {{ section.settings.q5 | json }},
+          "hint": {{ section.settings.q5_hint | json }},
+          "options": [
+            { "value": "homeowner", "label": "Homeowner" },
+            { "value": "builder", "label": "Builder" },
+            { "value": "plumber", "label": "Plumber" },
+            { "value": "tiler", "label": "Tiler" },
+            { "value": "designer", "label": "Designer or architect" },
+            { "value": "other", "label": "Other" }
+          ]
+        }
+      ]
+    </script>
+
+    <script type="application/json" data-wiz-rules>
+      {
+        "default_profile": {{ section.settings.default_profile | json }},
+        "width_to_profile": {
+          "70mm": "70mm",
+          "85mm": "85mm",
+          "100mm": "100mm",
+          "unsure": {{ section.settings.default_profile | json }}
+        },
+        "profile_outlets": {
+          "70mm": [
+            {%- assign o70 = section.settings.outlets_70 | split: ',' -%}
+            {%- for o in o70 -%}{{ o | strip | json }}{% unless forloop.last %},{% endunless %}{%- endfor -%}
+          ],
+          "85mm": [
+            {%- assign o85 = section.settings.outlets_85 | split: ',' -%}
+            {%- for o in o85 -%}{{ o | strip | json }}{% unless forloop.last %},{% endunless %}{%- endfor -%}
+          ],
+          "100mm": [
+            {%- assign o100 = section.settings.outlets_100 | split: ',' -%}
+            {%- for o in o100 -%}{{ o | strip | json }}{% unless forloop.last %},{% endunless %}{%- endfor -%}
+          ]
+        }
+      }
+    </script>
+  </div>
+</section>
+
+<script src="{{ 'configurator.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Guided selector",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product", "info": "Length options are read from this product." },
+    { "type": "text", "id": "index", "label": "Index", "default": "04" },
+    { "type": "text", "id": "label", "label": "Label", "default": "Specify it properly" },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Not sure which configuration you need?"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro",
+      "default": "Five questions. At the end you'll know which profile, length and outlet to order — and whether it's worth a conversation first."
+    },
+    { "type": "header", "content": "Questions" },
+    { "type": "text", "id": "q1", "label": "Question 1", "default": "What are you installing?" },
+    { "type": "text", "id": "q1_hint", "label": "Question 1 hint", "default": "The Heelguard drain is for internal applications only — showers, bathrooms and laundries." },
+    { "type": "text", "id": "q2", "label": "Question 2", "default": "What grate width do you want?" },
+    { "type": "text", "id": "q2_hint", "label": "Question 2 hint", "default": "Width is mostly a design decision. Depth matters more — check it against your floor build-up." },
+    { "type": "text", "id": "q3", "label": "Question 3", "default": "Where does your waste outlet need to be?" },
+    { "type": "text", "id": "q3_hint", "label": "Question 3 hint", "default": "If the plumbing is already in the slab, this decides everything else." },
+    { "type": "text", "id": "q4", "label": "Question 4", "default": "What length do you need?" },
+    { "type": "text", "id": "q4_hint", "label": "Question 4 hint", "default": "Measure the finished opening, not the tile. If you're between sizes, ask us." },
+    { "type": "text", "id": "q5", "label": "Question 5", "default": "And you are…?" },
+    { "type": "text", "id": "q5_hint", "label": "Question 5 hint", "default": "So we pitch the answer at the right level of detail." },
+    { "type": "header", "content": "Recommendation logic" },
+    {
+      "type": "select",
+      "id": "default_profile",
+      "label": "Profile suggested when unsure",
+      "default": "85mm",
+      "options": [
+        { "value": "70mm", "label": "70mm" },
+        { "value": "85mm", "label": "85mm" },
+        { "value": "100mm", "label": "100mm" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "outlets_70",
+      "label": "70mm outlet names",
+      "info": "Comma separated, first is the default. Must match the configurator wording.",
+      "default": "50.8 OD centre outlet, DIY 50mm outlet"
+    },
+    {
+      "type": "text",
+      "id": "outlets_85",
+      "label": "85mm outlet names",
+      "default": "50.8 OD centre outlet, End outlet, DIY 50mm outlet, DIY 76mm outlet with flange"
+    },
+    {
+      "type": "text",
+      "id": "outlets_100",
+      "label": "100mm outlet names",
+      "default": "80mm OD centre outlet, DIY 50mm outlet, DIY 76mm outlet with flange"
+    },
+    { "type": "url", "id": "help_url", "label": "Fallback help link" }
+  ],
+  "presets": [{ "name": "Guided selector" }]
+}
+{% endschema %}

@@ -1,0 +1,216 @@
+{%- liquid
+  assign brand = settings.brand_name | default: shop.name
+  assign phone_href = settings.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-'
+-%}
+
+<footer class="footer on-dark">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__grid">
+        <div class="footer__brandcol">
+          <span class="footer__brandmark">{{ brand }}</span>
+          {%- if settings.brand_blurb != blank -%}
+            <p class="footer__blurb">{{ settings.brand_blurb }}</p>
+          {%- endif -%}
+
+          <div style="display:grid;gap:0.6rem;margin-top:0.5rem">
+            {%- if settings.phone != blank -%}
+              <a class="tlink" href="tel:{{ phone_href }}" style="justify-self:start">
+                <span style="width:15px">{%- render 'icon', name: 'phone' -%}</span>
+                {{ settings.phone }}
+              </a>
+              {%- if settings.phone_hours != blank -%}
+                <p class="label">{{ settings.phone_hours }}</p>
+              {%- endif -%}
+            {%- endif -%}
+            {%- if settings.email != blank -%}
+              <a class="tlink" href="mailto:{{ settings.email }}" style="justify-self:start">
+                <span style="width:15px">{%- render 'icon', name: 'mail' -%}</span>
+                {{ settings.email }}
+              </a>
+            {%- endif -%}
+          </div>
+
+          {%- if settings.social_instagram != blank or settings.social_linkedin != blank or settings.social_youtube != blank -%}
+            <div class="chips" style="margin-top:0.5rem">
+              {%- if settings.social_instagram != blank -%}
+                <a class="chip" href="{{ settings.social_instagram }}" rel="noopener">Instagram</a>
+              {%- endif -%}
+              {%- if settings.social_linkedin != blank -%}
+                <a class="chip" href="{{ settings.social_linkedin }}" rel="noopener">LinkedIn</a>
+              {%- endif -%}
+              {%- if settings.social_youtube != blank -%}
+                <a class="chip" href="{{ settings.social_youtube }}" rel="noopener">YouTube</a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- for block in section.blocks -%}
+          <div {{ block.shopify_attributes }}>
+            <h2 class="footer__col-title">{{ block.settings.title }}</h2>
+            <ul class="footer__list">
+              {%- for i in (1..6) -%}
+                {%- assign lk = 'link_' | append: i | append: '_label' -%}
+                {%- assign uk = 'link_' | append: i | append: '_url' -%}
+                {%- if block.settings[lk] != blank -%}
+                  <li><a href="{{ block.settings[uk] | default: '#' }}">{{ block.settings[lk] }}</a></li>
+                {%- endif -%}
+              {%- endfor -%}
+
+              {%- comment -%}
+                Policy links come from the store's own policies so nothing is
+                invented. Each one appears only once it has been written.
+              {%- endcomment -%}
+              {%- if block.settings.show_policies -%}
+                {%- if shop.privacy_policy != blank -%}
+                  <li><a href="{{ shop.privacy_policy.url }}">{{ shop.privacy_policy.title }}</a></li>
+                {%- endif -%}
+                {%- if shop.terms_of_service != blank -%}
+                  <li><a href="{{ shop.terms_of_service.url }}">{{ shop.terms_of_service.title }}</a></li>
+                {%- endif -%}
+                {%- if shop.refund_policy != blank -%}
+                  <li><a href="{{ shop.refund_policy.url }}">{{ shop.refund_policy.title }}</a></li>
+                {%- endif -%}
+                {%- if shop.shipping_policy != blank -%}
+                  <li><a href="{{ shop.shipping_policy.url }}">{{ shop.shipping_policy.title }}</a></li>
+                {%- endif -%}
+              {%- endif -%}
+            </ul>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div style="display:grid;gap:0.35rem">
+        <span>&copy; {{ 'now' | date: '%Y' }} {{ settings.legal_name | default: brand }}. {{ 'layout.footer.copyright' | t }}</span>
+        {%- if settings.abn != blank or settings.address != blank -%}
+          <span class="footer__biz">
+            {%- if settings.abn != blank -%}ABN {{ settings.abn }}{%- endif -%}
+            {%- if settings.abn != blank and settings.address != blank %} · {% endif -%}
+            {%- if settings.address != blank -%}{{ settings.address | strip_newlines }}{%- endif -%}
+          </span>
+        {%- endif -%}
+      </div>
+      <div class="payment-icons">{{ powered_by_link }}</div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Link column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Column title",
+          "default": "Product"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_policies",
+          "label": "Append store policies",
+          "default": false,
+          "info": "Adds your Privacy, Terms, Refund and Shipping policies. Each appears only once you have written it in Settings → Policies, so no empty links are published."
+        },
+        {
+          "type": "text",
+          "id": "link_1_label",
+          "label": "Link 1"
+        },
+        {
+          "type": "url",
+          "id": "link_1_url",
+          "label": "Link 1 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_2_label",
+          "label": "Link 2"
+        },
+        {
+          "type": "url",
+          "id": "link_2_url",
+          "label": "Link 2 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_3_label",
+          "label": "Link 3"
+        },
+        {
+          "type": "url",
+          "id": "link_3_url",
+          "label": "Link 3 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_4_label",
+          "label": "Link 4"
+        },
+        {
+          "type": "url",
+          "id": "link_4_url",
+          "label": "Link 4 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_5_label",
+          "label": "Link 5"
+        },
+        {
+          "type": "url",
+          "id": "link_5_url",
+          "label": "Link 5 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_6_label",
+          "label": "Link 6"
+        },
+        {
+          "type": "url",
+          "id": "link_6_url",
+          "label": "Link 6 URL"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "column",
+        "settings": {
+          "title": "Product"
+        }
+      },
+      {
+        "type": "column",
+        "settings": {
+          "title": "Technical"
+        }
+      },
+      {
+        "type": "column",
+        "settings": {
+          "title": "Buying"
+        }
+      },
+      {
+        "type": "column",
+        "settings": {
+          "title": "Company",
+          "show_policies": true
+        }
+      }
+    ]
+  }
+}
+{% endschema %}
