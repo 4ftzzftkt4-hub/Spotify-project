@@ -1,15 +1,20 @@
 {
   "current": {
-    "brand_name": "HEELGUARD",
+    "brand_name": "SLATESTREAM",
     "brand_descriptor": "Linear Drainage",
     "brand_blurb": "Specialists in stainless steel linear drainage. One product, done properly.",
+    "abn": "14 168 574 032",
+    "phone": "+61 448 855 1384",
+    "phone_hours": "Mon–Fri 8am–4pm AEST",
+    "email": "SlateStream20@gmail.com",
+    "trade_email": "SlateStream20@gmail.com",
     "ship_lead_stock": "Ships within 2 business days",
     "ship_lead_custom": "10–15 business days",
     "ship_pickup": "Not available",
     "ship_note": "Shipping is calculated at checkout based on your delivery address.",
-    "enable_reveal": true,
     "help_url": "/pages/contact",
     "quote_url": "/pages/trade",
+    "enable_reveal": true,
     "sections": {
       "announcement": {
         "type": "announcement",
