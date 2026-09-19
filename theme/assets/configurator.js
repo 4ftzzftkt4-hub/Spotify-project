@@ -36,6 +36,15 @@
     var availDot = one('[data-cfg-dot]', root);
     var submitEl = one('[data-cfg-submit]', root);
     var outletWrap = one('[data-cfg-outlets-list]', root);
+    /* Placeholder configuration dropdown. It posts itself as a line item
+       property, so it works with JS off; this only mirrors it into the
+       running summary. Swapping in the real options needs no change here. */
+    var configSelect = one('[data-cfg-config]', root);
+    var galleryEl = one('[data-gallery]', root);
+    var lastMedia = null;
+    /* Stays false until the first sync has run, so the page opens on the
+       product's own lead photograph instead of scrolling away from it. */
+    var galleryReady = false;
     var summaryEls = all('[data-cfg-summary]');
     var stickyPrice = one('[data-sticky-price]');
     var stickyConfig = one('[data-sticky-config]');
@@ -164,17 +173,25 @@
       var stepValues = {
         profile: state.profile,
         length: state.length,
-        outlet: state.outlet
+        outlet: state.outlet,
+        config: configSelect ? configSelect.value : ''
       };
       all('[data-cfg-step-value]', root).forEach(function (el) {
         var key = el.getAttribute('data-cfg-step-value');
         el.textContent = stepValues[key] || '—';
       });
 
-      var summary = [state.profile, state.length, state.outlet].filter(Boolean).join(' · ');
+      var summary = [state.profile, state.length, state.outlet, stepValues.config]
+        .filter(Boolean).join(' · ');
       summaryEls.forEach(function (el) { el.textContent = summary; });
       if (stickyConfig) stickyConfig.textContent = summary;
       if (stickyPrice && variant) stickyPrice.textContent = variant.price;
+
+      /* Bring the chosen variant's own photograph to the front of the gallery. */
+      if (galleryEl && variant && variant.media && variant.media !== lastMedia && galleryReady) {
+        lastMedia = variant.media;
+        galleryEl.dispatchEvent(new CustomEvent('gallery:goto', { detail: { index: variant.media - 1 } }));
+      }
 
       root.setAttribute('data-state-profile', state.profile || '');
       root.setAttribute('data-state-length', state.length || '');
@@ -200,6 +217,8 @@
       });
     });
 
+    on(configSelect, 'change', sync);
+
     /* Guard the form: the outlet is a real manufacturing decision, so it must
        be present before anything reaches the cart. */
     on(form, 'submit', function (e) {
@@ -217,6 +236,7 @@
 
     renderOutlets();
     sync();
+    galleryReady = true;
   });
 
   /* ==================================================== GUIDED SELECTOR === */

@@ -301,12 +301,76 @@
     "custom": {
       "type": "custom-cta",
       "settings": {}
+    },
+    "applications": {
+      "type": "applications",
+      "settings": {
+        "index": "08",
+        "label": "Where it goes",
+        "heading": "Built for modern bathrooms."
+      },
+      "blocks": {
+        "application-1": {
+          "type": "application",
+          "settings": {
+            "title": "Walk-in showers",
+            "note": "A single line across the shower entry, with the fall running to the grate.",
+            "wide": true,
+            "image_url": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-hero-shower.jpg",
+            "image_alt": "Heelguard linear drain running across the floor of a walk-in shower"
+          }
+        },
+        "application-2": {
+          "type": "application",
+          "settings": {
+            "title": "Architectural bathrooms",
+            "note": "Large-format tile and stone, where a round waste would interrupt the floor.",
+            "image_url": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-lifestyle-bathroom.jpg",
+            "image_alt": "Minimalist bathroom with a frameless walk-in shower and a stainless steel linear drain"
+          }
+        },
+        "application-3": {
+          "type": "application",
+          "settings": {
+            "title": "Laundries",
+            "note": "Internal laundry floor waste, in front of the machine or along the trough.",
+            "image_url": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-laundry.jpg",
+            "image_alt": "Modern laundry with charcoal cabinetry and a linear floor drain set flush in the tiles"
+          }
+        },
+        "application-4": {
+          "type": "application",
+          "settings": {
+            "title": "Renovations",
+            "note": "Where the waste is already set and the outlet position has to work around it.",
+            "image_url": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-installation-screed.jpg",
+            "image_alt": "Linear drain set into screed during a bathroom renovation"
+          }
+        },
+        "application-5": {
+          "type": "application",
+          "settings": {
+            "title": "High-end residential",
+            "note": "Brushed 304 stainless that sits alongside quality tapware rather than fighting it.",
+            "image_url": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-studio-product.jpg",
+            "image_alt": "Stainless steel linear drain with the Heelguard grate fitted"
+          }
+        }
+      },
+      "block_order": [
+        "application-1",
+        "application-2",
+        "application-3",
+        "application-4",
+        "application-5"
+      ]
     }
   },
   "order": [
     "hero",
     "why",
     "engineered",
+    "applications",
     "comparison",
     "spotlight",
     "custom"

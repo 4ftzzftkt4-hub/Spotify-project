@@ -181,6 +181,13 @@
       }
 
       thumbs.forEach(function (t, i) { on(t, 'click', function () { goTo(i); }); });
+
+      /* The product configurator drives the gallery through this, so picking a
+         profile brings that profile's photograph up. */
+      on(gal, 'gallery:goto', function (e) {
+        var i = e && e.detail ? Number(e.detail.index) : NaN;
+        if (!isNaN(i)) goTo(i);
+      });
       dots.forEach(function (d, i) { on(d, 'click', function () { goTo(i); }); });
       on(prev, 'click', function () { goTo(current - 1); });
       on(next, 'click', function () { goTo(current + 1); });

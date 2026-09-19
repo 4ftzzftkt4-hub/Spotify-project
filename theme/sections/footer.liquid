@@ -1,6 +1,10 @@
 {%- liquid
   assign brand = settings.brand_name | default: shop.name
   assign phone_href = settings.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-'
+  assign has_contact = false
+  if settings.phone != blank or settings.email != blank
+    assign has_contact = true
+  endif
 -%}
 
 <footer class="footer on-dark">
@@ -19,15 +23,15 @@
                 <span style="width:15px">{%- render 'icon', name: 'phone' -%}</span>
                 {{ settings.phone }}
               </a>
-              {%- if settings.phone_hours != blank -%}
-                <p class="label">{{ settings.phone_hours }}</p>
-              {%- endif -%}
             {%- endif -%}
             {%- if settings.email != blank -%}
               <a class="tlink" href="mailto:{{ settings.email }}" style="justify-self:start">
                 <span style="width:15px">{%- render 'icon', name: 'mail' -%}</span>
                 {{ settings.email }}
               </a>
+            {%- endif -%}
+            {%- if settings.phone_hours != blank and has_contact -%}
+              <p class="label">{{ settings.phone_hours }}</p>
             {%- endif -%}
           </div>
 

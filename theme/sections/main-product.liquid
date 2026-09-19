@@ -100,7 +100,7 @@
           </div>
 
           <div class="gal__thumbs">
-            {%- for media in product.media limit: 6 -%}
+            {%- for media in product.media -%}
               <button
                 class="gal__thumb"
                 type="button"
@@ -239,10 +239,68 @@
             {%- endif -%}
           </div>
 
-          {%- comment -%} STEP 04 — quantity + purchase {%- endcomment -%}
+          {%- comment -%}
+            ======================================================================
+            STEP 04 — PRODUCT CONFIGURATION DROPDOWN
+            ----------------------------------------------------------------------
+            >>>>>>  THIS IS WHERE THE REAL PRODUCT CONFIGURATIONS GO.  <<<<<<
+
+            The <select> below is generated entirely from three section settings.
+            Edit them in Shopify admin under
+              Online Store → Themes → Customise → Product → Product configurator
+            or change their "default" values in the schema block at the
+            bottom of this file:
+
+              config_label    — the dropdown's heading. It is ALSO the name of the
+                                line item property written onto the order, so the
+                                chosen value shows up in Shopify admin under that
+                                heading. e.g. "Grate finish".
+              config_options  — the list of choices, ONE PER LINE. Leave it empty
+                                and this whole step disappears from the page.
+              config_help     — optional note shown under the dropdown.
+
+            TO GO LIVE: replace every placeholder line in config_options with the
+            real configuration names, one per line, and update config_label to
+            what they actually are. Nothing else needs to change — the selection
+            posts to the cart as properties[<config_label>] with no JavaScript
+            required, so it survives on the order either way.
+
+            The shipped defaults are labelled "placeholder" on purpose: no
+            invented finish, material, size or specification is presented here as
+            if it were a real product option. — draft build.
+            ======================================================================
+          {%- endcomment -%}
+          {%- if section.settings.config_options != blank -%}
+            {%- assign config_lines = section.settings.config_options | newline_to_br | split: '<br />' -%}
+            <div class="cfg__step">
+              <div class="cfg__step-head">
+                <span class="cfg__step-title"><span class="cfg__step-n">04</span>{{ section.settings.config_label }}</span>
+                <span class="cfg__step-value" data-cfg-step-value="config"></span>
+              </div>
+              <label class="visually-hidden" for="cfg-config">{{ section.settings.config_label }}</label>
+              <select
+                class="field__select"
+                id="cfg-config"
+                name="properties[{{ section.settings.config_label | escape }}]"
+                data-cfg-config>
+                <option value="">{{ section.settings.config_prompt | default: 'Select an option' }}</option>
+                {%- for line in config_lines -%}
+                  {%- assign opt = line | strip_newlines | strip -%}
+                  {%- if opt != blank -%}
+                    <option value="{{ opt | escape }}">{{ opt }}</option>
+                  {%- endif -%}
+                {%- endfor -%}
+              </select>
+              {%- if section.settings.config_help != blank -%}
+                <p class="form-note">{{ section.settings.config_help }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          {%- comment -%} STEP 05 — quantity + purchase {%- endcomment -%}
           <div class="cfg__step">
             <div class="cfg__step-head">
-              <span class="cfg__step-title"><span class="cfg__step-n">04</span>Quantity</span>
+              <span class="cfg__step-title"><span class="cfg__step-n">05</span>Quantity</span>
             </div>
             <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
               <div class="qty" data-qty>
@@ -335,7 +393,8 @@
                 "length": {{ v.options[1] | json }},
                 "price": {{ v.price | money | strip_html | json }},
                 "sku": {{ v.sku | json }},
-                "available": {{ v.available | json }}
+                "available": {{ v.available | json }},
+                "media": {{ v.featured_media.position | default: 0 | json }}
               }{% unless forloop.last %},{% endunless %}
             {%- endfor -%}
           ]
@@ -471,6 +530,37 @@
       "id": "outlet_help",
       "label": "Outlet help text",
       "default": "Outlet options differ by profile. Confirm the position against your plumbing before ordering."
+    },
+    { "type": "header", "content": "Configuration dropdown \u2014 PLACEHOLDER" },
+    {
+      "type": "paragraph",
+      "content": "DRAFT. The options below are placeholders, not real product configurations. Replace every line of \"Configuration options\" with the real choices (one per line) and set \"Configuration label\" to what they are. Clear the options box to hide the dropdown entirely. Whatever is chosen is saved onto the order under the label you set."
+    },
+    {
+      "type": "text",
+      "id": "config_label",
+      "label": "Configuration label",
+      "info": "Also the name this choice is recorded under on the order.",
+      "default": "Configuration"
+    },
+    {
+      "type": "text",
+      "id": "config_prompt",
+      "label": "Dropdown placeholder line",
+      "default": "Select a configuration"
+    },
+    {
+      "type": "textarea",
+      "id": "config_options",
+      "label": "Configuration options",
+      "info": "One per line. REPLACE THESE PLACEHOLDERS WITH THE REAL CONFIGURATIONS.",
+      "default": "Configuration A \u2014 placeholder, not a real option\nConfiguration B \u2014 placeholder, not a real option\nConfiguration C \u2014 placeholder, not a real option"
+    },
+    {
+      "type": "text",
+      "id": "config_help",
+      "label": "Configuration help text",
+      "default": "Draft store: these configuration options are placeholders and are not yet the final choices."
     },
     { "type": "header", "content": "Outlet configurations" },
     {

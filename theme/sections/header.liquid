@@ -63,6 +63,11 @@
             <span style="width:15px">{%- render 'icon', name: 'phone' -%}</span>
             {{ settings.phone }}
           </a>
+        {%- elsif settings.email != blank -%}
+          <a class="header__tel" href="mailto:{{ settings.email }}">
+            <span style="width:15px">{%- render 'icon', name: 'mail' -%}</span>
+            {{ settings.email }}
+          </a>
         {%- endif -%}
 
         <a class="icon-btn" href="{{ routes.search_url }}" aria-label="{{ 'general.accessibility.search' | t }}">
@@ -144,6 +149,11 @@
         <a class="btn btn--outline-light btn--full" href="tel:{{ phone_href }}">
           <span style="width:16px">{%- render 'icon', name: 'phone' -%}</span>
           {{ settings.phone }}
+        </a>
+      {%- elsif settings.email != blank -%}
+        <a class="btn btn--outline-light btn--full" href="mailto:{{ settings.email }}">
+          <span style="width:16px">{%- render 'icon', name: 'mail' -%}</span>
+          {{ settings.email }}
         </a>
       {%- endif -%}
       {%- if settings.phone_hours != blank -%}

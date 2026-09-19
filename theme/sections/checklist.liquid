@@ -36,6 +36,8 @@
         {%- if settings.phone != blank -%}
           {%- assign phone_href = settings.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' -%}
           <a class="btn btn--outline-light" href="tel:{{ phone_href }}">Call {{ settings.phone }}</a>
+        {%- elsif settings.email != blank -%}
+          <a class="btn btn--outline-light" href="mailto:{{ settings.email }}">Email {{ settings.email }}</a>
         {%- endif -%}
       </div>
     </div>

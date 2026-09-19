@@ -18,7 +18,6 @@
 
       <div style="display:grid;gap:0.5rem">
         {%- if settings.help_url != blank or settings.email != blank -%}
-          {%- assign ask_url = settings.help_url | default: settings.email | prepend: '' -%}
           <a
             class="btn btn--full"
             href="{% if settings.help_url != blank %}{{ settings.help_url }}{% else %}mailto:{{ settings.email }}?subject=Help%20choosing%20a%20Heelguard%20drain{% endif %}">
@@ -29,6 +28,11 @@
           <a class="btn btn--ghost btn--full" href="tel:{{ phone_href }}">
             <span style="width:16px">{%- render 'icon', name: 'phone' -%}</span>
             Call us
+          </a>
+        {%- elsif settings.email != blank -%}
+          <a class="btn btn--ghost btn--full" href="mailto:{{ settings.email }}?subject=Heelguard%20drain%20enquiry">
+            <span style="width:16px">{%- render 'icon', name: 'mail' -%}</span>
+            Email us
           </a>
         {%- endif -%}
       </div>

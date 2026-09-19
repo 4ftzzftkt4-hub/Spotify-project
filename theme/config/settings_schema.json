@@ -1,9 +1,9 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Heelguard — Specialist Linear Drainage",
+    "theme_name": "SlateStream Drainage",
     "theme_version": "1.0.0",
-    "theme_author": "Heelguard",
+    "theme_author": "SlateStream",
     "theme_documentation_url": "https://shopify.dev/docs/themes",
     "theme_support_url": "https://shopify.dev/docs/themes"
   },
@@ -31,8 +31,8 @@
   {
     "name": "Contact",
     "settings": [
-      { "type": "text", "id": "phone", "label": "Phone number", "info": "Leave blank to hide every call-us link." },
-      { "type": "text", "id": "phone_hours", "label": "Phone hours", "info": "e.g. Mon–Fri, 8am–4pm AEST" },
+      { "type": "text", "id": "phone", "label": "Phone number", "info": "Optional. Leave blank (the default) and the store contacts customers by email only — every call-us link is replaced by the general email address below." },
+      { "type": "text", "id": "phone_hours", "label": "Contact hours", "info": "e.g. Mon–Fri, 8am–4pm AEST. Shown next to the contact details." },
       { "type": "text", "id": "email", "label": "General email" },
       { "type": "text", "id": "trade_email", "label": "Trade & project email" },
       { "type": "url", "id": "help_url", "label": "\"Ask an expert\" page" },
