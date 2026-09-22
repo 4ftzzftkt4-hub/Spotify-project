@@ -20,7 +20,7 @@ theme/
 ├── locales/         en.default
 ├── sections/        33 sections
 ├── snippets/        icons, responsive media, SVG technical drawings, docs, SEO meta
-└── templates/       homepage, product, cart, 10 content pages, search, 404, customers
+└── templates/       homepage, product, cart, 9 content pages, search, 404, customers
 ```
 
 ## The two pieces of real logic

@@ -64,13 +64,6 @@
               "child_4_desc": "Cleaning stainless steel properly"
             }
           },
-          "nav4": {
-            "type": "link",
-            "settings": {
-              "label": "Custom",
-              "url": "/pages/custom"
-            }
-          },
           "nav5": {
             "type": "link",
             "settings": {
@@ -90,7 +83,6 @@
           "nav1",
           "nav2",
           "nav3",
-          "nav4",
           "nav5",
           "nav6"
         ]
@@ -111,9 +103,7 @@
               "link_3_label": "Why Heelguard",
               "link_3_url": "/pages/why-heelguard",
               "link_4_label": "Applications",
-              "link_4_url": "/pages/why-heelguard#applications",
-              "link_5_label": "Custom drains",
-              "link_5_url": "/pages/custom"
+              "link_4_url": "/pages/why-heelguard#applications"
             }
           },
           "col2": {

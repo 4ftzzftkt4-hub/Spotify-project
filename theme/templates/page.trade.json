@@ -29,13 +29,6 @@
             "body": "Written quotes against your schedule, with the configuration recorded per unit."
           }
         },
-        "item-3": {
-          "type": "item",
-          "settings": {
-            "title": "Custom drains",
-            "body": "Lengths and outlet positions made to suit plumbing that is already set."
-          }
-        },
         "item-4": {
           "type": "item",
           "settings": {
@@ -61,7 +54,6 @@
       "block_order": [
         "item-1",
         "item-2",
-        "item-3",
         "item-4",
         "item-5",
         "item-6"

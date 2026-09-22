@@ -424,10 +424,6 @@
         "heading": "Shipped Australia-wide.",
         "cta_url": "/pages/delivery"
       }
-    },
-    "custom": {
-      "type": "custom-cta",
-      "settings": {}
     }
   },
   "order": [
@@ -439,7 +435,6 @@
     "installation",
     "care",
     "checklist",
-    "delivery",
-    "custom"
+    "delivery"
   ]
 }

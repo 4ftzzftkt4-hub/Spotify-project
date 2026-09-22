@@ -104,17 +104,12 @@
         "cta_url": "/pages/technical",
         "max_width": "46rem"
       }
-    },
-    "cta": {
-      "type": "custom-cta",
-      "settings": {}
     }
   },
   "order": [
     "hero",
     "story",
     "trust",
-    "detail",
-    "cta"
+    "detail"
   ]
 }

@@ -3,7 +3,7 @@
 Everything in this store that is **provisional**, and everything that can only be
 done by hand in Shopify admin. Work top to bottom before taking a real order.
 
-Last reviewed: 20 September 2026.
+Last reviewed: 22 September 2026.
 
 ---
 
@@ -51,6 +51,7 @@ line even though the Admin API reports the variant as available.
 | **Paste the shipping policy** | Settings → Policies → Shipping policy | Same scope limitation. Source text is in `content/shipping-policy.html`. |
 | **Store contact email** | Settings → Store details | Still `wrightww20@gmail.com`. No `shopUpdate` mutation exists. |
 | **Location address** | Settings → Locations | Still "13 William Street" while billing is 17 Scenic Avenue. Shipping rates anchor to the origin location, so fix it if stock ships from elsewhere. |
+| **Delete 2 orphan theme files** | Online Store → Themes → Edit code | `templates/page.custom.json` and `sections/custom-cta.liquid`. The connector blocks `themeFilesDelete`. Nothing references either one, but until they go, "Custom drains CTA" still appears in the theme editor's Add-section list. |
 
 ## 4. Already done
 

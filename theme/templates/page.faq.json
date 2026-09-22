@@ -83,14 +83,6 @@
             "answer": "<p>It depends on the profile. 70mm: a 50.8 OD centre outlet, or a DIY 50mm outlet option. 85mm: a 50.8 OD centre outlet, an end outlet 50mm from the end to the outlet centre, a DIY 50mm outlet, or a DIY 76mm outlet with flange. 100mm: an 80mm OD centre outlet, a DIY 50mm outlet, or a DIY 76mm outlet with flange.</p>"
           }
         },
-        "q9": {
-          "type": "qa",
-          "settings": {
-            "group": "Choosing your drain",
-            "question": "Can I customise the drain?",
-            "answer": "<p>Custom lengths, outlet positioning and outlet sizing may be available, along with other project-specific requirements. Customisation is confirmed case by case — send us the details and we will tell you plainly whether it can be made.</p>"
-          }
-        },
         "q10": {
           "type": "qa",
           "settings": {
@@ -173,7 +165,6 @@
         "q6",
         "q7",
         "q8",
-        "q9",
         "q10",
         "q11",
         "q12",
@@ -184,15 +175,10 @@
         "q17",
         "q18"
       ]
-    },
-    "cta": {
-      "type": "custom-cta",
-      "settings": {}
     }
   },
   "order": [
     "hero",
-    "faq",
-    "cta"
+    "faq"
   ]
 }

@@ -10,7 +10,7 @@
         "cta_label": "Shop Heelguard drains",
         "cta2_label": "View technical details",
         "cta2_url": "/pages/technical",
-        "credibility": "304 Stainless Steel, Fully Welded Construction, Three Profiles, Multiple Outlet Options, Custom Sizes Available, Australia-Wide Shipping",
+        "credibility": "304 Stainless Steel, Fully Welded Construction, Three Profiles, Multiple Outlet Options, Australia-Wide Shipping",
         "image_url": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-hero-shower.jpg",
         "image_alt": "Heelguard stainless steel linear drain set flush in the stone floor of a walk-in shower"
       }
@@ -792,10 +792,6 @@
         "cta_url": "/pages/delivery"
       }
     },
-    "custom": {
-      "type": "custom-cta",
-      "settings": {}
-    },
     "trade": {
       "type": "trade",
       "settings": {
@@ -817,13 +813,6 @@
           "settings": {
             "title": "Project pricing",
             "body": "Written quotes against your schedule, with the configuration recorded per unit."
-          }
-        },
-        "item-3": {
-          "type": "item",
-          "settings": {
-            "title": "Custom drains",
-            "body": "Lengths and outlet positions made to suit plumbing that is already set."
           }
         },
         "item-4": {
@@ -851,7 +840,6 @@
       "block_order": [
         "item-1",
         "item-2",
-        "item-3",
         "item-4",
         "item-5",
         "item-6"
@@ -893,14 +881,6 @@
             "answer": "<p>It depends on the profile. 70mm: a 50.8 OD centre outlet, or a DIY 50mm outlet option. 85mm: a 50.8 OD centre outlet, an end outlet 50mm from the end to the outlet centre, a DIY 50mm outlet, or a DIY 76mm outlet with flange. 100mm: an 80mm OD centre outlet, a DIY 50mm outlet, or a DIY 76mm outlet with flange.</p>"
           }
         },
-        "q9": {
-          "type": "qa",
-          "settings": {
-            "group": "Choosing your drain",
-            "question": "Can I customise the drain?",
-            "answer": "<p>Custom lengths, outlet positioning and outlet sizing may be available, along with other project-specific requirements. Customisation is confirmed case by case — send us the details and we will tell you plainly whether it can be made.</p>"
-          }
-        },
         "q13": {
           "type": "qa",
           "settings": {
@@ -922,7 +902,6 @@
         "q1",
         "q7",
         "q8",
-        "q9",
         "q13",
         "q15"
       ]
@@ -945,7 +924,6 @@
     "trust",
     "reviews",
     "delivery",
-    "custom",
     "trade",
     "faq"
   ]

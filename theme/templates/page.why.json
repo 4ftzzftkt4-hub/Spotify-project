@@ -298,10 +298,6 @@
         "spec-6"
       ]
     },
-    "custom": {
-      "type": "custom-cta",
-      "settings": {}
-    },
     "applications": {
       "type": "applications",
       "settings": {
@@ -372,7 +368,6 @@
     "engineered",
     "applications",
     "comparison",
-    "spotlight",
-    "custom"
+    "spotlight"
   ]
 }
