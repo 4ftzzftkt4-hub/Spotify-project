@@ -1,0 +1,313 @@
+{%- liquid
+  assign brand = settings.brand_name | default: shop.name
+  assign phone_href = settings.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-'
+-%}
+
+<header class="header" data-header>
+  <div class="wrap">
+    <div class="header__inner">
+      <a class="brand" href="{{ routes.root_url }}" aria-label="{{ brand | escape }} — home">
+        {%- if settings.brand_logo -%}
+          <img
+            class="brand__logo"
+            src="{{ settings.brand_logo | image_url: width: 320 }}"
+            alt="{{ brand | escape }}"
+            width="{{ settings.brand_logo.width }}"
+            height="{{ settings.brand_logo.height }}">
+        {%- else -%}
+          <span class="brand__mark">{{ brand }}</span>
+          <span class="brand__rule" aria-hidden="true"></span>
+          <span class="brand__sub">{{ settings.brand_descriptor }}</span>
+        {%- endif -%}
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'link' -%}
+              <div class="nav__item" {{ block.shopify_attributes }}>
+                <a
+                  class="nav__link"
+                  href="{{ block.settings.url | default: '#' }}"
+                  {% if block.settings.url == request.path %}aria-current="page"{% endif %}>
+                  {{ block.settings.label }}
+                </a>
+              </div>
+            {%- when 'menu' -%}
+              <div class="nav__item" {{ block.shopify_attributes }}>
+                <a class="nav__link" href="{{ block.settings.url | default: '#' }}">
+                  {{ block.settings.label }}
+                  <span class="nav__caret" aria-hidden="true">{%- render 'icon', name: 'chevron-down' -%}</span>
+                </a>
+                <div class="nav__panel">
+                  {%- for i in (1..4) -%}
+                    {%- assign lk = 'child_' | append: i | append: '_label' -%}
+                    {%- assign uk = 'child_' | append: i | append: '_url' -%}
+                    {%- assign dk = 'child_' | append: i | append: '_desc' -%}
+                    {%- if block.settings[lk] != blank -%}
+                      <a class="nav__sub" href="{{ block.settings[uk] | default: '#' }}">
+                        {{ block.settings[lk] }}
+                        {%- if block.settings[dk] != blank -%}<span>{{ block.settings[dk] }}</span>{%- endif -%}
+                      </a>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </nav>
+
+      <div class="header__actions">
+        {%- if settings.phone != blank -%}
+          <a class="header__tel" href="tel:{{ phone_href }}">
+            <span style="width:15px">{%- render 'icon', name: 'phone' -%}</span>
+            {{ settings.phone }}
+          </a>
+        {%- elsif settings.email != blank -%}
+          <a class="header__tel" href="mailto:{{ settings.email }}">
+            <span style="width:15px">{%- render 'icon', name: 'mail' -%}</span>
+            {{ settings.email }}
+          </a>
+        {%- endif -%}
+
+        <a class="icon-btn" href="{{ routes.search_url }}" aria-label="{{ 'general.accessibility.search' | t }}">
+          {%- render 'icon', name: 'search' -%}
+        </a>
+
+        <a class="icon-btn" href="{{ routes.cart_url }}" aria-label="{{ 'layout.cart.title' | t }}">
+          {%- render 'icon', name: 'cart' -%}
+          {%- if cart.item_count > 0 -%}
+            <span class="cart-count">{{ cart.item_count }}</span>
+          {%- endif -%}
+        </a>
+
+        {%- if section.settings.cta_label != blank -%}
+          <a class="btn header__cta" href="{{ section.settings.cta_url | default: '#' }}">{{ section.settings.cta_label }}</a>
+        {%- endif -%}
+
+        <button
+          class="icon-btn burger"
+          type="button"
+          data-drawer-open
+          aria-expanded="false"
+          aria-controls="nav-drawer"
+          aria-label="{{ 'general.accessibility.menu' | t }}">
+          {%- render 'icon', name: 'menu' -%}
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+{%- comment -%} -------------------------------------------- MOBILE DRAWER {%- endcomment -%}
+<div class="drawer" id="nav-drawer" data-drawer aria-hidden="true">
+  <div class="drawer__scrim" data-drawer-close></div>
+  <div class="drawer__panel on-dark" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="drawer__head">
+      <span class="label">{{ settings.brand_descriptor | default: 'Menu' }}</span>
+      <button class="icon-btn" type="button" data-drawer-close aria-label="{{ 'general.accessibility.close' | t }}">
+        {%- render 'icon', name: 'close' -%}
+      </button>
+    </div>
+
+    <div class="drawer__body">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'link' -%}
+            <a class="drawer__link" href="{{ block.settings.url | default: '#' }}">
+              {{ block.settings.label }}
+              <span style="width:16px;opacity:0.5" aria-hidden="true">{%- render 'icon', name: 'arrow-right' -%}</span>
+            </a>
+          {%- when 'menu' -%}
+            <details class="drawer__group">
+              <summary>
+                {{ block.settings.label }}
+                <span class="disclosure__icon" aria-hidden="true"></span>
+              </summary>
+              <div class="drawer__sublist">
+                {%- if block.settings.url != blank -%}
+                  <a class="drawer__sublink" href="{{ block.settings.url }}">Overview</a>
+                {%- endif -%}
+                {%- for i in (1..4) -%}
+                  {%- assign lk = 'child_' | append: i | append: '_label' -%}
+                  {%- assign uk = 'child_' | append: i | append: '_url' -%}
+                  {%- if block.settings[lk] != blank -%}
+                    <a class="drawer__sublink" href="{{ block.settings[uk] | default: '#' }}">{{ block.settings[lk] }}</a>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </details>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="drawer__foot">
+      {%- if section.settings.cta_label != blank -%}
+        <a class="btn btn--light btn--full" href="{{ section.settings.cta_url | default: '#' }}">{{ section.settings.cta_label }}</a>
+      {%- endif -%}
+      {%- if settings.phone != blank -%}
+        <a class="btn btn--outline-light btn--full" href="tel:{{ phone_href }}">
+          <span style="width:16px">{%- render 'icon', name: 'phone' -%}</span>
+          {{ settings.phone }}
+        </a>
+      {%- elsif settings.email != blank -%}
+        <a class="btn btn--outline-light btn--full" href="mailto:{{ settings.email }}">
+          <span style="width:16px">{%- render 'icon', name: 'mail' -%}</span>
+          {{ settings.email }}
+        </a>
+      {%- endif -%}
+      {%- if settings.phone_hours != blank -%}
+        <p class="label" style="justify-content:center">{{ settings.phone_hours }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Shop the drain"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Why Heelguard"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "Menu with dropdown",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Technical"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "child_1_label",
+          "label": "Item 1"
+        },
+        {
+          "type": "url",
+          "id": "child_1_url",
+          "label": "Item 1 link"
+        },
+        {
+          "type": "text",
+          "id": "child_1_desc",
+          "label": "Item 1 description"
+        },
+        {
+          "type": "text",
+          "id": "child_2_label",
+          "label": "Item 2"
+        },
+        {
+          "type": "url",
+          "id": "child_2_url",
+          "label": "Item 2 link"
+        },
+        {
+          "type": "text",
+          "id": "child_2_desc",
+          "label": "Item 2 description"
+        },
+        {
+          "type": "text",
+          "id": "child_3_label",
+          "label": "Item 3"
+        },
+        {
+          "type": "url",
+          "id": "child_3_url",
+          "label": "Item 3 link"
+        },
+        {
+          "type": "text",
+          "id": "child_3_desc",
+          "label": "Item 3 description"
+        },
+        {
+          "type": "text",
+          "id": "child_4_label",
+          "label": "Item 4"
+        },
+        {
+          "type": "url",
+          "id": "child_4_url",
+          "label": "Item 4 link"
+        },
+        {
+          "type": "text",
+          "id": "child_4_desc",
+          "label": "Item 4 description"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "link",
+        "settings": {
+          "label": "Product"
+        }
+      },
+      {
+        "type": "link",
+        "settings": {
+          "label": "Why Heelguard"
+        }
+      },
+      {
+        "type": "menu",
+        "settings": {
+          "label": "Technical"
+        }
+      },
+      {
+        "type": "link",
+        "settings": {
+          "label": "Trade"
+        }
+      },
+      {
+        "type": "link",
+        "settings": {
+          "label": "Contact"
+        }
+      }
+    ]
+  }
+}
+{% endschema %}

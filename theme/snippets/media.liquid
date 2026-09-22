@@ -1,0 +1,64 @@
+{%- comment -%}
+  Responsive image helper.
+
+  Accepts EITHER a Shopify image object (image:) OR a raw Files CDN URL (url:).
+  Both routes emit a width-based srcset so the browser fetches only what it needs.
+
+    {% render 'media', image: product.featured_image, sizes: '(min-width: 64em) 55vw, 100vw', ratio: '4/3' %}
+    {% render 'media', url: section.settings.photo_url, alt: 'Alt text', ratio: '21/9', priority: true %}
+
+  When neither is supplied a labelled placeholder is rendered instead of a broken image,
+  so an unfinished section never looks like a bug.
+{%- endcomment -%}
+{%- liquid
+  assign widths = widths | default: '400,600,800,1000,1200,1600,2000'
+  assign sizes = sizes | default: '100vw'
+  assign loading = 'lazy'
+  assign fetchpriority = 'auto'
+  if priority
+    assign loading = 'eager'
+    assign fetchpriority = 'high'
+  endif
+  assign width_list = widths | split: ','
+-%}
+
+{%- if image != blank -%}
+  <img
+    src="{{ image | image_url: width: 1200 }}"
+    srcset="
+      {%- for w in width_list -%}
+        {%- assign wn = w | plus: 0 -%}
+        {%- if image.width >= wn -%}{{ image | image_url: width: wn }} {{ wn }}w,{% endif -%}
+      {%- endfor -%}
+      {{ image | image_url: width: image.width }} {{ image.width }}w"
+    sizes="{{ sizes }}"
+    alt="{{ alt | default: image.alt | escape }}"
+    width="{{ image.width }}"
+    height="{{ image.height }}"
+    loading="{{ loading }}"
+    fetchpriority="{{ fetchpriority }}"
+    decoding="async"
+    {% if ratio %}style="aspect-ratio:{{ ratio }};object-fit:cover"{% endif %}
+    {% if zoomable %}data-zoom-src="{{ image | image_url: width: 2400 }}"{% endif %}>
+{%- elsif url != blank -%}
+  {%- assign base = url | split: '?' | first -%}
+  <img
+    src="{{ base }}?width=1200"
+    srcset="
+      {%- for w in width_list -%}
+        {{ base }}?width={{ w | strip }} {{ w | strip }}w,
+      {%- endfor -%}
+      {{ base }}?width=2400 2400w"
+    sizes="{{ sizes }}"
+    alt="{{ alt | escape }}"
+    loading="{{ loading }}"
+    fetchpriority="{{ fetchpriority }}"
+    decoding="async"
+    {% if ratio %}style="aspect-ratio:{{ ratio }};object-fit:cover"{% endif %}
+    {% if zoomable %}data-zoom-src="{{ base }}?width=2400"{% endif %}>
+{%- else -%}
+  <span class="ph">
+    <span class="ph__label">{{ placeholder_label | default: 'Photography' }}</span>
+    <span style="font-size:0.8125rem">{{ placeholder_note | default: 'Awaiting upload' }}</span>
+  </span>
+{%- endif -%}

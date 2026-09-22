@@ -1,0 +1,95 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "SlateStream Drainage",
+    "theme_version": "1.0.0",
+    "theme_author": "SlateStream",
+    "theme_documentation_url": "https://shopify.dev/docs/themes",
+    "theme_support_url": "https://shopify.dev/docs/themes"
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Business details are left blank on purpose. Nothing is invented — fill these in and they appear across the site. Anything you leave empty is simply hidden."
+      },
+      { "type": "text", "id": "brand_name", "label": "Brand name", "default": "HEELGUARD" },
+      { "type": "text", "id": "brand_descriptor", "label": "Brand descriptor", "default": "Linear Drainage" },
+      { "type": "image_picker", "id": "brand_logo", "label": "Logo (optional — replaces the wordmark)" },
+      {
+        "type": "textarea",
+        "id": "brand_blurb",
+        "label": "Footer blurb",
+        "default": "Specialists in stainless steel linear drainage. One product, done properly."
+      },
+      { "type": "text", "id": "legal_name", "label": "Registered business name", "info": "Shown in the footer. Leave blank to hide." },
+      { "type": "text", "id": "abn", "label": "ABN", "info": "Leave blank to hide." },
+      { "type": "textarea", "id": "address", "label": "Address", "info": "Leave blank to hide." }
+    ]
+  },
+  {
+    "name": "Contact",
+    "settings": [
+      { "type": "text", "id": "phone", "label": "Phone number", "info": "Optional. Leave blank (the default) and the store contacts customers by email only — every call-us link is replaced by the general email address below." },
+      { "type": "text", "id": "phone_hours", "label": "Contact hours", "info": "e.g. Mon–Fri, 8am–4pm AEST. Shown next to the contact details." },
+      { "type": "text", "id": "email", "label": "General email" },
+      { "type": "text", "id": "trade_email", "label": "Trade & project email" },
+      { "type": "url", "id": "help_url", "label": "\"Ask an expert\" page" },
+      { "type": "url", "id": "quote_url", "label": "\"Request a quote\" page" }
+    ]
+  },
+  {
+    "name": "Documents",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Paste the file URL for each document after uploading it under Content → Files. While a field is empty the site shows a clearly-labelled \"awaiting upload\" state instead of a broken link."
+      },
+      { "type": "url", "id": "doc_drawing_70", "label": "Technical drawing — 70mm profile" },
+      { "type": "url", "id": "doc_drawing_85", "label": "Technical drawing — 85mm profile" },
+      { "type": "url", "id": "doc_drawing_100", "label": "Technical drawing — 100mm profile" },
+      { "type": "url", "id": "doc_care_guide", "label": "Stainless steel care guide" },
+      { "type": "url", "id": "doc_installation", "label": "Installation guide" },
+      { "type": "url", "id": "doc_spec_sheet", "label": "Specification sheet" }
+    ]
+  },
+  {
+    "name": "Delivery",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Delivery times and prices are never guessed by the theme. Write what is true for your business; anything left blank is hidden."
+      },
+      { "type": "text", "id": "ship_lead_stock", "label": "Dispatch time — standard sizes" },
+      { "type": "text", "id": "ship_lead_custom", "label": "Lead time — custom drains" },
+      { "type": "text", "id": "ship_pickup", "label": "Pickup availability" },
+      {
+        "type": "textarea",
+        "id": "ship_note",
+        "label": "Shipping note",
+        "default": "Shipping is calculated at checkout based on your delivery address."
+      }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      { "type": "url", "id": "social_instagram", "label": "Instagram" },
+      { "type": "url", "id": "social_linkedin", "label": "LinkedIn" },
+      { "type": "url", "id": "social_youtube", "label": "YouTube" }
+    ]
+  },
+  {
+    "name": "Motion",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_reveal",
+        "label": "Enable scroll reveals",
+        "default": true,
+        "info": "Subtle fade-and-rise on section entry. Always disabled for visitors who prefer reduced motion."
+      }
+    ]
+  }
+]

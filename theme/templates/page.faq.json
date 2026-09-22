@@ -1,0 +1,184 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "heading": "Questions, answered.",
+        "lede": "Everything we get asked about the Heelguard drain — answered from the specification, not from marketing copy."
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "index": "",
+        "label": "FAQ",
+        "heading": "Frequently asked questions.",
+        "intro": "If your question isn't here, ask it. We would rather answer it than have you order the wrong drain.",
+        "cta_label": "Ask a question of your own",
+        "cta_url": "/pages/contact",
+        "enable_schema": true
+      },
+      "blocks": {
+        "q1": {
+          "type": "qa",
+          "settings": {
+            "group": "The product",
+            "question": "What is the Heelguard pattern?",
+            "answer": "<p>Heelguard is the grate pattern. Instead of wide slots or an open grid, the grate is built from 3mm wedge wire at a 4mm aperture, with tapered cross bars welded at approximately 25mm centres and a solid edge bar around the full perimeter. The narrow apertures are what make the grate comfortable to stand on.</p>"
+          }
+        },
+        "q2": {
+          "type": "qa",
+          "settings": {
+            "group": "The product",
+            "question": "What is the drain made from?",
+            "answer": "<p>304 stainless steel, fully welded. The grate, the body and the drainage base are all stainless.</p>"
+          }
+        },
+        "q3": {
+          "type": "qa",
+          "settings": {
+            "group": "The product",
+            "question": "What does 304 stainless steel mean?",
+            "answer": "<p>304 is a common austenitic stainless steel grade, widely used for internal wet-area fittings. It is the grade this drain is made from. It is specified here for internal applications — showers, bathrooms and laundries.</p>"
+          }
+        },
+        "q4": {
+          "type": "qa",
+          "settings": {
+            "group": "The product",
+            "question": "Can the grate be removed?",
+            "answer": "<p>Yes. The grate is removable, which is how you reach the internal channel for cleaning. It lifts out without tools.</p>"
+          }
+        },
+        "q5": {
+          "type": "qa",
+          "settings": {
+            "group": "The product",
+            "question": "Is it easy to clean?",
+            "answer": "<p>Lift the grate out, clear the hair and debris, flush the channel and wipe it down. The tapered cross bars are designed to reduce the build-up of dirt and grime inside the grate.</p>"
+          }
+        },
+        "q6": {
+          "type": "qa",
+          "settings": {
+            "group": "The product",
+            "question": "How do I clean the stainless steel?",
+            "answer": "<p>Use a mild cleaning product suitable for stainless steel and work with the grain, then rinse and dry. Avoid abrasive pads and harsh or chlorine-based chemicals — they can mark the finish and damage the steel. Our stainless steel care guide covers this in detail.</p>"
+          }
+        },
+        "q7": {
+          "type": "qa",
+          "settings": {
+            "group": "Choosing your drain",
+            "question": "Which width should I choose?",
+            "answer": "<p>There are three profiles: 70mm wide × 22mm deep, 85mm wide × 20mm deep, and 100mm wide × 20mm deep. Width is largely a design decision — wider reads as a stronger line in the floor. Depth matters more practically, so check it against your floor build-up. If you are unsure, use the guided selector or send us your details.</p>"
+          }
+        },
+        "q8": {
+          "type": "qa",
+          "settings": {
+            "group": "Choosing your drain",
+            "question": "What outlet options are available?",
+            "answer": "<p>It depends on the profile. 70mm: a 50.8 OD centre outlet, or a DIY 50mm outlet option. 85mm: a 50.8 OD centre outlet, an end outlet 50mm from the end to the outlet centre, a DIY 50mm outlet, or a DIY 76mm outlet with flange. 100mm: an 80mm OD centre outlet, a DIY 50mm outlet, or a DIY 76mm outlet with flange.</p>"
+          }
+        },
+        "q10": {
+          "type": "qa",
+          "settings": {
+            "group": "Choosing your drain",
+            "question": "What if I need a drain longer than the sizes listed?",
+            "answer": "<p>Ask us before ordering. Longer drains are a custom enquiry, and longer items also change how the drain is packed and freighted. Tell us the length you need and we will tell you what is possible.</p>"
+          }
+        },
+        "q11": {
+          "type": "qa",
+          "settings": {
+            "group": "Choosing your drain",
+            "question": "What happens if I order the wrong size?",
+            "answer": "<p>Contact us as soon as you realise. What we can do depends on whether the drain has already been made or dispatched, and on the terms in our refund policy. This is exactly why we would rather check the configuration with you before you order than after.</p>"
+          }
+        },
+        "q12": {
+          "type": "qa",
+          "settings": {
+            "group": "Suitability",
+            "question": "Is it suitable for pets?",
+            "answer": "<p>Yes — the grate suits bathrooms and laundries where pets use the space alongside you. The narrow wedge-wire apertures are part of why.</p>"
+          }
+        },
+        "q13": {
+          "type": "qa",
+          "settings": {
+            "group": "Suitability",
+            "question": "Is it suitable for outdoor areas?",
+            "answer": "<p>No. This drain is intended for internal applications — showers, bathrooms and laundries. If you need drainage for an external area, it is the wrong product and we will tell you so.</p>"
+          }
+        },
+        "q14": {
+          "type": "qa",
+          "settings": {
+            "group": "Suitability",
+            "question": "Can vehicles drive over it?",
+            "answer": "<p>No. The Heelguard drain is intended for pedestrian, internal applications. It is not suitable for vehicle traffic, and we do not publish a load rating for it.</p>"
+          }
+        },
+        "q15": {
+          "type": "qa",
+          "settings": {
+            "group": "Installing and buying",
+            "question": "Do I need a plumber to install it?",
+            "answer": "<p>The drainage connection and the waterproofing are regulated work. Have them carried out by appropriately qualified people — a licensed plumber for the connection and a qualified waterproofer for the membrane — in accordance with the requirements that apply where you are. Follow the installation documentation supplied with the drain.</p>"
+          }
+        },
+        "q16": {
+          "type": "qa",
+          "settings": {
+            "group": "Installing and buying",
+            "question": "How long does delivery take?",
+            "answer": "<p>Shipping is calculated at checkout from your delivery address. Dispatch and lead times are shown on the delivery page. If a timeframe is not shown there yet, ask us and we will give you a current one rather than an estimate.</p>"
+          }
+        },
+        "q17": {
+          "type": "qa",
+          "settings": {
+            "group": "Installing and buying",
+            "question": "Can I get technical drawings?",
+            "answer": "<p>Yes. Plan, elevation and section views for each profile are published on the technical page, and downloadable drawings are available there for the 70mm, 85mm and 100mm profiles.</p>"
+          }
+        },
+        "q18": {
+          "type": "qa",
+          "settings": {
+            "group": "Installing and buying",
+            "question": "Do you supply for multi-unit projects?",
+            "answer": "<p>Yes. Send us the schedule — quantities, lengths and outlet positions — and we will quote it as one job, with documentation for your submission and delivery staged to suit the program.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6",
+        "q7",
+        "q8",
+        "q10",
+        "q11",
+        "q12",
+        "q13",
+        "q14",
+        "q15",
+        "q16",
+        "q17",
+        "q18"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "faq"
+  ]
+}

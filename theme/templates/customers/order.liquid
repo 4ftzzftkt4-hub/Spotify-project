@@ -1,0 +1,34 @@
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:2rem">
+      <div class="sec-head__meta"><span class="label">Order {{ order.name }}</span></div>
+      <h1 class="h2">{{ order.created_at | date: '%-d %B %Y' }}</h1>
+    </div>
+
+    <table class="spec-table">
+      <thead>
+        <tr><th scope="col">Item</th><th scope="col">Total</th></tr>
+      </thead>
+      <tbody>
+        {%- for line in order.line_items -%}
+          <tr>
+            <th scope="row">
+              {{ line.title }} × {{ line.quantity }}
+              {%- if line.properties != blank -%}
+                {%- for p in line.properties -%}
+                  {%- unless p.last == blank or p.first[0] == '_' -%}
+                    <br><span class="cart-line__prop">{{ p.first }}: {{ p.last }}</span>
+                  {%- endunless -%}
+                {%- endfor -%}
+              {%- endif -%}
+            </th>
+            <td>{{ line.final_line_price | money }}</td>
+          </tr>
+        {%- endfor -%}
+        <tr><th scope="row">Total</th><td>{{ order.total_price | money }}</td></tr>
+      </tbody>
+    </table>
+
+    <a class="tlink" href="{{ routes.account_url }}" style="margin-top:2rem;display:inline-flex">Back to account</a>
+  </div>
+</section>

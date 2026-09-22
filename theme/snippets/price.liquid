@@ -1,0 +1,18 @@
+{%- comment -%} {% render 'price', product: product, variant: variant %} {%- endcomment -%}
+{%- liquid
+  assign target = variant | default: product.selected_or_first_available_variant
+  assign show_from = false
+  if variant == blank and product.price_varies
+    assign show_from = true
+  endif
+-%}
+{%- if show_from -%}
+  <span class="cfg__price-note">{{ 'products.product.from_price' | t }}</span>
+  <span class="cfg__price">{{ product.price_min | money }}</span>
+{%- else -%}
+  <span class="cfg__price">{{ target.price | money }}</span>
+  {%- if target.compare_at_price > target.price -%}
+    <s class="cfg__price-note">{{ target.compare_at_price | money }}</s>
+  {%- endif -%}
+{%- endif -%}
+<span class="cfg__price-note">{{ cart.currency.iso_code }} · incl. GST where applicable</span>

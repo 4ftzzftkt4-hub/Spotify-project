@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "heading": "Talk to a drainage specialist.",
+        "lede": "Tell us about the install and we'll tell you what to order. If it's the wrong product for your job, we'll say that too."
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": { "label": "Enquiry", "heading": "What are you trying to do?" }
+    },
+    "selector": {
+      "type": "selector",
+      "settings": {
+        "product": "stainless-steel-linear-drain-heelguard-pattern",
+        "index": "01",
+        "label": "Or answer five questions",
+        "heading": "Work it out yourself in a minute.",
+        "intro": "If you would rather not wait for a reply, the guided selector gets you to a starting configuration now."
+      }
+    }
+  },
+  "order": ["hero", "form", "selector"]
+}
