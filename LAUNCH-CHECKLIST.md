@@ -51,6 +51,7 @@ line even though the Admin API reports the variant as available.
 | **Paste the shipping policy** | Settings → Policies → Shipping policy | Same scope limitation. Source text is in `content/shipping-policy.html`. |
 | **Store contact email** | Settings → Store details | Still `wrightww20@gmail.com`. No `shopUpdate` mutation exists. |
 | **Location address** | Settings → Locations | Still "13 William Street" while billing is 17 Scenic Avenue. Shipping rates anchor to the origin location, so fix it if stock ships from elsewhere. |
+| **Brand the checkout** | Settings → Checkout → Customize | The Checkout Branding API is Plus-only and this store is on **Basic**, so both reads and writes are denied. `docs/checkout-branding.md` has every colour, font and radius to enter, taken from the theme's own tokens. |
 | **Delete 2 orphan theme files** | Online Store → Themes → Edit code | `templates/page.custom.json` and `sections/custom-cta.liquid`. The connector blocks `themeFilesDelete`. Nothing references either one, but until they go, "Custom drains CTA" still appears in the theme editor's Add-section list. |
 
 ## 4. Already done
