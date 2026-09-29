@@ -28,9 +28,11 @@
       assign body_bold = body_font | font_modify: 'weight', 'bolder'
       assign body_italic = body_font | font_modify: 'style', 'italic'
     -%}
-    {{ body_font | font_face: font_display: 'swap' }}
-    {%- if body_bold -%}{{ body_bold | font_face: font_display: 'swap' }}{%- endif -%}
-    {%- if body_italic -%}{{ body_italic | font_face: font_display: 'swap' }}{%- endif -%}
+    <style>
+      {{ body_font | font_face: font_display: 'swap' }}
+      {%- if body_bold -%}{{ body_bold | font_face: font_display: 'swap' }}{%- endif -%}
+      {%- if body_italic -%}{{ body_italic | font_face: font_display: 'swap' }}{%- endif -%}
+    </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
