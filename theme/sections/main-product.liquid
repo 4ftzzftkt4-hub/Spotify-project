@@ -131,7 +131,7 @@
             <span class="cfg__price" data-cfg-price>
               {{ product.selected_or_first_available_variant.price | money }}
             </span>
-            <span class="cfg__price-note">{{ cart.currency.iso_code }} · GST included · free shipping Australia-wide</span>
+            <span class="cfg__price-note">{{ cart.currency.iso_code }} · free shipping Australia-wide</span>
           </div>
           <p class="cfg__sku" data-cfg-sku>
             {%- if product.selected_or_first_available_variant.sku != blank -%}
