@@ -3,7 +3,7 @@
 Everything in this store that is **provisional**, and everything that can only be
 done by hand in Shopify admin. Work top to bottom before taking a real order.
 
-Last reviewed: 22 September 2026.
+Last reviewed: 29 September 2026.
 
 ---
 
@@ -40,6 +40,8 @@ tracking off with `DENY` is the broken combination that blocked Add to cart on
 20 September, because the storefront reads the zero stock record and refuses the
 line even though the Admin API reports the variant as available.
 
+A third party holding the stock forces this switch — see `docs/fulfilment.md` §5.
+
 ## 3. Manual steps — blocked from the API
 
 | Task | Where | Why it is manual |
@@ -52,6 +54,8 @@ line even though the Admin API reports the variant as available.
 | **Store contact email** | Settings → Store details | Still `wrightww20@gmail.com`. No `shopUpdate` mutation exists. |
 | **Location address** | Settings → Locations | Still "13 William Street" while billing is 17 Scenic Avenue. Shipping rates anchor to the origin location, so fix it if stock ships from elsewhere. |
 | **Brand the checkout** | Settings → Checkout → Customize | The Checkout Branding API is Plus-only and this store is on **Basic**, so both reads and writes are denied. `docs/checkout-branding.md` has every colour, font and radius to enter, taken from the theme's own tokens. |
+| **Give the 3PL access** | Settings → Users and permissions → Collaborators | Basic allows **0 staff accounts**, so Manifest Access needs a collaborator account — which they must request from a Shopify Partner account with 2FA on. `docs/fulfilment.md` has the sequence and the permissions to grant. |
+| **Add the 3PL warehouse as a location** | Blocked — awaiting their address | Stock will sit in their warehouse while Shopify still thinks it is in Buderim, so shipping rates anchor to the wrong origin. API call once the address arrives. |
 | **Delete 2 orphan theme files** | Online Store → Themes → Edit code | `templates/page.custom.json` and `sections/custom-cta.liquid`. The connector blocks `themeFilesDelete`. Nothing references either one, but until they go, "Custom drains CTA" still appears in the theme editor's Add-section list. |
 
 ## 4. Already done
