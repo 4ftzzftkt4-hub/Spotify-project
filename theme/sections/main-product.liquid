@@ -218,6 +218,15 @@
               {%- if section.settings.length_help != blank -%}
                 <p class="form-note">{{ section.settings.length_help }}</p>
               {%- endif -%}
+              {%- if settings.help_url != blank or settings.email != blank -%}
+                <a
+                  class="tlink"
+                  style="justify-self:start;margin-top:0.5rem"
+                  href="{% if settings.help_url != blank %}{{ settings.help_url }}{% else %}mailto:{{ settings.email }}?subject=Custom%20length%20enquiry{% endif %}">
+                  {{ section.settings.length_cta }}
+                  <span style="width:13px">{%- render 'icon', name: 'arrow-right' -%}</span>
+                </a>
+              {%- endif -%}
             </div>
           {%- endif -%}
 
@@ -523,7 +532,14 @@
       "type": "text",
       "id": "length_help",
       "label": "Length help text",
-      "default": "Lengths shown are the sizes currently available. Need something else? Ask about a custom length."
+      "default": "900mm is our standard length and is the size we hold. Other lengths are made to order."
+    },
+    {
+      "type": "text",
+      "id": "length_cta",
+      "label": "Length enquiry link",
+      "info": "Shown under the length help text. Points at the \"Ask an expert\" page, or the general email if none is set.",
+      "default": "Ask about another length"
     },
     {
       "type": "text",
