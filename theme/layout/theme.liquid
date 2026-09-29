@@ -12,22 +12,48 @@
 
     {%- render 'meta-tags' -%}
 
+    {%- comment -%}
+      The primary font comes from Shopify's own font library, chosen under
+      Theme settings -> Typography. That is the same library the checkout
+      editor draws from, so picking the same name in both places makes the
+      storefront and the checkout match by construction.
+
+      IBM Plex Mono stays on Google Fonts. It is used only for index numbers,
+      eyebrow labels and spec tables -- it is what makes the technical content
+      read as engineering data rather than marketing copy -- and it has no
+      equivalent in checkout, so it does not affect the match.
+    {%- endcomment -%}
+    {%- liquid
+      assign body_font = settings.type_body_font
+      assign body_bold = body_font | font_modify: 'weight', 'bolder'
+      assign body_italic = body_font | font_modify: 'style', 'italic'
+    -%}
+    {{ body_font | font_face: font_display: 'swap' }}
+    {%- if body_bold -%}{{ body_bold | font_face: font_display: 'swap' }}{%- endif -%}
+    {%- if body_italic -%}{{ body_italic | font_face: font_display: 'swap' }}{%- endif -%}
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap"
       media="print"
       onload="this.media='all'">
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
     </noscript>
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'layout.css' | asset_url | stylesheet_tag }}
     {{ 'sections.css' | asset_url | stylesheet_tag }}
+
+    <style>
+      :root {
+        --font-sans: {{ body_font.family }}, {{ body_font.fallback_families }};
+      }
+    </style>
 
     <script src="{{ 'theme.js' | asset_url }}" defer></script>
 

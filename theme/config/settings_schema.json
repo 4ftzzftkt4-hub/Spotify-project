@@ -29,6 +29,22 @@
     ]
   },
   {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Pick the same font here as in Settings \u2192 Checkout \u2192 Customise. Both lists come from Shopify's font library, so choosing the same name in both places makes the storefront and the checkout match."
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Primary font",
+        "info": "Used for every heading, button and paragraph. Small technical labels stay in IBM Plex Mono.",
+        "default": "helvetica_n4"
+      }
+    ]
+  },
+  {
     "name": "Contact",
     "settings": [
       { "type": "text", "id": "phone", "label": "Phone number", "info": "Optional. Leave blank (the default) and the store contacts customers by email only — every call-us link is replaced by the general email address below." },
