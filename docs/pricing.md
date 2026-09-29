@@ -4,7 +4,8 @@
 supplier terms must never reach the theme, a product description, a metafield
 or a page.
 
-Prepared 29 September 2026. Prices in AUD.
+Prepared 29 September 2026, revised the same day once GST status was
+confirmed. Prices in AUD.
 
 ---
 
@@ -44,40 +45,50 @@ Confirm both with the supplier before committing to a price.
 
 ## 2. How margin is calculated here
 
-Store prices are GST-inclusive (`shop.taxesIncluded: true`). GST is remitted to
-the ATO, so it is never revenue. Margin is therefore computed on **ex-GST**
-revenue:
+**SlateStream is not registered for GST** (confirmed 29 September; turnover is
+below the $75,000 threshold). A draft-order calculation against an Australian
+address returns `totalTax: $0.00` and an empty `taxLines` array, which is the
+correct behaviour for an unregistered business. Nothing on the site claims GST
+is included, and nothing should until that changes.
+
+So the shelf price is revenue in full:
 
 ```
-net revenue = price_incl / 1.10
-gross profit = net revenue - COGS
-gross margin % = gross profit / net revenue
+gross profit = price - COGS
+gross margin % = gross profit / price
 markup % = gross profit / COGS
 ```
+
+Every figure from here on is on that basis. Earlier revisions of this document
+divided by 1.1 for GST and understated margin by roughly 3 points.
+
+**When registration becomes compulsory** — at $75,000 turnover — one eleventh
+of every sale goes to the ATO and `net revenue = price / 1.10`. At $289 that is
+$26.27 a unit. Holding the price costs you that; going to **$318** keeps you
+level. Worth planning for rather than discovering.
 
 Payment fees assume Shopify Payments AU on Basic at **1.75% + $0.30** domestic.
 Verify against the actual rate in Settings → Payments.
 
 ## 3. Price required to hit a target margin
 
-Ex-GST price. Multiply by 1.10 for the shelf price.
+Shelf price — and since no GST is collected, also the revenue you keep.
 
-| COGS | 30% | 40% | 50% | 55% | 60% | 65% |
-|---:|---:|---:|---:|---:|---:|---:|
-| $95 | 135.71 | 158.33 | 190.00 | 211.11 | 237.50 | 271.43 |
-| $89 | 127.14 | 148.33 | 178.00 | 197.78 | 222.50 | 254.29 |
-| $85 | 121.43 | 141.67 | 170.00 | 188.89 | 212.50 | 242.86 |
-| $81 | 115.71 | 135.00 | 162.00 | 180.00 | 202.50 | 231.43 |
-| $77 | 110.00 | 128.33 | 154.00 | 171.11 | 192.50 | 220.00 |
-| $74 | 105.71 | 123.33 | 148.00 | 164.44 | 185.00 | 211.43 |
-| $71 | 101.43 | 118.33 | 142.00 | 157.78 | 177.50 | 202.86 |
-| $68 | 97.14 | 113.33 | 136.00 | 151.11 | 170.00 | 194.29 |
-| $65 | 92.86 | 108.33 | 130.00 | 144.44 | 162.50 | 185.71 |
-| $62 | 88.57 | 103.33 | 124.00 | 137.78 | 155.00 | 177.14 |
+| COGS | 30% | 40% | 50% | 55% | 60% | 65% | 70% | 75% |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| $95 | 135.71 | 158.33 | 190.00 | 211.11 | 237.50 | 271.43 | 316.67 | 380.00 |
+| $89 | 127.14 | 148.33 | 178.00 | 197.78 | 222.50 | 254.29 | 296.67 | 356.00 |
+| $85 | 121.43 | 141.67 | 170.00 | 188.89 | 212.50 | 242.86 | 283.33 | 340.00 |
+| $81 | 115.71 | 135.00 | 162.00 | 180.00 | 202.50 | 231.43 | 270.00 | 324.00 |
+| $77 | 110.00 | 128.33 | 154.00 | 171.11 | 192.50 | 220.00 | 256.67 | 308.00 |
+| $74 | 105.71 | 123.33 | 148.00 | 164.44 | 185.00 | 211.43 | 246.67 | 296.00 |
+| $71 | 101.43 | 118.33 | 142.00 | 157.78 | 177.50 | 202.86 | 236.67 | 284.00 |
+| $68 | 97.14 | 113.33 | 136.00 | 151.11 | 170.00 | 194.29 | 226.67 | 272.00 |
+| $65 | 92.86 | 108.33 | 130.00 | 144.44 | 162.50 | 185.71 | 216.67 | 260.00 |
+| $62 | 88.57 | 103.33 | 124.00 | 137.78 | 155.00 | 177.14 | 206.67 | 248.00 |
 
-Break-even shelf price at $95 COGS is **$104.50 incl GST**. Note how far below
-the market that sits — the constraint on price here is positioning and
-credibility, not cost.
+Break-even at $95 COGS is **$95**. The constraint on price here is positioning
+and credibility, not cost.
 
 ## 4. Market evidence
 
@@ -137,38 +148,40 @@ cannot be invented.
 
 ## 6. Recommended structure
 
-Priced against a **PO of 5 ($77 COGS)** — the prudent launch position. Margins
-improve by 4–6 points once buying in tens.
+**$289 is live** on the three 900mm variants since 29 September, with free
+shipping Australia-wide.
 
-| | Price incl GST | Ex-GST | GP | GM | After fees |
+| Tier | Price | Profit @ $77 | Margin | Profit @ $62 | Margin |
 |---|---:|---:|---:|---:|---:|
-| **Standard retail (RRP)** | **$329** | $299.09 | $222.09 | **74.3%** | 72.2% |
-| **Introductory** | **$289** | $262.73 | $185.73 | **70.7%** | 68.7% |
-| **Trade** | **$239** | $217.27 | $140.27 | **64.6%** | 62.5% |
+| Standard retail | $329 | $252.00 | **76.6%** | $267.00 | 81.2% |
+| **Current (introductory)** | **$289** | **$212.00** | **73.4%** | $227.00 | 78.5% |
+| Trade | $239 | $162.00 | 67.8% | $177.00 | 74.1% |
 
-$329 sits just under the $330 direct equivalent and well under Stormtech's $431
-RRP. It reads as a considered price rather than a round marketing number, and
-it leaves room to discount without approaching the floor.
+$329 sits a dollar under the closest equivalent on the market and well under
+Stormtech's $431. Move to it once a warranty and a manufacture origin can be
+stated — see §5.
+
+Free shipping comes out of these margins. At a realistic $35 interstate parcel,
+$289 still nets 61.2% at $77 cost.
 
 ### Quantity ladder
 
-| Qty | Unit incl GST | Off RRP | Order total | GM @ $77 | GM @ $62 |
+Not yet built — the discount mechanism needs testing first (§10). Margins if it
+goes live, at $77 cost:
+
+| Qty | Unit | Order total | Your cost | Profit | Margin |
 |---:|---:|---:|---:|---:|---:|
-| 1 | $329 | — | $329 | 74.3% | 79.3% |
-| 2 | $315 | 4% | $630 | 73.1% | 78.3% |
-| 3 | $305 | 7% | $915 | 72.2% | 77.6% |
-| 4 | $295 | 10% | $1,180 | 71.3% | 76.9% |
-| 5 | $285 | 13% | $1,425 | 70.3% | 76.1% |
-| 6–9 | $272 | 17% | $1,632+ | 68.9% | 74.9% |
-| 10+ | $259 | 21% | $2,590+ | 67.3% | 73.7% |
+| 1 | $329 | $329 | $77 | $252 | 76.6% |
+| 2 | $315 | $630 | $154 | $476 | 75.6% |
+| 3 | $305 | $915 | $231 | $684 | 74.8% |
+| 4 | $295 | $1,180 | $308 | $872 | 73.9% |
+| 5 | $285 | $1,425 | $385 | $1,040 | 73.0% |
+| 6–9 | $272 | $1,632+ | $462 | $1,170 | 71.7% |
+| 10+ | $259 | $2,590+ | $770 | $1,820 | 70.3% |
 
-The steps are deliberately shallow early — 4% at two units — so the
-single-unit price never looks punitive. The jump to 17% at six units is where a
-plumber doing a multi-bathroom job gets a real reason to consolidate the order.
-
-Margin never falls below 67% anywhere on the ladder. The 55% floor is $188 at
-$77 COGS, so there is roughly $70/unit of headroom below the deepest tier for
-one-off negotiation.
+Shallow to four units so a single drain never looks punished, opening up at six
+where a plumber running several bathrooms has reason to consolidate. Margin
+never falls below 70%.
 
 ## 7. Custom sizes
 
