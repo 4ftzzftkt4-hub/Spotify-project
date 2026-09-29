@@ -68,7 +68,7 @@
         "type": "textarea",
         "id": "ship_note",
         "label": "Shipping note",
-        "default": "Shipping is calculated at checkout based on your delivery address."
+        "default": "Free shipping Australia-wide on every order."
       }
     ]
   },
