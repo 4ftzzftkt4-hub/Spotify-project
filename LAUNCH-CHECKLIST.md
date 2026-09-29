@@ -14,8 +14,8 @@ deliberately labelled so it cannot be mistaken for a genuine figure.
 
 | What | Where it lives | Replace with |
 |---|---|---|
-| **Prices** — $289 to $691 across 30 variants | Shopify → Products → variants | Real pricing from the supplier |
-| **Lengths** — 600–1500mm in 100mm steps | Shopify → Products → Length option | The lengths actually manufactured |
+| ~~Prices~~ | done 29 Sep | **$289 on the three 900mm variants**, from the real supplier quote. See `docs/pricing.md`. Move to $329 once warranty and origin can be stated. |
+| **Lengths other than 900mm** | Shopify → Products → variants | The supplier quotes 900mm only, so the other 27 variants are switched **off** (tracked, qty 0, DENY) rather than deleted. Delete them, or price them once the supplier quotes those lengths. |
 | **Configuration dropdown** — "Configuration A/B/C — placeholder" | Theme editor → Product → *Configuration dropdown — PLACEHOLDER*, or `theme/sections/main-product.liquid` (search `STEP 04`) | The real configuration names, one per line |
 | **Shipping rate** — "PLACEHOLDER — rate not set", $0.00 AUD, Australia | Settings → Shipping and delivery → General profile | Real freight pricing |
 | **Variant weights** — every variant is `0 kg` | Shopify → Products → variants → Shipping | Real shipped weights |
@@ -26,19 +26,25 @@ deliberately labelled so it cannot be mistaken for a genuine figure.
 
 ## 2. Inventory behaviour — decide which model you want
 
-All 30 variants are currently:
+Since 29 September the product is split:
 
-- inventory tracking **off**
-- inventory policy **`CONTINUE`** (keep selling when out of stock)
+- **3 × 900mm variants** — tracking **off**, policy **`CONTINUE`**, $289, buyable
+- **27 other lengths** — tracking **on**, qty **0**, policy **`DENY`**, so they show as
+  unavailable and cannot be ordered
 
-That is the made-to-order model, and it matches the published 10–15 business day
-lead time for custom drains. Nothing ever shows "Sold out".
+The 900mm three run the made-to-order model, which matches the published 10–15
+business day lead time. They never show "Sold out".
 
-If you switch to holding real stock, turn tracking **on** per variant and set the
-policy back to `DENY`, or the store will oversell. The two settings go together —
-tracking off with `DENY` is the broken combination that blocked Add to cart on
-20 September, because the storefront reads the zero stock record and refuses the
-line even though the Admin API reports the variant as available.
+The other 27 use the opposite combination deliberately, to take invented sizes
+off sale without deleting them. Deleting is not reversible through the API;
+this is, in one call.
+
+If you move to holding real stock, the 900mm three need tracking **on** and the
+policy back to `DENY` as well, or the store will oversell. The two settings
+always move together — tracking off with `DENY` is the broken combination that
+blocked Add to cart on 20 September, because the storefront reads the zero stock
+record and refuses the line even though the Admin API reports the variant as
+available.
 
 A third party holding the stock forces this switch — see `docs/fulfilment.md` §5.
 
