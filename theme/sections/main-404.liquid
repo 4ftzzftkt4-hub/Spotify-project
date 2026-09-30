@@ -1,0 +1,23 @@
+<section class="section">
+  <div class="wrap wrap--narrow">
+    <div style="display:grid;gap:1.5rem;max-width:38rem;padding-block:clamp(2rem,6vw,5rem)">
+      <span class="index">404</span>
+      <h1 class="h1">{{ 'general.404.title' | t }}</h1>
+      <p class="lede">{{ 'general.404.body' | t }}</p>
+      {%- if section.settings.product != blank -%}
+        <a class="btn" href="{{ section.settings.product.url }}" style="justify-self:start">
+          {{ 'general.404.cta' | t }}
+        </a>
+      {%- else -%}
+        <a class="btn" href="{{ routes.root_url }}" style="justify-self:start">Back to the homepage</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "404",
+  "settings": [{ "type": "product", "id": "product", "label": "Product to link to" }]
+}
+{% endschema %}

@@ -1,0 +1,930 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "product": "stainless-steel-linear-drain-heelguard-pattern",
+        "eyebrow": "Specialists in stainless steel linear drainage",
+        "heading": "The linear drain, perfected.",
+        "subheading": "Premium 304 stainless steel linear drainage engineered for modern showers, bathrooms and laundries.",
+        "cta_label": "Shop Heelguard drains",
+        "cta2_label": "View technical details",
+        "cta2_url": "/pages/technical",
+        "credibility": "304 Stainless Steel, Fully Welded Construction, Three Profiles, Multiple Outlet Options, Australia-Wide Shipping",
+        "image_url": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-hero-shower.jpg",
+        "image_alt": "Heelguard stainless steel linear drain set flush in the stone floor of a walk-in shower"
+      }
+    },
+    "specialist": {
+      "type": "specialist",
+      "settings": {
+        "index": "01",
+        "label": "Why we exist",
+        "heading": "One product. Done properly.",
+        "body": "<p>We don't try to be everything to everyone. We specialise in stainless steel linear drainage — which gives us the room to obsess over the details that actually matter.</p><p>From grate construction and water flow to outlet positioning, installation and cleaning, every part of the Heelguard system is designed with the finished bathroom in mind.</p>",
+        "link_label": "How it's engineered",
+        "link_url": "/pages/technical"
+      },
+      "blocks": {
+        "b1": {
+          "type": "point",
+          "settings": {
+            "title": "One product",
+            "body": "The Heelguard linear drain — in three profiles, a range of lengths and several outlet configurations."
+          }
+        },
+        "b2": {
+          "type": "point",
+          "settings": {
+            "title": "Built for installers",
+            "body": "Profiles, outlets and documentation shaped by how bathrooms are actually built."
+          }
+        },
+        "b3": {
+          "type": "point",
+          "settings": {
+            "title": "Specified, not guessed",
+            "body": "Dimensions, materials and outlet options published up front, so you order the right drain the first time."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "spotlight": {
+      "type": "product-spotlight",
+      "settings": {
+        "product": "stainless-steel-linear-drain-heelguard-pattern",
+        "index": "02",
+        "label": "The product",
+        "intro": "One drain, specified three ways. Choose the profile, the length and the outlet.",
+        "body": "<p>304 stainless steel. Fully welded construction. A Heelguard wedge-wire grate with tapered cross bars and a full perimeter edge bar. Designed for internal showers, bathrooms and laundries.</p>",
+        "cta_label": "Configure your drain",
+        "cta2_label": "Technical drawings",
+        "cta2_url": "/pages/technical"
+      },
+      "blocks": {
+        "s1": {
+          "type": "spec",
+          "settings": {
+            "key": "Material",
+            "value": "304 stainless steel"
+          }
+        },
+        "s2": {
+          "type": "spec",
+          "settings": {
+            "key": "Construction",
+            "value": "Fully welded"
+          }
+        },
+        "s3": {
+          "type": "spec",
+          "settings": {
+            "key": "Grate",
+            "value": "Heelguard wedge wire — 3mm wire, 4mm aperture"
+          }
+        },
+        "s4": {
+          "type": "spec",
+          "settings": {
+            "key": "Edge bar",
+            "value": "5 × 20mm deep, full perimeter"
+          }
+        },
+        "s5": {
+          "type": "spec",
+          "settings": {
+            "key": "Cross bars",
+            "value": "Tapered, at approximately 25mm centres"
+          }
+        },
+        "s6": {
+          "type": "spec",
+          "settings": {
+            "key": "Profiles",
+            "value": "70 × 22mm · 85 × 20mm · 100 × 20mm"
+          }
+        },
+        "s7": {
+          "type": "spec",
+          "settings": {
+            "key": "Application",
+            "value": "Internal, pedestrian areas"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6",
+        "s7"
+      ]
+    },
+    "why": {
+      "type": "why-heelguard",
+      "settings": {
+        "index": "03",
+        "label": "Why Heelguard",
+        "heading": "Why the Heelguard pattern.",
+        "intro": "The grate is the part you stand on, clean and look at every day. This is what the pattern changes."
+      },
+      "blocks": {
+        "card-1": {
+          "type": "card",
+          "settings": {
+            "icon": "heel",
+            "title": "Heel friendly",
+            "body": "<p>The wedge wire and tapered cross bars give a more comfortable, practical grate surface underfoot than an open grid.</p>"
+          }
+        },
+        "media-2": {
+          "type": "media",
+          "settings": {
+            "image_url": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-scale-foot.jpg",
+            "image_alt": "A bare foot resting flat on the Heelguard grate, showing the heel-friendly wedge-wire surface"
+          }
+        },
+        "card-3": {
+          "type": "card",
+          "settings": {
+            "icon": "paw",
+            "title": "Pet friendly",
+            "body": "<p>Suitable for bathrooms and laundries where pets use the space alongside you.</p>"
+          }
+        },
+        "card-4": {
+          "type": "card",
+          "settings": {
+            "icon": "flow",
+            "title": "Built for water flow",
+            "body": "<p>The drainage base is formed to direct water toward the outlet, and the cross bars are positioned to maintain flow through the grate.</p>"
+          }
+        },
+        "card-5": {
+          "type": "card",
+          "settings": {
+            "icon": "clean",
+            "title": "Easy to clean",
+            "body": "<p>The grate lifts out, giving direct access to the internal channel for removing hair and debris.</p>"
+          }
+        },
+        "card-6": {
+          "type": "card",
+          "settings": {
+            "icon": "steel",
+            "title": "304 stainless steel",
+            "body": "<p>A premium, durable material choice for internal wet areas, with a brushed finish that suits contemporary tapware.</p>"
+          }
+        },
+        "media-7": {
+          "type": "media",
+          "settings": {
+            "image_url": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-macro-grate.jpg",
+            "image_alt": "Macro detail of the Heelguard wedge-wire grate showing the 3mm wire, 4mm aperture and perimeter edge bar"
+          }
+        },
+        "card-8": {
+          "type": "card",
+          "settings": {
+            "icon": "tools",
+            "title": "Designed for installation",
+            "body": "<p>Profiles, outlet positions and documentation are shaped by real bathroom installation requirements — not retrofitted to them.</p>"
+          }
+        },
+        "card-9": {
+          "type": "card",
+          "settings": {
+            "icon": "ruler",
+            "title": "Specified up front",
+            "body": "<p>Widths, depths, apertures and outlet diameters are published so you can check the drain against your build before ordering.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card-1",
+        "media-2",
+        "card-3",
+        "card-4",
+        "card-5",
+        "card-6",
+        "media-7",
+        "card-8",
+        "card-9"
+      ]
+    },
+    "engineered": {
+      "type": "engineered",
+      "settings": {
+        "index": "04",
+        "label": "How it's made",
+        "heading": "Built like a drain. Designed like architectural hardware.",
+        "intro": "Every element below is part of the published specification — not a marketing claim."
+      },
+      "blocks": {
+        "item-1": {
+          "type": "item",
+          "settings": {
+            "title": "304 stainless steel",
+            "body": "<p>The drain is made from 304 stainless steel and is intended for internal applications — showers, bathrooms and laundries.</p>",
+            "specs": "304 grade, Internal use"
+          }
+        },
+        "item-2": {
+          "type": "item",
+          "settings": {
+            "title": "Wedge wire Heelguard grate",
+            "body": "<p>The Heelguard grate is built from 3mm wedge wire at a 4mm aperture, with welded cross braces and a full perimeter edge bar.</p>",
+            "specs": "3mm wedge wire, 4mm aperture, Welded cross braces"
+          }
+        },
+        "item-3": {
+          "type": "item",
+          "settings": {
+            "title": "Perimeter edge bar",
+            "body": "<p>A 5mm × 20mm deep edge bar runs the full perimeter of the grate, eliminating sharp edges where the grate meets the tile.</p>",
+            "specs": "5mm × 20mm deep"
+          }
+        },
+        "item-4": {
+          "type": "item",
+          "settings": {
+            "title": "Cross bracing",
+            "body": "<p>Cross bars sit at approximately 25mm centres. They hold the wedge wire true and are positioned to maintain water flow through the grate.</p>",
+            "specs": "≈25mm centres"
+          }
+        },
+        "item-5": {
+          "type": "item",
+          "settings": {
+            "title": "Tapered cross bars",
+            "body": "<p>The cross bars are tapered rather than square. The taper is designed to reduce the build-up of dirt and grime inside the grate.</p>",
+            "specs": "Tapered profile"
+          }
+        },
+        "item-6": {
+          "type": "item",
+          "settings": {
+            "title": "Fully welded construction",
+            "body": "<p>The body is fully welded rather than folded and sealed, and the drainage base is formed to direct water toward the outlet.</p>",
+            "specs": "Fully welded, Formed base"
+          }
+        }
+      },
+      "block_order": [
+        "item-1",
+        "item-2",
+        "item-3",
+        "item-4",
+        "item-5",
+        "item-6"
+      ]
+    },
+    "selector": {
+      "type": "selector",
+      "settings": {
+        "product": "stainless-steel-linear-drain-heelguard-pattern",
+        "index": "05",
+        "label": "Specify it properly",
+        "heading": "Not sure which configuration you need?",
+        "intro": "Five questions. At the end you'll know which profile, length and outlet to order — and whether it's worth a conversation first."
+      }
+    },
+    "drawings": {
+      "type": "drawings",
+      "settings": {
+        "index": "06",
+        "label": "Technical",
+        "heading": "Technical information, without the guesswork.",
+        "intro": "Plan, elevation and section for each profile. Check the depth against your floor build-up and the outlet against your plumbing before you order."
+      },
+      "blocks": {
+        "profile-1": {
+          "type": "profile",
+          "settings": {
+            "width": "70",
+            "depth": "22",
+            "outlet_dia": "50.8",
+            "outlet_pos": "centre",
+            "outlets": "50.8 OD centre outlet · DIY 50 mm outlet option"
+          }
+        },
+        "profile-2": {
+          "type": "profile",
+          "settings": {
+            "width": "85",
+            "depth": "20",
+            "outlet_dia": "50.8",
+            "outlet_pos": "centre",
+            "outlets": "50.8 OD centre outlet · end outlet, 50 mm from end to centre · DIY 50 mm outlet · DIY 76 mm outlet with flange"
+          }
+        },
+        "profile-3": {
+          "type": "profile",
+          "settings": {
+            "width": "100",
+            "depth": "20",
+            "outlet_dia": "80",
+            "outlet_pos": "centre",
+            "outlets": "80 mm OD centre outlet · DIY 50 mm outlet · DIY 76 mm outlet with flange"
+          }
+        }
+      },
+      "block_order": [
+        "profile-1",
+        "profile-2",
+        "profile-3"
+      ]
+    },
+    "installation": {
+      "type": "installation",
+      "settings": {
+        "index": "07",
+        "label": "Installation",
+        "heading": "Installation, without the guesswork."
+      },
+      "blocks": {
+        "step-1": {
+          "type": "step",
+          "settings": {
+            "title": "Confirm drain length and profile",
+            "body": "<p>Measure the finished opening and confirm the profile depth suits your floor build-up.</p>"
+          }
+        },
+        "step-2": {
+          "type": "step",
+          "settings": {
+            "title": "Confirm outlet position and plumbing connection",
+            "body": "<p>Set the outlet position against the waste already in place, and confirm the connection method with your plumber.</p>"
+          }
+        },
+        "step-3": {
+          "type": "step",
+          "settings": {
+            "title": "Prepare the substrate and fall",
+            "body": "<p>Prepare the substrate and set the fall toward the drain so water reaches the grate rather than sitting on the floor.</p>"
+          }
+        },
+        "step-4": {
+          "type": "step",
+          "settings": {
+            "title": "Position and secure the drain",
+            "body": "<p>Position the body to the correct height for the finished tile, and secure it so it cannot move during the following trades.</p>"
+          }
+        },
+        "step-5": {
+          "type": "step",
+          "settings": {
+            "title": "Complete waterproofing",
+            "body": "<p>Waterproof in accordance with the requirements that apply to your project. This is regulated work — use a qualified waterproofer.</p>"
+          }
+        },
+        "step-6": {
+          "type": "step",
+          "settings": {
+            "title": "Complete tiling and finishing",
+            "body": "<p>Tile to the drain so the grate finishes flush, and allow for the edge bar around the grate perimeter.</p>"
+          }
+        },
+        "step-7": {
+          "type": "step",
+          "settings": {
+            "title": "Install the grate and test drainage",
+            "body": "<p>Fit the grate, then flood-test and confirm the water clears to the outlet before handover.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step-1",
+        "step-2",
+        "step-3",
+        "step-4",
+        "step-5",
+        "step-6",
+        "step-7"
+      ]
+    },
+    "applications": {
+      "type": "applications",
+      "settings": {
+        "index": "08",
+        "label": "Where it goes",
+        "heading": "Built for modern bathrooms."
+      },
+      "blocks": {
+        "application-1": {
+          "type": "application",
+          "settings": {
+            "title": "Walk-in showers",
+            "note": "A single line across the shower entry, with the fall running to the grate.",
+            "wide": true,
+            "image_url": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-hero-shower.jpg",
+            "image_alt": "Heelguard linear drain running across the floor of a walk-in shower"
+          }
+        },
+        "application-2": {
+          "type": "application",
+          "settings": {
+            "title": "Architectural bathrooms",
+            "note": "Large-format tile and stone, where a round waste would interrupt the floor.",
+            "image_url": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-lifestyle-bathroom.jpg",
+            "image_alt": "Minimalist bathroom with a frameless walk-in shower and a stainless steel linear drain"
+          }
+        },
+        "application-3": {
+          "type": "application",
+          "settings": {
+            "title": "Laundries",
+            "note": "Internal laundry floor waste, in front of the machine or along the trough.",
+            "image_url": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-laundry.jpg",
+            "image_alt": "Modern laundry with charcoal cabinetry and a linear floor drain set flush in the tiles"
+          }
+        },
+        "application-4": {
+          "type": "application",
+          "settings": {
+            "title": "Renovations",
+            "note": "Where the waste is already set and the outlet position has to work around it.",
+            "image_url": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-installation-screed.jpg",
+            "image_alt": "Linear drain set into screed during a bathroom renovation"
+          }
+        },
+        "application-5": {
+          "type": "application",
+          "settings": {
+            "title": "High-end residential",
+            "note": "Brushed 304 stainless that sits alongside quality tapware rather than fighting it.",
+            "image_url": "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/hg-studio-product.jpg",
+            "image_alt": "Stainless steel linear drain with the Heelguard grate fitted"
+          }
+        }
+      },
+      "block_order": [
+        "application-1",
+        "application-2",
+        "application-3",
+        "application-4",
+        "application-5"
+      ]
+    },
+    "included": {
+      "type": "whats-included",
+      "settings": {
+        "index": "09",
+        "label": "What you get",
+        "heading": "Exactly what arrives."
+      }
+    },
+    "care": {
+      "type": "care",
+      "settings": {
+        "index": "10",
+        "label": "Care",
+        "heading": "Keep it clean. Keep it looking new."
+      },
+      "blocks": {
+        "step-1": {
+          "type": "step",
+          "settings": {
+            "title": "Remove the grate",
+            "body": "<p>Lift the grate clear of the body. It is designed to come out without tools.</p>"
+          }
+        },
+        "step-2": {
+          "type": "step",
+          "settings": {
+            "title": "Remove hair and debris",
+            "body": "<p>Clear whatever has collected in the channel and around the outlet.</p>"
+          }
+        },
+        "step-3": {
+          "type": "step",
+          "settings": {
+            "title": "Clean the internal channel",
+            "body": "<p>Flush the channel and wipe it out so nothing is left sitting against the steel.</p>"
+          }
+        },
+        "step-4": {
+          "type": "step",
+          "settings": {
+            "title": "Clean the stainless steel",
+            "body": "<p>Use a mild cleaning product suitable for stainless steel, working with the grain, then rinse and dry.</p>"
+          }
+        },
+        "step-5": {
+          "type": "step",
+          "settings": {
+            "title": "Refit the grate",
+            "body": "<p>Seat the grate back into the body and check it sits flush before use.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step-1",
+        "step-2",
+        "step-3",
+        "step-4",
+        "step-5"
+      ]
+    },
+    "comparison": {
+      "type": "comparison",
+      "settings": {
+        "index": "11",
+        "label": "Choosing",
+        "heading": "Choosing the right grate style."
+      },
+      "blocks": {
+        "row-1": {
+          "type": "row",
+          "settings": {
+            "row": "Appearance",
+            "a": "A fine, even stainless line across the floor",
+            "b": "Visible openings; pattern reads more strongly",
+            "c": "Near-invisible — reads as continuous tile"
+          }
+        },
+        "row-2": {
+          "type": "row",
+          "settings": {
+            "row": "Grate style",
+            "a": "3mm wedge wire at 4mm aperture, tapered bars",
+            "b": "Wider slots or a punched pattern",
+            "c": "Recessed tray that carries a cut tile"
+          }
+        },
+        "row-3": {
+          "type": "row",
+          "settings": {
+            "row": "Underfoot",
+            "a": "Narrow apertures support the heel across the grate",
+            "b": "Wider openings are felt more underfoot",
+            "c": "Feels like the surrounding tile"
+          }
+        },
+        "row-4": {
+          "type": "row",
+          "settings": {
+            "row": "Cleaning",
+            "a": "Grate lifts out; tapered bars shed grime",
+            "b": "Grate lifts out; openings are easy to see into",
+            "c": "Tray lifts out, but is heavier with the tile fitted"
+          }
+        },
+        "row-5": {
+          "type": "row",
+          "settings": {
+            "row": "Best suited to",
+            "a": "Bathrooms where the floor is walked on barefoot",
+            "b": "Utility spaces and high-debris areas",
+            "c": "Floors where the drain should disappear"
+          }
+        },
+        "row-6": {
+          "type": "row",
+          "settings": {
+            "row": "Installation",
+            "a": "Standard linear install; confirm depth and outlet",
+            "b": "Standard linear install",
+            "c": "Requires tile cutting and extra build-up allowance"
+          }
+        }
+      },
+      "block_order": [
+        "row-1",
+        "row-2",
+        "row-3",
+        "row-4",
+        "row-5",
+        "row-6"
+      ]
+    },
+    "checklist": {
+      "type": "checklist",
+      "settings": {
+        "index": "12",
+        "label": "Checklist",
+        "heading": "Before you buy."
+      },
+      "blocks": {
+        "item-1": {
+          "type": "item",
+          "settings": {
+            "text": "Have you confirmed the required drain length?"
+          }
+        },
+        "item-2": {
+          "type": "item",
+          "settings": {
+            "text": "Have you confirmed the profile and grate width?"
+          }
+        },
+        "item-3": {
+          "type": "item",
+          "settings": {
+            "text": "Have you confirmed the outlet position?"
+          }
+        },
+        "item-4": {
+          "type": "item",
+          "settings": {
+            "text": "Have you confirmed the outlet diameter against your waste?"
+          }
+        },
+        "item-5": {
+          "type": "item",
+          "settings": {
+            "text": "Have you checked the floor construction and available depth?"
+          }
+        },
+        "item-6": {
+          "type": "item",
+          "settings": {
+            "text": "Have you confirmed the waterproofing requirements for your project?"
+          }
+        },
+        "item-7": {
+          "type": "item",
+          "settings": {
+            "text": "Have you checked the technical drawing for your profile?"
+          }
+        },
+        "item-8": {
+          "type": "item",
+          "settings": {
+            "text": "Have you confirmed this is an internal, pedestrian application?"
+          }
+        },
+        "item-9": {
+          "type": "item",
+          "settings": {
+            "text": "If unsure, have you spoken with a qualified installer?"
+          }
+        }
+      },
+      "block_order": [
+        "item-1",
+        "item-2",
+        "item-3",
+        "item-4",
+        "item-5",
+        "item-6",
+        "item-7",
+        "item-8",
+        "item-9"
+      ]
+    },
+    "trust": {
+      "type": "trust",
+      "settings": {
+        "index": "13",
+        "label": "Who we serve",
+        "heading": "Built for the people who build."
+      },
+      "blocks": {
+        "audience-1": {
+          "type": "audience",
+          "settings": {
+            "role": "Plumbers",
+            "need": "Outlet diameters and positions confirmed before the slab goes down."
+          }
+        },
+        "audience-2": {
+          "type": "audience",
+          "settings": {
+            "role": "Builders",
+            "need": "A drain that arrives right so the trades behind it aren't held up."
+          }
+        },
+        "audience-3": {
+          "type": "audience",
+          "settings": {
+            "role": "Tilers",
+            "need": "A known edge bar and a flush finish to set the tile against."
+          }
+        },
+        "audience-4": {
+          "type": "audience",
+          "settings": {
+            "role": "Waterproofers",
+            "need": "A body that stays where it was set and a defined junction to detail."
+          }
+        },
+        "audience-5": {
+          "type": "audience",
+          "settings": {
+            "role": "Designers",
+            "need": "A fine stainless line that suits large-format floors."
+          }
+        },
+        "audience-6": {
+          "type": "audience",
+          "settings": {
+            "role": "Architects",
+            "need": "Published dimensions and drawings that can go into a specification."
+          }
+        },
+        "audience-7": {
+          "type": "audience",
+          "settings": {
+            "role": "Renovators",
+            "need": "Outlet options that work around plumbing already in the floor."
+          }
+        },
+        "audience-8": {
+          "type": "audience",
+          "settings": {
+            "role": "Homeowners",
+            "need": "A plain explanation of which size to order, and why."
+          }
+        }
+      },
+      "block_order": [
+        "audience-1",
+        "audience-2",
+        "audience-3",
+        "audience-4",
+        "audience-5",
+        "audience-6",
+        "audience-7",
+        "audience-8"
+      ]
+    },
+    "reviews": {
+      "type": "reviews",
+      "settings": {
+        "index": "14",
+        "label": "Reviews",
+        "heading": "What customers say."
+      },
+      "blocks": {
+        "review-1": {
+          "type": "review",
+          "settings": {}
+        },
+        "review-2": {
+          "type": "review",
+          "settings": {}
+        },
+        "review-3": {
+          "type": "review",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "review-1",
+        "review-2",
+        "review-3"
+      ]
+    },
+    "delivery": {
+      "type": "delivery",
+      "settings": {
+        "index": "15",
+        "label": "Delivery",
+        "heading": "Shipped Australia-wide.",
+        "cta_url": "/pages/delivery"
+      }
+    },
+    "trade": {
+      "type": "trade",
+      "settings": {
+        "index": "16",
+        "label": "Trade & projects",
+        "heading": "Buying for a project?",
+        "cta_url": "/pages/trade"
+      },
+      "blocks": {
+        "item-1": {
+          "type": "item",
+          "settings": {
+            "title": "Bulk enquiries",
+            "body": "Quantities across a build, quoted as one job rather than line by line."
+          }
+        },
+        "item-2": {
+          "type": "item",
+          "settings": {
+            "title": "Project pricing",
+            "body": "Written quotes against your schedule, with the configuration recorded per unit."
+          }
+        },
+        "item-4": {
+          "type": "item",
+          "settings": {
+            "title": "Technical documentation",
+            "body": "Drawings and specification detail for your submission or O&M manual."
+          }
+        },
+        "item-5": {
+          "type": "item",
+          "settings": {
+            "title": "Installation support",
+            "body": "Someone who knows the product, on the phone, while the trades are on site."
+          }
+        },
+        "item-6": {
+          "type": "item",
+          "settings": {
+            "title": "Staged delivery",
+            "body": "Delivered to suit the program instead of all at once to a locked-up site."
+          }
+        }
+      },
+      "block_order": [
+        "item-1",
+        "item-2",
+        "item-4",
+        "item-5",
+        "item-6"
+      ]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "index": "17",
+        "label": "Questions",
+        "heading": "Know your drain before you order.",
+        "intro": "The six that decide most orders. The rest are on the FAQ page.",
+        "cta_label": "All questions",
+        "cta_url": "/pages/faq",
+        "enable_schema": false
+      },
+      "blocks": {
+        "q1": {
+          "type": "qa",
+          "settings": {
+            "group": "The product",
+            "question": "What is the Heelguard pattern?",
+            "answer": "<p>Heelguard is the grate pattern. Instead of wide slots or an open grid, the grate is built from 3mm wedge wire at a 4mm aperture, with tapered cross bars welded at approximately 25mm centres and a solid edge bar around the full perimeter. The narrow apertures are what make the grate comfortable to stand on.</p>"
+          }
+        },
+        "q7": {
+          "type": "qa",
+          "settings": {
+            "group": "Choosing your drain",
+            "question": "Which width should I choose?",
+            "answer": "<p>There are three profiles: 70mm wide × 22mm deep, 85mm wide × 20mm deep, and 100mm wide × 20mm deep. Width is largely a design decision — wider reads as a stronger line in the floor. Depth matters more practically, so check it against your floor build-up. If you are unsure, use the guided selector or send us your details.</p>"
+          }
+        },
+        "q8": {
+          "type": "qa",
+          "settings": {
+            "group": "Choosing your drain",
+            "question": "What outlet options are available?",
+            "answer": "<p>It depends on the profile. 70mm: a 50.8 OD centre outlet, or a DIY 50mm outlet option. 85mm: a 50.8 OD centre outlet, an end outlet 50mm from the end to the outlet centre, a DIY 50mm outlet, or a DIY 76mm outlet with flange. 100mm: an 80mm OD centre outlet, a DIY 50mm outlet, or a DIY 76mm outlet with flange.</p>"
+          }
+        },
+        "q13": {
+          "type": "qa",
+          "settings": {
+            "group": "Suitability",
+            "question": "Is it suitable for outdoor areas?",
+            "answer": "<p>No. This drain is intended for internal applications — showers, bathrooms and laundries. If you need drainage for an external area, it is the wrong product and we will tell you so.</p>"
+          }
+        },
+        "q15": {
+          "type": "qa",
+          "settings": {
+            "group": "Installing and buying",
+            "question": "Do I need a plumber to install it?",
+            "answer": "<p>The drainage connection and the waterproofing are regulated work. Have them carried out by appropriately qualified people — a licensed plumber for the connection and a qualified waterproofer for the membrane — in accordance with the requirements that apply where you are. Follow the installation documentation supplied with the drain.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q7",
+        "q8",
+        "q13",
+        "q15"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "specialist",
+    "spotlight",
+    "why",
+    "engineered",
+    "selector",
+    "drawings",
+    "installation",
+    "applications",
+    "included",
+    "care",
+    "comparison",
+    "checklist",
+    "trust",
+    "reviews",
+    "delivery",
+    "trade",
+    "faq"
+  ]
+}

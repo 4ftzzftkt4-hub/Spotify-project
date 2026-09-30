@@ -1,0 +1,206 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "heading": "Installation.",
+        "lede": "Correct installation depends on your specific floor construction and plumbing configuration. Here is the shape of it, and where a qualified trade is required."
+      }
+    },
+    "installation": {
+      "type": "installation",
+      "settings": {
+        "index": "01",
+        "label": "Sequence",
+        "heading": "Installation, without the guesswork."
+      },
+      "blocks": {
+        "step-1": {
+          "type": "step",
+          "settings": {
+            "title": "Confirm drain length and profile",
+            "body": "<p>Measure the finished opening and confirm the profile depth suits your floor build-up.</p>"
+          }
+        },
+        "step-2": {
+          "type": "step",
+          "settings": {
+            "title": "Confirm outlet position and plumbing connection",
+            "body": "<p>Set the outlet position against the waste already in place, and confirm the connection method with your plumber.</p>"
+          }
+        },
+        "step-3": {
+          "type": "step",
+          "settings": {
+            "title": "Prepare the substrate and fall",
+            "body": "<p>Prepare the substrate and set the fall toward the drain so water reaches the grate rather than sitting on the floor.</p>"
+          }
+        },
+        "step-4": {
+          "type": "step",
+          "settings": {
+            "title": "Position and secure the drain",
+            "body": "<p>Position the body to the correct height for the finished tile, and secure it so it cannot move during the following trades.</p>"
+          }
+        },
+        "step-5": {
+          "type": "step",
+          "settings": {
+            "title": "Complete waterproofing",
+            "body": "<p>Waterproof in accordance with the requirements that apply to your project. This is regulated work — use a qualified waterproofer.</p>"
+          }
+        },
+        "step-6": {
+          "type": "step",
+          "settings": {
+            "title": "Complete tiling and finishing",
+            "body": "<p>Tile to the drain so the grate finishes flush, and allow for the edge bar around the grate perimeter.</p>"
+          }
+        },
+        "step-7": {
+          "type": "step",
+          "settings": {
+            "title": "Install the grate and test drainage",
+            "body": "<p>Fit the grate, then flood-test and confirm the water clears to the outlet before handover.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step-1",
+        "step-2",
+        "step-3",
+        "step-4",
+        "step-5",
+        "step-6",
+        "step-7"
+      ]
+    },
+    "drawings": {
+      "type": "drawings",
+      "settings": {
+        "index": "02",
+        "label": "Drawings",
+        "heading": "Dimensions you'll need on site.",
+        "intro": "Profile depth, outlet diameter and the grate section, per profile."
+      },
+      "blocks": {
+        "profile-1": {
+          "type": "profile",
+          "settings": {
+            "width": "70",
+            "depth": "22",
+            "outlet_dia": "50.8",
+            "outlet_pos": "centre",
+            "outlets": "50.8 OD centre outlet · DIY 50 mm outlet option"
+          }
+        },
+        "profile-2": {
+          "type": "profile",
+          "settings": {
+            "width": "85",
+            "depth": "20",
+            "outlet_dia": "50.8",
+            "outlet_pos": "centre",
+            "outlets": "50.8 OD centre outlet · end outlet, 50 mm from end to centre · DIY 50 mm outlet · DIY 76 mm outlet with flange"
+          }
+        },
+        "profile-3": {
+          "type": "profile",
+          "settings": {
+            "width": "100",
+            "depth": "20",
+            "outlet_dia": "80",
+            "outlet_pos": "centre",
+            "outlets": "80 mm OD centre outlet · DIY 50 mm outlet · DIY 76 mm outlet with flange"
+          }
+        }
+      },
+      "block_order": [
+        "profile-1",
+        "profile-2",
+        "profile-3"
+      ]
+    },
+    "checklist": {
+      "type": "checklist",
+      "settings": {
+        "index": "03",
+        "label": "Checklist",
+        "heading": "Before you buy."
+      },
+      "blocks": {
+        "item-1": {
+          "type": "item",
+          "settings": {
+            "text": "Have you confirmed the required drain length?"
+          }
+        },
+        "item-2": {
+          "type": "item",
+          "settings": {
+            "text": "Have you confirmed the profile and grate width?"
+          }
+        },
+        "item-3": {
+          "type": "item",
+          "settings": {
+            "text": "Have you confirmed the outlet position?"
+          }
+        },
+        "item-4": {
+          "type": "item",
+          "settings": {
+            "text": "Have you confirmed the outlet diameter against your waste?"
+          }
+        },
+        "item-5": {
+          "type": "item",
+          "settings": {
+            "text": "Have you checked the floor construction and available depth?"
+          }
+        },
+        "item-6": {
+          "type": "item",
+          "settings": {
+            "text": "Have you confirmed the waterproofing requirements for your project?"
+          }
+        },
+        "item-7": {
+          "type": "item",
+          "settings": {
+            "text": "Have you checked the technical drawing for your profile?"
+          }
+        },
+        "item-8": {
+          "type": "item",
+          "settings": {
+            "text": "Have you confirmed this is an internal, pedestrian application?"
+          }
+        },
+        "item-9": {
+          "type": "item",
+          "settings": {
+            "text": "If unsure, have you spoken with a qualified installer?"
+          }
+        }
+      },
+      "block_order": [
+        "item-1",
+        "item-2",
+        "item-3",
+        "item-4",
+        "item-5",
+        "item-6",
+        "item-7",
+        "item-8",
+        "item-9"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "installation",
+    "drawings",
+    "checklist"
+  ]
+}

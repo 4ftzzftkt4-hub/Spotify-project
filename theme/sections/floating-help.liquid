@@ -1,0 +1,67 @@
+{%- liquid
+  assign phone_href = settings.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-'
+  assign has_help = false
+  if settings.help_url != blank or settings.email != blank or settings.phone != blank
+    assign has_help = true
+  endif
+-%}
+
+{%- if section.settings.enabled and has_help -%}
+  <div class="fhelp" data-fhelp>
+    <div class="fhelp__panel" data-fhelp-panel aria-hidden="true" role="dialog" aria-label="Get help choosing your drain">
+      <button class="fhelp__close" type="button" data-fhelp-close aria-label="{{ 'general.accessibility.close' | t }}">
+        {%- render 'icon', name: 'close' -%}
+      </button>
+      <p class="label label--accent">Before you order</p>
+      <p class="h4">{{ section.settings.panel_heading }}</p>
+      <p style="font-size:var(--fs-sm);color:var(--ink-60)">{{ section.settings.panel_body }}</p>
+
+      <div style="display:grid;gap:0.5rem">
+        {%- if settings.help_url != blank or settings.email != blank -%}
+          <a
+            class="btn btn--full"
+            href="{% if settings.help_url != blank %}{{ settings.help_url }}{% else %}mailto:{{ settings.email }}?subject=Help%20choosing%20a%20Heelguard%20drain{% endif %}">
+            Ask an expert
+          </a>
+        {%- endif -%}
+        {%- if settings.phone != blank -%}
+          <a class="btn btn--ghost btn--full" href="tel:{{ phone_href }}">
+            <span style="width:16px">{%- render 'icon', name: 'phone' -%}</span>
+            Call us
+          </a>
+        {%- elsif settings.email != blank -%}
+          <a class="btn btn--ghost btn--full" href="mailto:{{ settings.email }}?subject=Heelguard%20drain%20enquiry">
+            <span style="width:16px">{%- render 'icon', name: 'mail' -%}</span>
+            Email us
+          </a>
+        {%- endif -%}
+      </div>
+
+      {%- if settings.phone_hours != blank -%}
+        <p class="label">{{ settings.phone_hours }}</p>
+      {%- endif -%}
+    </div>
+
+    <button class="fhelp__toggle" type="button" data-fhelp-toggle aria-expanded="false">
+      {%- render 'icon', name: 'help' -%}
+      <span class="fhelp__toggle-text">{{ section.settings.toggle_label }}</span>
+    </button>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Floating help",
+  "settings": [
+    { "type": "checkbox", "id": "enabled", "label": "Show floating help", "default": true },
+    { "type": "text", "id": "toggle_label", "label": "Button label", "default": "Need help choosing?" },
+    { "type": "text", "id": "panel_heading", "label": "Panel heading", "default": "Not sure which drain you need?" },
+    {
+      "type": "textarea",
+      "id": "panel_body",
+      "label": "Panel text",
+      "default": "Tell us the shower size, the floor construction and where your waste sits. We'll tell you which profile, length and outlet to order."
+    }
+  ]
+}
+{% endschema %}

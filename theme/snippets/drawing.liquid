@@ -1,0 +1,217 @@
+{%- comment -%}
+  Technical drawing set for one profile — plan, elevation and section.
+
+  ACCURACY RULE: only dimensions present in the verified product data are
+  annotated — profile width, profile depth, 3mm wedge wire, 4mm aperture,
+  5 × 20 edge bar, ~25mm cross-bar centres and the outlet diameter.
+  Overall length is shown as "L" because the customer selects it.
+  Plan and elevation are schematic in length; section A–A is drawn to scale.
+
+    {% render 'drawing', w: 85, d: 20, outlet_dia: '50.8', outlet_pos: 'centre' %}
+{%- endcomment -%}
+{%- liquid
+  comment
+    Plan view geometry — schematic in length, width proportional.
+  endcomment
+  assign p_len = 400
+  assign p_x0 = 60
+  assign p_x1 = 460
+  assign p_y0 = 40
+  assign p_w = w | times: 0.9
+  assign p_y1 = p_y0 | plus: p_w
+  assign p_mid_y = p_y0 | plus: p_w | divided_by: 2.0
+  assign p_dim_y = p_y1 | plus: 26
+  assign p_view_h = p_y1 | plus: 46
+  assign p_edge = 4
+
+  if outlet_pos == 'end'
+    assign p_out_x = 104
+  else
+    assign p_out_x = 260
+  endif
+  assign p_out_r = p_w | times: 0.3
+
+  comment
+    Elevation geometry.
+  endcomment
+  assign e_y0 = 34
+  assign e_d = d | times: 2.4
+  assign e_y1 = e_y0 | plus: e_d
+  assign e_mid_y = e_y0 | plus: e_d | divided_by: 2.0
+  assign e_spig_h = 30
+  assign e_view_h = e_y1 | plus: e_spig_h | plus: 34
+
+  comment
+    Section A–A — drawn to scale, 3 px per mm.
+  endcomment
+  assign s_scale = 3
+  assign s_x0 = 130
+  assign s_y0 = 54
+  assign s_w = w | times: s_scale
+  assign s_d = d | times: s_scale
+  assign s_x1 = s_x0 | plus: s_w
+  assign s_y1 = s_y0 | plus: s_d
+  assign s_mid_x = s_x0 | plus: s_w | divided_by: 2.0
+  assign s_mid_y = s_y0 | plus: s_d | divided_by: 2.0
+  assign s_edge_w = 15
+  assign s_edge_d = 60
+  assign s_wire = 9
+  assign s_pitch = 21
+  assign s_bar_limit = s_x1 | minus: s_edge_w
+  assign s_bar_start = s_x0 | plus: s_edge_w | plus: 4
+  assign s_inner = s_w | minus: 30
+  assign s_bar_n = s_inner | divided_by: s_pitch
+  assign s_wall = 6
+  assign s_base = s_y1 | plus: 26
+-%}
+
+<div class="dwg__views">
+  {%- comment -%} ------------------------------------------------ PLAN VIEW {%- endcomment -%}
+  <figure class="dwg__view">
+    <figcaption class="dwg__view-title">Plan view · schematic</figcaption>
+    <svg
+      viewBox="0 0 520 {{ p_view_h }}"
+      role="img"
+      aria-label="Plan view of the {{ w }} millimetre Heelguard drain. Overall length is shown as L, selected by the customer. Profile width {{ w }} millimetres. Outlet {{ outlet_dia }} millimetre outside diameter, {{ outlet_pos }} position.">
+      <defs>
+        <pattern id="tdwg-hatch-{{ w }}" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(11,12,14,0.4)" stroke-width="1"/>
+        </pattern>
+      </defs>
+
+      <rect class="tdwg-fill" x="{{ p_x0 }}" y="{{ p_y0 }}" width="{{ p_len }}" height="{{ p_w }}"/>
+
+      {%- comment -%} Wedge-wire bars across the grate {%- endcomment -%}
+      {%- for i in (1..49) -%}
+        {%- assign bx = i | times: 8 | plus: p_x0 -%}
+        {%- if bx < 456 -%}
+          <line
+            x1="{{ bx }}"
+            y1="{{ p_y0 | plus: p_edge }}"
+            x2="{{ bx }}"
+            y2="{{ p_y1 | minus: p_edge }}"
+            stroke="rgba(11,12,14,0.45)"
+            stroke-width="1.2"
+            vector-effect="non-scaling-stroke"/>
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- comment -%} Welded cross braces, approximately every 25mm {%- endcomment -%}
+      {%- for i in (1..7) -%}
+        {%- assign cbx = i | times: 50 | plus: p_x0 -%}
+        <line
+          x1="{{ cbx }}"
+          y1="{{ p_y0 | plus: p_edge }}"
+          x2="{{ cbx }}"
+          y2="{{ p_y1 | minus: p_edge }}"
+          stroke="rgba(11,12,14,0.8)"
+          stroke-width="2.4"
+          vector-effect="non-scaling-stroke"/>
+      {%- endfor -%}
+
+      {%- comment -%} Perimeter edge bar {%- endcomment -%}
+      <rect class="tdwg-line" x="{{ p_x0 }}" y="{{ p_y0 }}" width="{{ p_len }}" height="{{ p_w }}"/>
+      <rect class="tdwg-line" x="{{ p_x0 | plus: p_edge }}" y="{{ p_y0 | plus: p_edge }}" width="{{ p_len | minus: 8 }}" height="{{ p_w | minus: 8 }}"/>
+
+      {%- comment -%} Outlet centre lines and hidden outline {%- endcomment -%}
+      <circle class="tdwg-hidden" cx="{{ p_out_x }}" cy="{{ p_mid_y }}" r="{{ p_out_r }}"/>
+      <line class="tdwg-centre" x1="{{ p_out_x }}" y1="{{ p_y0 | minus: 10 }}" x2="{{ p_out_x }}" y2="{{ p_y1 | plus: 10 }}"/>
+      <line class="tdwg-centre" x1="{{ p_out_x | minus: 30 }}" y1="{{ p_mid_y }}" x2="{{ p_out_x | plus: 30 }}" y2="{{ p_mid_y }}"/>
+      <text class="tdwg-txt" x="{{ p_out_x }}" y="{{ p_y0 | minus: 16 }}" text-anchor="middle">⌀{{ outlet_dia }} OUTLET</text>
+
+      {%- comment -%} Overall length — customer-selected {%- endcomment -%}
+      <line class="tdwg-ext" x1="{{ p_x0 }}" y1="{{ p_y1 | plus: 6 }}" x2="{{ p_x0 }}" y2="{{ p_dim_y | plus: 6 }}"/>
+      <line class="tdwg-ext" x1="{{ p_x1 }}" y1="{{ p_y1 | plus: 6 }}" x2="{{ p_x1 }}" y2="{{ p_dim_y | plus: 6 }}"/>
+      <line class="tdwg-dim" x1="{{ p_x0 }}" y1="{{ p_dim_y }}" x2="{{ p_x1 }}" y2="{{ p_dim_y }}"/>
+      <path class="tdwg-dim" d="M{{ p_x0 }} {{ p_dim_y }}l8-3.5v7zM{{ p_x1 }} {{ p_dim_y }}l-8-3.5v7z" fill="var(--accent)"/>
+      <text class="tdwg-txt tdwg-txt--dim" x="260" y="{{ p_dim_y | minus: 7 }}" text-anchor="middle">L — LENGTH YOU SELECT</text>
+
+      {%- comment -%} Profile width {%- endcomment -%}
+      <line class="tdwg-ext" x1="{{ p_x0 | minus: 6 }}" y1="{{ p_y0 }}" x2="24" y2="{{ p_y0 }}"/>
+      <line class="tdwg-ext" x1="{{ p_x0 | minus: 6 }}" y1="{{ p_y1 }}" x2="24" y2="{{ p_y1 }}"/>
+      <line class="tdwg-dim" x1="30" y1="{{ p_y0 }}" x2="30" y2="{{ p_y1 }}"/>
+      <path class="tdwg-dim" d="M30 {{ p_y0 }}l-3.5 8h7zM30 {{ p_y1 }}l-3.5-8h7z" fill="var(--accent)"/>
+      <text class="tdwg-txt tdwg-txt--dim" x="24" y="{{ p_mid_y | plus: 3 }}" text-anchor="end">{{ w }}</text>
+      <text class="tdwg-txt" x="{{ p_x1 | plus: 8 }}" y="{{ p_mid_y | plus: 3 }}">GRATE</text>
+    </svg>
+  </figure>
+
+  {%- comment -%} ------------------------------------------------- ELEVATION {%- endcomment -%}
+  <figure class="dwg__view">
+    <figcaption class="dwg__view-title">Side elevation · schematic</figcaption>
+    <svg
+      viewBox="0 0 520 {{ e_view_h }}"
+      role="img"
+      aria-label="Side elevation of the {{ w }} millimetre Heelguard drain showing the {{ d }} millimetre profile depth and the {{ outlet_pos }} outlet spigot below the body.">
+      <rect class="tdwg-fill" x="{{ p_x0 }}" y="{{ e_y0 }}" width="{{ p_len }}" height="{{ e_d }}"/>
+      <line class="tdwg-line" x1="{{ p_x0 }}" y1="{{ e_y0 }}" x2="{{ p_x1 }}" y2="{{ e_y0 }}"/>
+
+      {%- comment -%} Outlet spigot {%- endcomment -%}
+      <rect class="tdwg-fill" x="{{ p_out_x | minus: 22 }}" y="{{ e_y1 }}" width="44" height="{{ e_spig_h }}"/>
+      <line class="tdwg-centre" x1="{{ p_out_x }}" y1="{{ e_y0 | minus: 12 }}" x2="{{ p_out_x }}" y2="{{ e_y1 | plus: e_spig_h | plus: 12 }}"/>
+
+      {%- comment -%} Profile depth {%- endcomment -%}
+      <line class="tdwg-ext" x1="{{ p_x0 | minus: 6 }}" y1="{{ e_y0 }}" x2="24" y2="{{ e_y0 }}"/>
+      <line class="tdwg-ext" x1="{{ p_x0 | minus: 6 }}" y1="{{ e_y1 }}" x2="24" y2="{{ e_y1 }}"/>
+      <line class="tdwg-dim" x1="30" y1="{{ e_y0 }}" x2="30" y2="{{ e_y1 }}"/>
+      <path class="tdwg-dim" d="M30 {{ e_y0 }}l-3.5 7h7zM30 {{ e_y1 }}l-3.5-7h7z" fill="var(--accent)"/>
+      <text class="tdwg-txt tdwg-txt--dim" x="24" y="{{ e_mid_y | plus: 3 }}" text-anchor="end">{{ d }}</text>
+
+      <text class="tdwg-txt" x="{{ p_out_x | plus: 30 }}" y="{{ e_y1 | plus: 20 }}">⌀{{ outlet_dia }} — {{ outlet_pos | upcase }} OUTLET</text>
+      <text class="tdwg-txt" x="{{ p_x1 | plus: 8 }}" y="{{ e_mid_y | plus: 3 }}">BODY</text>
+    </svg>
+  </figure>
+
+  {%- comment -%} --------------------------------------------- SECTION A–A {%- endcomment -%}
+  <figure class="dwg__view">
+    <figcaption class="dwg__view-title">Section A–A · scale 3:1</figcaption>
+    <svg
+      viewBox="0 0 520 {{ s_base | plus: 96 }}"
+      role="img"
+      aria-label="Cross section through the {{ w }} millimetre Heelguard grate and channel, drawn at three to one. Shows the tapered 3 millimetre wedge wire at 4 millimetre aperture, the 5 by 20 millimetre perimeter edge bar and the fully welded channel body.">
+      {%- comment -%} Channel walls and base {%- endcomment -%}
+      <rect class="tdwg-hatch" x="{{ s_x0 | minus: s_wall }}" y="{{ s_y0 }}" width="{{ s_wall }}" height="{{ s_d }}"/>
+      <rect class="tdwg-hatch" x="{{ s_x1 }}" y="{{ s_y0 }}" width="{{ s_wall }}" height="{{ s_d }}"/>
+      <rect class="tdwg-hatch" x="{{ s_x0 | minus: s_wall }}" y="{{ s_y1 }}" width="{{ s_w | plus: 12 }}" height="{{ s_wall }}"/>
+
+      {%- comment -%} Perimeter edge bars — 5 wide × 20 deep {%- endcomment -%}
+      <rect class="tdwg-hatch" x="{{ s_x0 }}" y="{{ s_y0 }}" width="{{ s_edge_w }}" height="{{ s_edge_d }}"/>
+      <rect class="tdwg-hatch" x="{{ s_x1 | minus: s_edge_w }}" y="{{ s_y0 }}" width="{{ s_edge_w }}" height="{{ s_edge_d }}"/>
+
+      {%- comment -%} Tapered wedge-wire bars — wider at the walking surface {%- endcomment -%}
+      {%- for i in (0..s_bar_n) -%}
+        {%- assign bx = i | times: s_pitch | plus: s_bar_start -%}
+        {%- assign bx_end = bx | plus: s_wire -%}
+        {%- if bx_end < s_bar_limit -%}
+          <path class="tdwg-hatch" d="M{{ bx }} {{ s_y0 }} h{{ s_wire }} l-2 {{ s_edge_d | minus: 8 }} h-5 z"/>
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- comment -%} Walking surface {%- endcomment -%}
+      <line class="tdwg-line" x1="{{ s_x0 | minus: s_wall }}" y1="{{ s_y0 }}" x2="{{ s_x1 | plus: s_wall }}" y2="{{ s_y0 }}"/>
+
+      {%- comment -%} Profile width dimension {%- endcomment -%}
+      <line class="tdwg-ext" x1="{{ s_x0 }}" y1="{{ s_y0 | minus: 8 }}" x2="{{ s_x0 }}" y2="22"/>
+      <line class="tdwg-ext" x1="{{ s_x1 }}" y1="{{ s_y0 | minus: 8 }}" x2="{{ s_x1 }}" y2="22"/>
+      <line class="tdwg-dim" x1="{{ s_x0 }}" y1="28" x2="{{ s_x1 }}" y2="28"/>
+      <path class="tdwg-dim" d="M{{ s_x0 }} 28l8-3.5v7zM{{ s_x1 }} 28l-8-3.5v7z" fill="var(--accent)"/>
+      <text class="tdwg-txt tdwg-txt--dim" x="{{ s_mid_x }}" y="21" text-anchor="middle">{{ w }} PROFILE WIDTH</text>
+
+      {%- comment -%} Profile depth dimension {%- endcomment -%}
+      <line class="tdwg-ext" x1="{{ s_x0 | minus: 14 }}" y1="{{ s_y0 }}" x2="52" y2="{{ s_y0 }}"/>
+      <line class="tdwg-ext" x1="{{ s_x0 | minus: 14 }}" y1="{{ s_y1 }}" x2="52" y2="{{ s_y1 }}"/>
+      <line class="tdwg-dim" x1="58" y1="{{ s_y0 }}" x2="58" y2="{{ s_y1 }}"/>
+      <path class="tdwg-dim" d="M58 {{ s_y0 }}l-3.5 8h7zM58 {{ s_y1 }}l-3.5-8h7z" fill="var(--accent)"/>
+      <text class="tdwg-txt tdwg-txt--dim" x="52" y="{{ s_mid_y | plus: 3 }}" text-anchor="end">{{ d }}</text>
+
+      {%- comment -%} Leaders {%- endcomment -%}
+      <line class="tdwg-dim" x1="{{ s_x0 | plus: 7 }}" y1="{{ s_y0 | plus: 34 }}" x2="{{ s_x0 | minus: 24 }}" y2="{{ s_base | plus: 26 }}"/>
+      <text class="tdwg-txt" x="{{ s_x0 | minus: 26 }}" y="{{ s_base | plus: 38 }}" text-anchor="start">5 × 20 PERIMETER EDGE BAR</text>
+
+      <line class="tdwg-dim" x1="{{ s_bar_start | plus: 40 }}" y1="{{ s_y0 | plus: 20 }}" x2="{{ s_x1 | minus: 20 }}" y2="{{ s_base | plus: 62 }}"/>
+      <text class="tdwg-txt" x="{{ s_x1 | minus: 22 }}" y="{{ s_base | plus: 74 }}">3 WEDGE WIRE · 4 APERTURE · TAPERED BARS</text>
+
+      <text class="tdwg-txt" x="{{ s_x1 | plus: 16 }}" y="{{ s_y1 | plus: 18 }}">FULLY WELDED BODY</text>
+    </svg>
+  </figure>
+</div>

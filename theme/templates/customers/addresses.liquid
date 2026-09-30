@@ -1,0 +1,41 @@
+<section class="section">
+  <div class="wrap wrap--narrow">
+    <div class="sec-head" style="margin-bottom:2rem">
+      <div class="sec-head__meta"><span class="label">Account</span></div>
+      <h1 class="h2">Addresses</h1>
+    </div>
+
+    {%- paginate customer.addresses by 6 -%}
+      <div class="grid grid--2">
+        {%- for address in customer.addresses -%}
+          <div class="card">
+            <div style="font-size:var(--fs-sm)">{{ address | format_address }}</div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endpaginate -%}
+
+    <div class="card" style="margin-top:2rem">
+      <h2 class="h4">Add an address</h2>
+      {%- form 'customer_address', customer.new_address -%}
+        <div style="display:grid;gap:1.25rem">
+          <div class="field">
+            <label class="field__label" for="addr-1">Address</label>
+            <input class="field__input" id="addr-1" type="text" name="address[address1]" autocomplete="address-line1">
+          </div>
+          <div class="field">
+            <label class="field__label" for="addr-city">Suburb</label>
+            <input class="field__input" id="addr-city" type="text" name="address[city]" autocomplete="address-level2">
+          </div>
+          <div class="field">
+            <label class="field__label" for="addr-zip">Postcode</label>
+            <input class="field__input" id="addr-zip" type="text" name="address[zip]" autocomplete="postal-code">
+          </div>
+          <button class="btn" type="submit">Save address</button>
+        </div>
+      {%- endform -%}
+    </div>
+
+    <a class="tlink" href="{{ routes.account_url }}" style="margin-top:2rem;display:inline-flex">Back to account</a>
+  </div>
+</section>

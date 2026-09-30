@@ -1,0 +1,145 @@
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:2rem">
+      <div class="sec-head__meta">
+        <span class="label">{{ 'cart.general.title' | t }}</span>
+      </div>
+      <h1 class="h1">{{ 'cart.general.title' | t }}</h1>
+    </div>
+
+    {%- if cart.item_count == 0 -%}
+      <div style="display:grid;gap:1.5rem;max-width:36rem">
+        <p class="lede">{{ 'cart.general.empty' | t }}</p>
+        {%- if section.settings.product != blank -%}
+          <a class="btn" href="{{ section.settings.product.url }}" style="justify-self:start">
+            {{ 'cart.general.continue' | t }}
+          </a>
+        {%- else -%}
+          <a class="btn" href="{{ routes.all_products_collection_url }}" style="justify-self:start">
+            {{ 'cart.general.continue' | t }}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      <form action="{{ routes.cart_url }}" method="post" novalidate>
+        <div class="pdp" style="align-items:start">
+          <div>
+            {%- for line in cart.items -%}
+              <div class="cart-line">
+                <a class="cart-line__media" href="{{ line.url }}" aria-hidden="true" tabindex="-1">
+                  {%- if line.image -%}
+                    <img
+                      src="{{ line.image | image_url: width: 240 }}"
+                      alt=""
+                      width="240"
+                      height="240"
+                      loading="lazy">
+                  {%- endif -%}
+                </a>
+
+                <div>
+                  <a href="{{ line.url }}" class="h4">{{ line.product.title }}</a>
+
+                  {%- if line.product.has_only_default_variant == false -%}
+                    <p class="cart-line__prop" style="margin-top:0.4rem">{{ line.variant.title }}</p>
+                  {%- endif -%}
+
+                  {%- if line.properties != blank -%}
+                    <div class="cart-line__props">
+                      {%- for p in line.properties -%}
+                        {%- unless p.last == blank or p.first[0] == '_' -%}
+                          <span class="cart-line__prop">{{ p.first }}: {{ p.last }}</span>
+                        {%- endunless -%}
+                      {%- endfor -%}
+                    </div>
+                  {%- endif -%}
+
+                  {%- if line.sku != blank -%}
+                    <p class="cart-line__prop">SKU {{ line.sku }}</p>
+                  {%- endif -%}
+
+                  <div style="display:flex;align-items:center;gap:1rem;margin-top:1rem;flex-wrap:wrap">
+                    <div class="qty" data-qty>
+                      <button
+                        type="button"
+                        data-qty-step="-1"
+                        aria-label="{{ 'products.product.decrease' | t }}">
+                        {%- render 'icon', name: 'minus' -%}
+                      </button>
+                      <label class="visually-hidden" for="qty-{{ line.index | plus: 1 }}">
+                        {{ 'cart.general.quantity' | t }}
+                      </label>
+                      <input
+                        id="qty-{{ line.index | plus: 1 }}"
+                        name="updates[]"
+                        type="number"
+                        value="{{ line.quantity }}"
+                        min="0"
+                        inputmode="numeric">
+                      <button
+                        type="button"
+                        data-qty-step="1"
+                        aria-label="{{ 'products.product.increase' | t }}">
+                        {%- render 'icon', name: 'plus' -%}
+                      </button>
+                    </div>
+
+                    <a class="tlink" href="{{ line.url_to_remove }}" style="font-size:var(--fs-xs)">
+                      {{ 'cart.general.remove' | t }}
+                    </a>
+                  </div>
+                </div>
+
+                <div class="mono" style="font-weight:600">{{ line.final_line_price | money }}</div>
+              </div>
+            {%- endfor -%}
+
+            <noscript>
+              <button class="btn btn--ghost" type="submit" name="update" style="margin-top:1.5rem">
+                {{ 'cart.general.update' | t }}
+              </button>
+            </noscript>
+          </div>
+
+          <div class="cart-summary">
+            <div class="cart-summary__row">
+              <span>{{ 'cart.general.subtotal' | t }}</span>
+              <span class="mono">{{ cart.total_price | money }}</span>
+            </div>
+            <div class="cart-summary__row cart-summary__total">
+              <span>{{ 'cart.general.total' | t }}</span>
+              <span class="mono">{{ cart.total_price | money }} {{ cart.currency.iso_code }}</span>
+            </div>
+            <p class="form-note">{{ 'cart.general.shipping_note' | t }}</p>
+
+            <div class="field">
+              <label class="field__label" for="cart-note">Order notes — outlet details, site access, delivery</label>
+              <textarea class="field__textarea" id="cart-note" name="note" style="min-height:6rem">{{ cart.note }}</textarea>
+            </div>
+
+            <button class="btn btn--lg btn--full" type="submit" name="checkout">
+              {{ 'cart.general.checkout' | t }}
+            </button>
+
+            <button class="btn btn--ghost btn--full js-only" type="submit" name="update">
+              {{ 'cart.general.update' | t }}
+            </button>
+
+            {%- if settings.help_url != blank -%}
+              <a class="tlink" href="{{ settings.help_url }}" style="justify-self:start;font-size:var(--fs-xs)">
+                Not sure this is the right configuration? Ask us first
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+      </form>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings": [{ "type": "product", "id": "product", "label": "Product to link back to" }]
+}
+{% endschema %}

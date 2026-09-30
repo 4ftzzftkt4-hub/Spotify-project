@@ -1,0 +1,20 @@
+{%- comment -%}
+  A document download that tells the truth about itself.
+  With a URL it is a real download; without one it renders a clearly-labelled
+  pending state rather than a dead link.
+
+    {% render 'doc-link', url: settings.doc_drawing_70, label: 'Technical drawing — 70mm', meta: 'PDF' %}
+{%- endcomment -%}
+{%- if url != blank -%}
+  <a class="btn btn--ghost btn--full" href="{{ url }}" {% unless url contains shop.permanent_domain %}rel="noopener"{% endunless %} download>
+    <span style="width:17px;flex:none">{%- render 'icon', name: 'download' -%}</span>
+    <span style="flex:1;text-align:left">{{ label }}</span>
+    {%- if meta %}<span class="label" style="letter-spacing:0.1em">{{ meta }}</span>{% endif -%}
+  </a>
+{%- else -%}
+  <span class="btn btn--ghost btn--full" aria-disabled="true" style="cursor:default;border-style:dashed;color:var(--ink-40)">
+    <span style="width:17px;flex:none">{%- render 'icon', name: 'doc' -%}</span>
+    <span style="flex:1;text-align:left">{{ label }}</span>
+    <span class="label" style="letter-spacing:0.1em;color:var(--warn)">Awaiting upload</span>
+  </span>
+{%- endif -%}

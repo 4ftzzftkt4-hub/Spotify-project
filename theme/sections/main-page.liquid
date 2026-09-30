@@ -1,0 +1,21 @@
+<section class="section">
+  <div class="wrap wrap--narrow">
+    <div class="rte body-copy" style="max-width:44rem">
+      {%- if page.content != blank -%}
+        {{ page.content }}
+      {%- else -%}
+        <p class="form-note">
+          This page has no content yet. Add it under Content → Pages, or build the page from sections in the
+          theme editor.
+        </p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page content",
+  "settings": []
+}
+{% endschema %}

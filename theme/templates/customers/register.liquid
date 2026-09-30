@@ -1,0 +1,32 @@
+<section class="section">
+  <div class="wrap wrap--narrow">
+    <div style="max-width:26rem;display:grid;gap:1.5rem">
+      <h1 class="h2">Create an account</h1>
+      {%- form 'create_customer', novalidate: 'novalidate' -%}
+        {%- if form.errors -%}
+          <div class="banner banner--err" role="alert">{{ form.errors | default_errors }}</div>
+        {%- endif -%}
+        <div style="display:grid;gap:1.25rem">
+          <div class="field">
+            <label class="field__label" for="reg-first">First name</label>
+            <input class="field__input" id="reg-first" type="text" name="customer[first_name]" autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label class="field__label" for="reg-last">Last name</label>
+            <input class="field__input" id="reg-last" type="text" name="customer[last_name]" autocomplete="family-name">
+          </div>
+          <div class="field">
+            <label class="field__label" for="reg-email">Email</label>
+            <input class="field__input" id="reg-email" type="email" name="customer[email]" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label class="field__label" for="reg-password">Password</label>
+            <input class="field__input" id="reg-password" type="password" name="customer[password]" autocomplete="new-password" required>
+          </div>
+          <button class="btn btn--full" type="submit">Create account</button>
+          <a class="tlink" href="{{ routes.account_login_url }}" style="justify-self:start">Already have an account?</a>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "hero": { "type": "page-hero", "settings": { "heading": "Notes", "lede": "Occasional writing about drainage, installation and finishing." } }
+  },
+  "order": ["hero"]
+}

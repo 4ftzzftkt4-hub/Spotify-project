@@ -1,0 +1,54 @@
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:2rem">
+      <div class="sec-head__meta"><span class="label">{{ 'general.search.heading' | t }}</span></div>
+      <h1 class="h1">{{ 'general.search.heading' | t }}</h1>
+    </div>
+
+    <form class="searchbar" action="{{ routes.search_url }}" method="get" role="search">
+      <label class="visually-hidden" for="q">{{ 'general.search.placeholder' | t }}</label>
+      <input
+        class="field__input"
+        id="q"
+        type="search"
+        name="q"
+        value="{{ search.terms | escape }}"
+        placeholder="{{ 'general.search.placeholder' | t }}">
+      <button class="btn" type="submit">{{ 'general.search.submit' | t }}</button>
+    </form>
+
+    {%- if search.performed -%}
+      <p class="label" style="margin-top:2rem">
+        {{ 'general.search.results_for' | t: terms: search.terms }} — {{ search.results_count }}
+      </p>
+
+      {%- if search.results_count == 0 -%}
+        <div style="display:grid;gap:1rem;max-width:40rem;margin-top:1rem">
+          <p class="lede">{{ 'general.search.no_results' | t: terms: search.terms }}</p>
+          <p class="body-copy">{{ 'general.search.no_results_help' | t }}</p>
+        </div>
+      {%- else -%}
+        <div class="grid grid--3" style="margin-top:1.5rem">
+          {%- for item in search.results -%}
+            <a class="card" href="{{ item.url }}">
+              {%- if item.object_type == 'product' and item.featured_image -%}
+                <div class="card__media">
+                  {%- render 'media', image: item.featured_image, sizes: '33vw', ratio: '3/2' -%}
+                </div>
+              {%- endif -%}
+              <span class="label">{{ item.object_type }}</span>
+              <h2 class="h4">{{ item.title }}</h2>
+            </a>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Search",
+  "settings": []
+}
+{% endschema %}

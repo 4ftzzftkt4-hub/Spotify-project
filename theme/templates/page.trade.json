@@ -1,0 +1,156 @@
+{
+  "sections": {
+    "hero": {
+      "type": "page-hero",
+      "settings": {
+        "heading": "Trade and projects.",
+        "lede": "For plumbers, builders, tilers, designers and anyone buying more than one."
+      }
+    },
+    "trade": {
+      "type": "trade",
+      "settings": {
+        "index": "01",
+        "label": "What we do for trade",
+        "heading": "Buying for a project?"
+      },
+      "blocks": {
+        "item-1": {
+          "type": "item",
+          "settings": {
+            "title": "Bulk enquiries",
+            "body": "Quantities across a build, quoted as one job rather than line by line."
+          }
+        },
+        "item-2": {
+          "type": "item",
+          "settings": {
+            "title": "Project pricing",
+            "body": "Written quotes against your schedule, with the configuration recorded per unit."
+          }
+        },
+        "item-4": {
+          "type": "item",
+          "settings": {
+            "title": "Technical documentation",
+            "body": "Drawings and specification detail for your submission or O&M manual."
+          }
+        },
+        "item-5": {
+          "type": "item",
+          "settings": {
+            "title": "Installation support",
+            "body": "Someone who knows the product, on the phone, while the trades are on site."
+          }
+        },
+        "item-6": {
+          "type": "item",
+          "settings": {
+            "title": "Staged delivery",
+            "body": "Delivered to suit the program instead of all at once to a locked-up site."
+          }
+        }
+      },
+      "block_order": [
+        "item-1",
+        "item-2",
+        "item-4",
+        "item-5",
+        "item-6"
+      ]
+    },
+    "trust": {
+      "type": "trust",
+      "settings": {
+        "index": "02",
+        "label": "Who we serve",
+        "heading": "Built for the people who build."
+      },
+      "blocks": {
+        "audience-1": {
+          "type": "audience",
+          "settings": {
+            "role": "Plumbers",
+            "need": "Outlet diameters and positions confirmed before the slab goes down."
+          }
+        },
+        "audience-2": {
+          "type": "audience",
+          "settings": {
+            "role": "Builders",
+            "need": "A drain that arrives right so the trades behind it aren't held up."
+          }
+        },
+        "audience-3": {
+          "type": "audience",
+          "settings": {
+            "role": "Tilers",
+            "need": "A known edge bar and a flush finish to set the tile against."
+          }
+        },
+        "audience-4": {
+          "type": "audience",
+          "settings": {
+            "role": "Waterproofers",
+            "need": "A body that stays where it was set and a defined junction to detail."
+          }
+        },
+        "audience-5": {
+          "type": "audience",
+          "settings": {
+            "role": "Designers",
+            "need": "A fine stainless line that suits large-format floors."
+          }
+        },
+        "audience-6": {
+          "type": "audience",
+          "settings": {
+            "role": "Architects",
+            "need": "Published dimensions and drawings that can go into a specification."
+          }
+        },
+        "audience-7": {
+          "type": "audience",
+          "settings": {
+            "role": "Renovators",
+            "need": "Outlet options that work around plumbing already in the floor."
+          }
+        },
+        "audience-8": {
+          "type": "audience",
+          "settings": {
+            "role": "Homeowners",
+            "need": "A plain explanation of which size to order, and why."
+          }
+        }
+      },
+      "block_order": [
+        "audience-1",
+        "audience-2",
+        "audience-3",
+        "audience-4",
+        "audience-5",
+        "audience-6",
+        "audience-7",
+        "audience-8"
+      ]
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "index": "03",
+        "label": "Project enquiry",
+        "heading": "Send us the schedule.",
+        "body": "<p>Quantities, lengths, outlet positions and your program. We'll come back with a written quote and the documentation to go with it.</p>",
+        "submit_label": "Send project enquiry",
+        "dark": true
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trade",
+    "trust",
+    "form"
+  ]
+}

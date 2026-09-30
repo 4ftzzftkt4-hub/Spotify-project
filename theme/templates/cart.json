@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "main": { "type": "main-cart", "settings": { "product": "stainless-steel-linear-drain-heelguard-pattern" } }
+  },
+  "order": ["main"]
+}

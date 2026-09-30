@@ -1,0 +1,15 @@
+<article class="section">
+  <div class="wrap wrap--narrow">
+    <div class="rte body-copy" style="max-width:44rem">
+      <p class="label">{{ article.published_at | date: '%-d %B %Y' }}{% if article.author != blank %} · {{ article.author }}{% endif %}</p>
+      {{ article.content }}
+    </div>
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Article",
+  "settings": []
+}
+{% endschema %}
