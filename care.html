@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Jewellery Care Guide | Keep Close</title>
+  <meta name="description" content="How to clean, dry, store and look after your personalised polished stainless steel necklace.">
+  <meta name="theme-color" content="#fbf9f5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='17' r='11' fill='%23c8ad84'/%3E%3Ccircle cx='16' cy='17' r='9' fill='%23f6f1e9'/%3E%3C/svg%3E">
+</head>
+<body>
+<main id="main">
+  <header class="page-head">
+    <div class="wrap">
+      <span class="eyebrow">Jewellery care</span>
+      <h1 class="h1">Keep something meaningful<br>looking beautiful.</h1>
+      <p>A few simple habits will keep your pendant’s polished finish looking its best.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="features" id="care" data-reveal></div>
+      <div class="split" style="margin-top:clamp(64px,8vw,120px)">
+        <div class="frame frame--square" id="macro" data-reveal style="background:linear-gradient(160deg,#ece6db,#d9ccb8)"></div>
+        <div data-reveal data-reveal-delay="1">
+          <span class="eyebrow">At a glance</span>
+          <h2 class="h2">Last on, first off.</h2>
+          <p class="lead" style="margin-top:1.2rem">Put your necklace on after perfume, lotion and hairspray, and take it off before swimming, showering, exercise and cleaning.</p>
+          <p id="supplier-care" class="muted"></p>
+          <p style="margin-top:1.6rem"><button class="btn btn--ghost" onclick="window.print()">Print or save this guide</button></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="assets/js/store-config.js"></script>
+<script src="assets/js/pendant.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/content.js"></script>
+<script>
+  const { S, esc } = Site;
+  document.getElementById("care").innerHTML = S.care.map((c, i) => `<div class="feature"><span class="num">${String(i + 1).padStart(2, "0")}</span><h3>${esc(c.title)}</h3><p>${esc(c.body)}</p></div>`).join("");
+  document.getElementById("macro").innerHTML = '<div class="shot-illus">' + Pendant.render({ finish: "steel", view: "macro" }) + "</div>";
+  document.getElementById("supplier-care").textContent = "This is general guidance for polished stainless steel jewellery. If anything in the instructions supplied with your necklace differs, follow those instructions.";
+</script>
+</body>
+</html>

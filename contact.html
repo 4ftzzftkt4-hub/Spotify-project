@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Contact Us | Keep Close</title>
+  <meta name="description" content="Questions about personalisation, an order or delivery? Get in touch.">
+  <meta name="theme-color" content="#fbf9f5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='17' r='11' fill='%23c8ad84'/%3E%3Ccircle cx='16' cy='17' r='9' fill='%23f6f1e9'/%3E%3C/svg%3E">
+</head>
+<body>
+<main id="main">
+  <header class="page-head">
+    <div class="wrap">
+      <span class="eyebrow">Contact</span>
+      <h1 class="h1">We’re here to help<br>make it personal.</h1>
+      <p>Questions about personalisation, an existing order or a delivery — we’d love to hear from you.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap contact-grid">
+      <div>
+        <h2 class="h3">How can we help?</h2>
+        <div class="topic-list">
+          <div><strong>Personalisation</strong><span>Unsure what will fit or look best? Ask before you order.</span></div>
+          <div><strong>Order enquiry</strong><span>Include your order number so we can find it quickly.</span></div>
+          <div><strong>Damaged or incorrect item</strong><span>Include your order number and photos of the necklace and packaging.</span></div>
+          <a href="faq.html"><strong>Frequently asked questions</strong><span>Quick answers about engraving, care, shipping and returns.</span></a>
+        </div>
+        <p style="margin-top:28px" id="email"></p>
+      </div>
+      <form id="contact-form" novalidate>
+        <div class="field"><label for="c-topic">Topic</label>
+          <select class="input" id="c-topic" name="topic"><option>Personalisation enquiry</option><option>Order enquiry</option><option>Damaged or incorrect item</option><option>Something else</option></select></div>
+        <div class="field"><label for="c-name">Name</label><input class="input" id="c-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="c-email">Email</label><input class="input" id="c-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="c-order">Order number (if you have one)</label><input class="input" id="c-order" name="order"></div>
+        <div class="field"><label for="c-msg">Message</label><textarea class="input" id="c-msg" name="message" required></textarea></div>
+        <button class="btn btn--dark" type="submit">Send message</button>
+        <p class="fine" id="c-status" role="status" style="margin-top:14px"></p>
+      </form>
+    </div>
+  </section>
+</main>
+<script src="assets/js/store-config.js"></script>
+<script src="assets/js/pendant.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/content.js"></script>
+<script>
+  const { S, esc } = Site;
+  const email = S.brand.email;
+  document.getElementById("email").innerHTML = email ? `Or email us directly at <a href="mailto:${esc(email)}" style="text-decoration:underline">${esc(email)}</a>.` :
+    (Site.PREVIEW ? '<span class="preview-note" style="display:block">Add your support email in <code>store-config.js → brand.email</code>. The form opens the customer’s email app addressed to it.</span>' : "");
+  document.getElementById("contact-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const f = e.target, st = document.getElementById("c-status");
+    if (!f.reportValidity()) return;
+    if (!email) { st.textContent = "Our contact email isn’t set up yet — please try again soon."; return; }
+    const d = new FormData(f);
+    const body = `Name: ${d.get("name")}\nEmail: ${d.get("email")}\nOrder: ${d.get("order") || "—"}\n\n${d.get("message")}`;
+    location.href = `mailto:${email}?subject=${encodeURIComponent(d.get("topic") + (d.get("order") ? " — " + d.get("order") : ""))}&body=${encodeURIComponent(body)}`;
+    st.textContent = "Opening your email app…";
+  });
+</script>
+</body>
+</html>

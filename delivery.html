@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Shipping & Returns | Keep Close</title>
+  <meta name="description" content="Processing times, delivery, tracking and our returns policy for personalised necklaces.">
+  <meta name="theme-color" content="#fbf9f5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='17' r='11' fill='%23c8ad84'/%3E%3Ccircle cx='16' cy='17' r='9' fill='%23f6f1e9'/%3E%3C/svg%3E">
+</head>
+<body>
+<main id="main">
+  <header class="page-head">
+    <div class="wrap">
+      <span class="eyebrow">Shipping &amp; returns</span>
+      <h1 class="h1">Delivery and returns.</h1>
+      <p>Personalised pieces are made to order. Here’s what to expect from order to arrival.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap narrow prose">
+      <h2 style="margin-top:0">Shipping</h2>
+      <p>Your order goes through two stages: <strong>processing</strong>, when your necklace is personalised and prepared for dispatch, and <strong>delivery</strong>, which begins once it’s handed to the carrier.</p>
+      <dl class="specs" id="ship" style="grid-template-columns:1fr"></dl>
+      <p id="ship-empty" class="muted"></p>
+      <h2 id="returns">Returns</h2>
+      <h3>Personalised pieces</h3><p id="r1"></p>
+      <h3>Faulty or damaged items</h3><p id="r2"></p>
+      <h3>Engraving that doesn’t match your order</h3><p id="r3"></p>
+      <h3>Spelling errors entered at checkout</h3><p id="r4"></p>
+      <h3>How to contact us</h3>
+      <p>Email us with your order number, a short description and photos where relevant. <a href="contact.html" style="text-decoration:underline">Contact us</a>.</p>
+    </div>
+  </section>
+</main>
+<script src="assets/js/store-config.js"></script>
+<script src="assets/js/pendant.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/content.js"></script>
+<script>
+  const { S, esc, flag } = Site;
+  const rows = Content.shippingRows();
+  document.getElementById("ship").innerHTML = rows.map(([k, v]) => `<div class="spec"><dt>${k}</dt><dd>${esc(v.value)}${flag(v)}</dd></div>`).join("");
+  if (!rows.length) document.getElementById("ship-empty").textContent = "Delivery options, costs and estimated times are shown at checkout before you pay.";
+  if (Site.PREVIEW && rows.length < 6) document.getElementById("ship-empty").insertAdjacentHTML("afterend", '<p class="preview-note">Add processing time, delivery estimates, tracking and costs in <code>store-config.js → shipping</code> once confirmed with the supplier.</p>');
+  ["personalisedReturns", "faultyItems", "ourMistake", "yourMistake"].forEach((k, i) => (document.getElementById("r" + (i + 1)).textContent = S.policies[k]));
+</script>
+</body>
+</html>

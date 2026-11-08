@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Our Story | Keep Close</title>
+  <meta name="description" content="One necklace, made personal. Why we built a jewellery brand around a single personalised round pendant.">
+  <meta name="theme-color" content="#fbf9f5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='17' r='11' fill='%23c8ad84'/%3E%3Ccircle cx='16' cy='17' r='9' fill='%23f6f1e9'/%3E%3C/svg%3E">
+</head>
+<body>
+<main id="main">
+  <header class="page-head">
+    <div class="wrap">
+      <span class="eyebrow">Our story</span>
+      <h1 class="h1">One necklace.<br>Your story.</h1>
+      <p>We specialise in making simple, timeless jewellery personal.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap split">
+      <div class="frame" id="s1" data-reveal></div>
+      <div class="story-copy" data-reveal data-reveal-delay="1">
+        <h2 class="h2">Something worth keeping close.</h2>
+        <hr class="rule" style="margin-left:0">
+        <p class="first">The jewellery we treasure most is rarely the most elaborate.</p>
+        <p>It’s the piece we reach for every morning. The one that carries a name, a date, a place, a person. The one that means something only we fully understand.</p>
+        <p>That’s why we make one necklace, and focus on making it well: a simple round pendant with a polished mirror finish, made personal by the details you choose.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section section--ivory">
+    <div class="wrap">
+      <div class="section-head" data-reveal><span class="eyebrow">What we believe</span><h2 class="h1">Personal by design.<br>Timeless by nature.</h2></div>
+      <div class="features" data-reveal>
+        <div class="feature"><span class="num">01</span><h3>Focus</h3><p>One signature piece, rather than a catalogue. Every decision we make is about this necklace.</p></div>
+        <div class="feature"><span class="num">02</span><h3>Meaning</h3><p>A name, initials, a date or a word turns a simple accessory into something that is unmistakably yours.</p></div>
+        <div class="feature"><span class="num">03</span><h3>Simplicity</h3><p>A clean circle and a reflective finish. Nothing extra — so what you add is what stands out.</p></div>
+        <div class="feature"><span class="num">04</span><h3>Care</h3><p>We ask you to check every detail before you order, because your personalisation deserves to be right.</p></div>
+        <div class="feature"><span class="num">05</span><h3>Honesty</h3><p>We only publish product details we’ve confirmed, and only share genuine reviews from real customers.</p></div>
+        <div class="feature"><span class="num">06</span><h3>Gifting</h3><p>Many of our necklaces are made for someone else. We design the whole experience with that in mind.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap narrow" style="text-align:center" data-reveal>
+      <h2 class="h2">Make it mean something.</h2>
+      <p class="lead" style="margin:1.4rem auto 2.2rem">Choose your finish, add your words and see your design come to life.</p>
+      <a class="btn btn--dark" href="necklace.html#personalise">Create your necklace</a>
+    </div>
+  </section>
+</main>
+<script src="assets/js/store-config.js"></script>
+<script src="assets/js/pendant.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/content.js"></script>
+<script>document.getElementById("s1").innerHTML = Site.shot(STORE.images.onModel, "The necklace worn", "Portrait, necklace worn", { finish: "steel", lines: ["Always"], font: STORE.product.fonts[2] });</script>
+</body>
+</html>

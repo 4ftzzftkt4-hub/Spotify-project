@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>The Signature Round Necklace — Personalised Stainless Steel Pendant | Keep Close</title>
+  <meta name="description" content="Personalise a round stainless steel pendant necklace with a name, initials or a date. Choose your finish and lettering and see your design in a live preview.">
+  <meta property="og:type" content="product">
+  <meta property="og:title" content="The Signature Round Necklace — Keep Close">
+  <meta name="theme-color" content="#fbf9f5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='17' r='11' fill='%23c8ad84'/%3E%3Ccircle cx='16' cy='17' r='9' fill='%23f6f1e9'/%3E%3C/svg%3E">
+</head>
+<body>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / <span>The Necklace</span></nav>
+
+    <div class="pdp">
+      <!-- Gallery (slide 1 is the live preview) -->
+      <section class="gallery" aria-label="Product images">
+        <div class="gallery__thumbs" id="gallery-thumbs"></div>
+        <div>
+          <div class="gallery__main" id="gallery-main" tabindex="0" aria-roledescription="carousel" aria-label="Necklace images — click to zoom, arrow keys to browse"></div>
+          <div class="gallery__dots" id="gallery-dots"></div>
+          <p class="preview__note">The preview is a digital illustration. The finished engraving may vary slightly from what you see here.</p>
+        </div>
+      </section>
+
+      <!-- Buy panel + personaliser -->
+      <section class="buy" id="personalise" aria-labelledby="title">
+        <span class="eyebrow">Personalised · Made for you</span>
+        <h1 id="title"></h1>
+        <p class="buy__intro" id="intro"></p>
+        <p class="buy__price" id="price" aria-live="polite"></p>
+
+        <div id="controls"></div>
+
+        <div class="summary" aria-labelledby="sum-title">
+          <h3 id="sum-title">Your necklace</h3>
+          <dl id="summary-rows"></dl>
+          <div class="summary__total" id="summary-total" aria-live="polite"></div>
+        </div>
+
+        <label class="confirm" id="confirm">
+          <input type="checkbox" id="confirm-box">
+          <span id="confirm-text"></span>
+        </label>
+
+        <div class="buy-row">
+          <div class="qty" role="group" aria-label="Quantity">
+            <button id="qty-dec" aria-label="Decrease quantity">−</button>
+            <output id="qty-out" aria-live="polite">1</output>
+            <button id="qty-inc" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="btn btn--dark" id="add">Add to bag</button>
+        </div>
+        <div class="buy-actions">
+          <button class="btn btn--ghost btn--block" id="buy">Buy now</button>
+          <p class="fine" id="blocker" aria-live="polite" style="margin:0;text-align:center"></p>
+        </div>
+
+        <ul class="meta-list" id="meta"></ul>
+
+        <div id="pdp-accordion" style="margin-top:36px"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- BEFORE YOU BUY -->
+  <section class="section section--ivory" aria-labelledby="byb-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Before you buy</span>
+        <h2 id="byb-title" class="h2">A few details before you make it yours.</h2>
+      </div>
+      <ul class="checklist" data-reveal>
+        <li>Check the spelling of every name and word.</li>
+        <li>Confirm your engraving text, line by line.</li>
+        <li>Review your selected lettering style.</li>
+        <li>Confirm your chosen finish.</li>
+        <li>Confirm your necklace length.</li>
+        <li>Check the pendant dimensions in the product details.</li>
+        <li>Review the estimated delivery time.</li>
+        <li>Understand our <a href="delivery.html#returns" style="text-decoration:underline">personalised product returns policy</a>.</li>
+      </ul>
+      <p class="callout" data-reveal>Your personalisation matters. Please double-check every detail before placing your order.</p>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  <section class="section" aria-labelledby="spec-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Specifications</span>
+        <h2 id="spec-title" class="h1">Every detail, considered.</h2>
+      </div>
+      <dl class="specs" data-specs data-reveal></dl>
+    </div>
+  </section>
+
+  <!-- MATERIAL -->
+  <section class="section section--linen" aria-labelledby="fin-title">
+    <div class="wrap split">
+      <div class="frame frame--square" data-reveal id="macro" style="background:linear-gradient(160deg,#ece6db,#d9ccb8)"></div>
+      <div data-reveal data-reveal-delay="1">
+        <span class="eyebrow">Material &amp; finish</span>
+        <h2 id="fin-title" class="h1">The beauty of a clean finish.</h2>
+        <p class="lead" style="margin-top:1.4rem">A mirror polish turns a simple disc into something that catches the light — and leaves the surface clear for the words you choose.</p>
+        <p class="muted">Polished surfaces show fingerprints and fine marks with everyday wear. A soft cloth is all it needs; avoid abrasive cleaners, which can dull the finish.</p>
+        <a class="link" href="care.html">Read the care guide</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section section--dark" id="guide" aria-labelledby="guide-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow" style="color:var(--champagne)">Personalisation guide</span>
+        <h2 id="guide-title" class="h1">How personalisation works.</h2>
+      </div>
+      <div class="steps">
+        <div class="step" data-reveal><span class="caps">Step 01</span><h3>Make it yours</h3><p>Choose your options and enter your personalisation. Shorter words are engraved larger and read most clearly.</p></div>
+        <div class="step" data-reveal data-reveal-delay="1"><span class="caps">Step 02</span><h3>Preview your design</h3><p>Use the live preview to check layout and style, then confirm every letter and number before adding to your bag.</p></div>
+        <div class="step" data-reveal data-reveal-delay="2"><span class="caps">Step 03</span><h3>We prepare your order</h3><p>Your personalisation travels with your order through fulfilment for production and dispatch.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section" aria-labelledby="rev-title">
+    <div class="wrap narrow">
+      <div class="section-head" style="margin-bottom:40px"><span class="eyebrow">Reviews</span><h2 id="rev-title" class="h2">In their words.</h2></div>
+      <div class="reviews-empty">
+        <p class="h3" style="margin:0">No reviews yet.</p>
+        <p>We only publish genuine reviews from verified customers. Be one of the first to wear the Signature Round Necklace.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--ivory" aria-labelledby="pfaq-title">
+    <div class="wrap narrow">
+      <div class="section-head" style="margin-bottom:40px"><span class="eyebrow">Questions</span><h2 id="pfaq-title" class="h2">Good to know.</h2></div>
+      <div id="pdp-faq"></div>
+      <p style="text-align:center;margin-top:36px"><a class="link" href="faq.html">All FAQs</a></p>
+    </div>
+  </section>
+</main>
+
+<button class="mini-preview" id="mini-preview" aria-label="Back to your design preview"></button>
+<div class="sticky-buy" id="sticky-buy">
+  <div class="sticky-buy__info"><strong>The Signature Round Necklace</strong><span id="sticky-price"></span></div>
+  <button class="btn btn--dark" id="sticky-add">Add to bag</button>
+</div>
+
+<script src="assets/js/store-config.js"></script>
+<script src="assets/js/pendant.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/content.js"></script>
+<script src="assets/js/personalise.js"></script>
+<script>
+  document.getElementById("macro").innerHTML = '<div class="shot-illus">' + Pendant.render({ finish: "steel", view: "macro", title: "Mirror finish" }) + "</div>";
+</script>
+</body>
+</html>

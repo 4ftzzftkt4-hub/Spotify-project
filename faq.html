@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>FAQ — Personalised Round Necklace | Keep Close</title>
+  <meta name="description" content="Answers about the personalised round necklace: materials, engraving, care, shipping and returns.">
+  <meta name="theme-color" content="#fbf9f5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='17' r='11' fill='%23c8ad84'/%3E%3Ccircle cx='16' cy='17' r='9' fill='%23f6f1e9'/%3E%3C/svg%3E">
+</head>
+<body>
+<main id="main">
+  <header class="page-head">
+    <div class="wrap">
+      <span class="eyebrow">Help</span>
+      <h1 class="h1">Frequently asked questions.</h1>
+      <p>Everything you need to know before you make it yours. Can’t find an answer? <a href="contact.html" style="text-decoration:underline">Contact us</a>.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap narrow" id="faq"></div>
+  </section>
+</main>
+<script src="assets/js/store-config.js"></script>
+<script src="assets/js/pendant.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/content.js"></script>
+<script>
+  const groups = Content.faqGroups();
+  document.getElementById("faq").innerHTML = groups.map(([g, items]) => `<div class="faq-group"><h2>${g}</h2>${Site.accordion(items)}</div>`).join("");
+  const s = document.createElement("script"); s.type = "application/ld+json"; s.textContent = JSON.stringify(Content.faqJsonLd()); document.head.appendChild(s);
+</script>
+</body>
+</html>

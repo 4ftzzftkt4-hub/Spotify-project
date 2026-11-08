@@ -161,10 +161,9 @@
 
   function header() {
     const here = location.pathname.split("/").pop() || "index.html";
-    const links = NAV.map(
-      ([label, href]) =>
-        `<a href="${href}" ${here === href ? 'aria-current="page"' : ""}>${label}</a>`
-    ).join("");
+    const link = ([label, href]) => `<a href="${href}" ${here === href ? 'aria-current="page"' : ""}>${label}</a>`;
+    const left = NAV.slice(0, 3).map(link).join("");
+    const right = NAV.slice(3).map(link).join("");
     return `
       ${PREVIEW ? `<div class="preview-bar" role="note">Pre-launch preview · details marked <span class="tbc">◇</span> await supplier confirmation and are hidden in live mode</div>` : ""}
       <header class="site-header">
@@ -172,9 +171,10 @@
           <button class="icon-btn menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
             <span></span><span></span>
           </button>
-          <nav class="nav nav--left" aria-label="Primary">${links}</nav>
+          <nav class="nav nav--left" aria-label="Primary">${left}</nav>
           <a class="logo" href="index.html" aria-label="${esc(S.brand.name)} — home">${esc(S.brand.name)}</a>
           <div class="header-actions">
+            <nav class="nav nav--right" aria-label="Help">${right}</nav>
             <a class="shop-link" href="necklace.html#personalise">Shop</a>
             <button class="icon-btn cart-toggle" aria-label="Open bag" aria-controls="cart">
               <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
