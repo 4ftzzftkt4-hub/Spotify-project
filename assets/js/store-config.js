@@ -49,25 +49,35 @@ window.STORE = {
 
   /* Photography. Leave null to use the built-in pendant illustration.
      Drop files into assets/img/ and reference them here. */
+  /* Photography. Generated with Artlist from the real CJ product photos, then reviewed.
+     engraveBase: top-down photos of the BLANK disc used for the live engraving preview.
+     cx/cy/rx/ry = disc face centre and radii as fractions of the photo (measured). */
   images: {
-    hero: null,               // Model wearing the necklace, minimalist luxury setting
-    heroAlt: "Model wearing the personalised round pendant necklace",
-    onModel: null,            // Close-up portrait, necklace worn
-    packaging: null,          // Packaging / gift presentation (CJ ships the necklace only — source your own boxes first)
-    /* Real product photos synced to Shopify by the CJ app. Shown in the product gallery. */
+    hero: "assets/img/hero.jpg",
+    heroAlt: "A woman in an ivory linen shirt wearing the silver round pendant necklace",
+    onModel: "assets/img/onmodel.jpg",
+    onModelAlt: "The gold round pendant resting just below the collarbone",
+    macro: "assets/img/macro.jpg",
+    macroAlt: "Close-up of the polished mirror edge of the stainless steel disc",
+    gift: "assets/img/gift.jpg",
+    giftAlt: "Hands holding the rose gold necklace over ivory linen with a champagne ribbon",
+    packaging: null, // CJ ships the necklace only — add a photo once you source boxes
+    lifestyle: [
+      { src: "assets/img/life-knit.jpg", alt: "Silver necklace worn over an oatmeal knit jumper with denim", brief: "Everyday" },
+      { src: "assets/img/life-shirt.jpg", alt: "Silver necklace layered with a fine chain over a white shirt", brief: "Layered" },
+      { src: "assets/img/life-evening.jpg", alt: "Gold necklace worn with a black square-neck dress in evening light", brief: "Evening" },
+      { src: "assets/img/gift.jpg", alt: "Rose gold necklace held in open hands with a ribbon", brief: "Gifting" },
+    ],
+    engraveBase: {
+      steel: { src: "assets/img/base-steel.jpg", cx: 0.501, cy: 0.586, rx: 0.162, ry: 0.141 },
+      gold:  { src: "assets/img/base-gold.jpg",  cx: 0.497, cy: 0.566, rx: 0.169, ry: 0.155 },
+      rose:  { src: "assets/img/base-rose.jpg",  cx: 0.500, cy: 0.578, rx: 0.211, ry: 0.200 },
+    },
+    /* Real product photos synced to Shopify by the CJ app. */
     supplier: [
       "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/02976d29-d2d3-4e7a-aa64-82cc2628584c.jpg?v=1794178519",
-      "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/d7eab10e-16d2-4521-bf9f-1478c03a9e49.jpg?v=1794178519",
       "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/5c6f78fd-f538-45cf-9268-c30bdcb9cd29.jpg?v=1794178519",
-      "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/06f68416-92ec-4449-b634-d84a37ca15c7.jpg?v=1794178519",
       "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/c45f952e-38ba-4554-9d19-1d6cd805446f.jpg?v=1794178519",
-      "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/24da8f72-6abb-46c9-bb09-4523c011822f.jpg?v=1794178519",
-    ],
-    lifestyle: [
-      { src: null, alt: "Necklace worn with a casual knit and denim", brief: "Everyday — knitwear, daylight" },
-      { src: null, alt: "Necklace layered with a fine chain over a white shirt", brief: "Layered — open-collar shirt" },
-      { src: null, alt: "Necklace worn with evening wear", brief: "Evening — black neckline, warm light" },
-      { src: null, alt: "Necklace in its gift presentation", brief: "Gifting — hands, packaging, ribbon" },
     ],
   },
 

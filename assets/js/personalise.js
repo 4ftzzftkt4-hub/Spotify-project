@@ -50,35 +50,17 @@
   const imgs = S.images;
   const dia = spec("diameter");
   function slides() {
-    const f = state.finish;
-    const list = [
-      { id: "design", label: "Your design", live: true },
-      { id: "front", label: "Front · polished", html: () => Pendant.render({ finish: f, view: "pendant", title: "Front of pendant" }) },
-      { id: "back", label: "Back view", html: () => Pendant.render({ finish: f, view: "pendant", side: "back", title: "Back of pendant" }) },
-      { id: "macro", label: "Mirror finish close-up", html: () => Pendant.render({ finish: f, view: "macro", title: "Polished mirror finish" }) },
-      { id: "model", label: "Worn", html: () => Site.shot(imgs.onModel, "The necklace worn", "On model, collarbone close-up", { finish: f, view: "full" }), photo: !!imgs.onModel },
-      { id: "chain", label: "Chain detail", html: () => Pendant.render({ finish: f, view: "chain", title: "Chain and bail detail" }) },
-    ];
-    const photos = (imgs.supplier || []).map((src, i) => ({
-      id: "photo" + i, label: "Product photo", photo: true,
-      html: () => `<img src="${esc(src)}" alt="The round stainless steel pendant necklace, product photo ${i + 1}" loading="lazy" style="object-fit:contain;background:#fff">`,
-    }));
-    // Real photos replace the illustrated product views; the live design slide stays first.
-    if (photos.length) list.splice(1, 3, ...photos);
-    const chainIdx = list.findIndex((x) => x.id === "chain");
-    if (photos.length && chainIdx > -1) list.splice(chainIdx, 1);
-    if (hasValue(dia)) {
-      list.push({
-        id: "scale", label: "Scale",
-        html: () => `<div class="scale-ref"><div class="scale-ref__inner">
-          <div class="scale-ref__coin" style="width:110px">${Pendant.render({ finish: f, view: "pendant", chain: false })}<br>${esc(dia.value)} diameter${flag(dia)}</div>
-          <div><div class="ruler" aria-hidden="true"></div><div class="scale-ref__coin" style="margin-top:8px">Illustrative scale</div></div></div></div>`,
-      });
-    }
-    const pack = spec("packaging");
-    if (imgs.packaging) {
-      list.push({ id: "pack", label: "Packaging", html: () => Site.shot(imgs.packaging, "Packaging presentation", "Packaging — confirm before showing", { finish: f, view: "pendant" }), photo: !!imgs.packaging });
-    }
+    const photo = (id, label, src, alt, fit) => ({
+      id, label, photo: true,
+      html: () => `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy"${fit ? ' style="object-fit:contain;background:#fff"' : ""}>`,
+    });
+    const list = [{ id: "design", label: "Your design", live: true }];
+    if (imgs.hero) list.push(photo("worn", "Worn · shown at true size", imgs.hero, imgs.heroAlt));
+    if (imgs.onModel) list.push(photo("close", "On the collarbone", imgs.onModel, imgs.onModelAlt));
+    if (imgs.macro) list.push(photo("macro", "Mirror-polished edge", imgs.macro, imgs.macroAlt));
+    (imgs.lifestyle || []).slice(0, 3).forEach((l, i) => l.src && list.push(photo("life" + i, l.brief, l.src, l.alt)));
+    (imgs.supplier || []).forEach((src, i) => list.push(photo("cj" + i, "Supplier photo", src, `Supplier photo of the round pendant necklace ${i + 1}`, true)));
+    if (imgs.packaging) list.push(photo("pack", "Packaging", imgs.packaging, "Packaging presentation"));
     return list;
   }
 
@@ -87,13 +69,13 @@
   function buildGallery() {
     SLIDES = slides();
     $("#gallery-main").innerHTML =
-      SLIDES.map((s, i) => `<div class="gallery__slide ${i === current ? "is-active" : ""}" data-i="${i}" role="group" aria-roledescription="slide" aria-label="${esc(s.label)}"><div class="zoomable">${s.live ? '<div id="live" style="width:100%;height:100%;display:grid;place-items:center"></div>' : s.html()}</div></div>`).join("") +
+      SLIDES.map((s, i) => `<div class="gallery__slide ${i === current ? "is-active" : ""}" data-i="${i}" role="group" aria-roledescription="slide" aria-label="${esc(s.label)}"><div class="zoomable">${s.live ? '<div id="live" class="engrave-host"></div>' : s.html()}</div></div>`).join("") +
       `<span class="gallery__label" id="gallery-label">${esc(SLIDES[current].label)}</span>
        ${canBack ? `<div class="sides preview__toggle" role="tablist" aria-label="Preview side" id="live-sides"><button role="tab" data-side="front" aria-selected="${state.side === "front"}">Front</button><button role="tab" data-side="back" aria-selected="${state.side === "back"}">Back</button></div>` : ""}
        <button class="gallery__nav gallery__nav--prev" aria-label="Previous image">‹</button>
        <button class="gallery__nav gallery__nav--next" aria-label="Next image">›</button>`;
     $("#gallery-thumbs").innerHTML = SLIDES.map(
-      (s, i) => `<button class="gallery__thumb" data-go="${i}" aria-label="${esc(s.label)}" aria-current="${i === current}">${s.live ? Pendant.render({ finish: state.finish, lines: state.front, font: fontById(state.font), view: "pendant", chain: false }) : s.html()}</button>`
+      (s, i) => `<button class="gallery__thumb" data-go="${i}" aria-label="${esc(s.label)}" aria-current="${i === current}">${s.live ? '<div class="engrave-host" id="live-thumb"></div>' : s.html()}</button>`
     ).join("");
     $("#gallery-dots").innerHTML = SLIDES.map((s, i) => `<button data-go="${i}" aria-label="${esc(s.label)}" aria-current="${i === current}"></button>`).join("");
     renderLive(false);
@@ -114,22 +96,21 @@
     if (!host) return;
     const side = canBack ? state.side : "front";
     const lines = side === "back" ? state.back : state.front;
-    const draw = () => {
-      host.innerHTML = Pendant.render({
-        finish: state.finish, lines, font: fontById(state.font), side, view: "full",
-        placeholder: side === "back" ? "BACK" : canFront ? "YOUR TEXT" : "",
-        title: `Preview of your necklace, ${side}`,
-      });
+    const opts = {
+      finish: state.finish, lines, font: state.font, side,
+      placeholder: side === "back" ? "BACK" : canFront ? "YOUR TEXT" : "",
+      title: `Preview of your necklace, ${side}`,
     };
     if (animate && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      host.style.transition = "transform .35s ease";
+      host.style.transition = "transform .3s ease, opacity .3s ease";
       host.style.transform = "rotateY(90deg)";
-      setTimeout(() => { draw(); host.style.transform = "rotateY(0)"; }, 340);
-    } else draw();
+      host.style.opacity = ".4";
+      setTimeout(() => { Engrave.mount(host, opts); host.style.transform = "rotateY(0)"; host.style.opacity = "1"; }, 300);
+    } else Engrave.mount(host, opts);
     const mini = $("#mini-preview");
-    if (mini) mini.innerHTML = Pendant.render({ finish: state.finish, lines, font: fontById(state.font), side, view: "pendant", chain: false });
-    const t = $(".gallery__thumb[data-go='0']");
-    if (t) t.innerHTML = Pendant.render({ finish: state.finish, lines: state.front, font: fontById(state.font), view: "pendant", chain: false });
+    if (mini) Engrave.mount(mini, { ...opts, placeholder: "", zoom: 2.4 });
+    const t = $("#live-thumb");
+    if (t) Engrave.mount(t, { finish: state.finish, lines: state.front, font: state.font, zoom: 2 });
   }
 
   /* ---------- controls ---------- */

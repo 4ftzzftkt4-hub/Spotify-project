@@ -256,8 +256,7 @@
     }
     body.innerHTML = items
       .map((i) => {
-        const font = fontById(i.cfg.font);
-        const thumb = Pendant.render({ finish: i.cfg.finish, lines: i.cfg.front, font, view: "pendant", chain: false, title: "Your necklace" });
+        const thumb = Engrave.tag({ finish: i.cfg.finish, lines: i.cfg.front, font: i.cfg.font, zoom: 2.2, title: "Your necklace" });
         return `<article class="cart-item">
           <div class="cart-item__thumb">${thumb}</div>
           <div class="cart-item__info">
@@ -276,6 +275,7 @@
         </article>`;
       })
       .join("");
+    Engrave.mountAll(body);
     const ship = S.shipping;
     foot.innerHTML = `
       <div class="cart-total"><span>Subtotal</span><strong>${money(Cart.total())}</strong></div>
@@ -367,9 +367,7 @@
   /* Image slot: real photo if configured, otherwise the illustration. */
   function shot(src, alt, brief, fallbackOpts) {
     if (src) return `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy">`;
-    return `<div class="shot-illus">${Pendant.render(fallbackOpts || { finish: "steel" })}${
-      PREVIEW && brief ? `<span class="shot-brief">Photo slot · ${esc(brief)}</span>` : ""
-    }</div>`;
+    return Engrave.tag(Object.assign({ finish: "steel" }, fallbackOpts || {}));
   }
 
   /* Render spec rows (only those with values that may be shown). */
@@ -426,6 +424,7 @@
     updateCount();
     initAccordions();
     initReveal();
+    Engrave.mountAll(document);
   }
 
   window.Site = {

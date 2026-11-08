@@ -194,6 +194,7 @@
 
 <script src="assets/js/store-config.js"></script>
 <script src="assets/js/pendant.js"></script>
+<script src="assets/js/engrave.js"></script>
 <script src="assets/js/site.js"></script>
 <script src="assets/js/content.js"></script>
 <script>
@@ -204,8 +205,7 @@
   // Hero
   $("#hero-visual").innerHTML = imgs.hero
     ? `<img src="${esc(imgs.hero)}" alt="${esc(imgs.heroAlt)}" fetchpriority="high">`
-    : `<div class="hero__pendant">${Pendant.render({ finish: "steel", lines: ["A · J"], font: P.fonts[0], title: "The Signature Round Necklace" })}</div>
-       ${PREVIEW ? `<span class="hero__caption">Illustration · replace with campaign photography</span>` : ""}`;
+    : Engrave.tag({ finish: "steel", lines: ["A · J"], font: "classic" });
 
   // Trust strip — only claims backed by config
   const icons = {
@@ -227,30 +227,29 @@
     .join("");
 
   // Story image
-  $("#story-frame").innerHTML = shot(imgs.onModel, "The necklace worn close to the collarbone", "Close-up portrait, necklace worn",
-    { finish: "gold", lines: ["Always"], font: P.fonts.find((f) => f.id === "script") || P.fonts[0] });
+  $("#story-frame").innerHTML = shot(imgs.onModel, imgs.onModelAlt, "", { finish: "gold", lines: ["Always"], font: "script" });
 
   // Signature stage
   $("#sig-desc").textContent = P.description;
   const stage = [
-    { finish: "steel", lines: [], cap: "Front · polished", placeholder: "" },
-    { finish: "steel", lines: ["Mia"], cap: "Personalised", font: P.fonts[0] },
-    { finish: "steel", lines: ["12.04.2019"], cap: "A date to keep", font: P.fonts[1] },
+    { finish: "steel", lines: [], cap: "Polished silver" },
+    { finish: "gold", lines: ["Mia"], cap: "Personalised", font: "classic" },
+    { finish: "rose", lines: ["12.04.2019"], cap: "A date to keep", font: "modern" },
   ];
   $("#sig-stage").innerHTML = stage
-    .map((s, i) => `<figure data-reveal data-reveal-delay="${i}"><div class="frame">${`<div class="shot-illus">${Pendant.render({ ...s, view: "pendant", chain: true })}</div>`}</div><figcaption>${s.cap}</figcaption></figure>`)
+    .map((s, i) => `<figure data-reveal data-reveal-delay="${i}"><div class="frame">${Engrave.tag({ finish: s.finish, lines: s.lines, font: s.font, zoom: 1.35 })}</div><figcaption>${s.cap}</figcaption></figure>`)
     .join("");
   $("#sig-price").innerHTML = visible(P.price) ? `From ${money(P.price.value)}${flag(P.price)}` : "";
 
   // Why tiles
   const why = [
-    ["A timeless silhouette", "A simple round pendant designed to complement everyday outfits and personal styles.", { finish: "steel", lines: [] }],
-    ["Made personal", "Add a name, initials, a date or a word, and a simple accessory becomes unmistakably yours.", { finish: "steel", lines: ["E · R"], font: P.fonts[3] }],
-    ["Everyday style", "Light enough to forget you’re wearing it; considered enough to be noticed.", { finish: "gold", lines: [] }],
-    ["A meaningful gift", "A thoughtful piece for someone important — chosen by you, personalised for them.", { finish: "rose", lines: ["Love, Mum"], font: P.fonts[2] }],
+    ["A timeless silhouette", "A simple round pendant designed to complement everyday outfits and personal styles.", { img: imgs.macro, alt: imgs.macroAlt }],
+    ["Made personal", "Add a name, initials, a date or a word, and a simple accessory becomes unmistakably yours.", { finish: "steel", lines: ["E · R"], font: "minimal", zoom: 1.6 }],
+    ["Everyday style", "Light enough to forget you’re wearing it; considered enough to be noticed.", { img: imgs.lifestyle[0].src, alt: imgs.lifestyle[0].alt }],
+    ["A meaningful gift", "A thoughtful piece for someone important — chosen by you, personalised for them.", { finish: "rose", lines: ["Love, Mum"], font: "script", zoom: 1.6 }],
   ];
   $("#why-tiles").innerHTML = why
-    .map(([h, p, o], i) => `<article class="tile" data-reveal data-reveal-delay="${i}"><div class="frame"><div class="shot-illus">${Pendant.render({ ...o, view: "pendant" })}</div></div><h3>${h}</h3><p>${p}</p></article>`)
+    .map(([h, p, o], i) => `<article class="tile" data-reveal data-reveal-delay="${i}"><div class="frame">${o.img ? `<img src="${esc(o.img)}" alt="${esc(o.alt)}" loading="lazy">` : Engrave.tag(o)}</div><h3>${h}</h3><p>${p}</p></article>`)
     .join("");
 
   // Features
@@ -273,13 +272,12 @@
     .join("");
 
   // Gifting
-  $("#gift-frame").innerHTML = shot(imgs.packaging, "Necklace gift presentation", "Packaging & gift presentation",
-    { finish: "rose", lines: ["For you"], font: P.fonts[2] });
+  $("#gift-frame").innerHTML = shot(imgs.gift, imgs.giftAlt, "", { finish: "rose", lines: ["For you"], font: "script" });
   $("#gift-extra").innerHTML = visible(P.giftWrap) && P.giftWrap.available
     ? `<p class="muted">Gift presentation available at checkout${flag(P.giftWrap)}.</p>` : "";
 
   // Material
-  $("#mat-frame").innerHTML = `<div class="shot-illus">${Pendant.render({ finish: "steel", view: "macro" })}</div>`;
+  $("#mat-frame").innerHTML = shot(imgs.macro, imgs.macroAlt, "", { finish: "steel", zoom: 2 });
   const matBits = [];
   if (hasValue(mat)) matBits.push(`Crafted in ${esc(mat.value.toLowerCase())}${flag(mat)}`);
   const fin = spec("finish");

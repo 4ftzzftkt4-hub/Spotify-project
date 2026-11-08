@@ -130,5 +130,5 @@
     </svg>`;
   }
 
-  window.Pendant = { render, PALETTES };
+  window.Pendant = { render, PALETTES, layoutText };
 })();

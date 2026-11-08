@@ -467,3 +467,15 @@ textarea.input { min-height: 140px; resize: vertical; }
 .gallery__thumb .shot-brief, .cart-item__thumb .shot-brief { display: none; }
 .lookbook .frame:nth-child(4) { grid-column: span 2; aspect-ratio: 16 / 9; }
 @media (max-width: 860px) { .hero__caption { top: 14px; bottom: auto; } }
+
+/* Photo engraving preview */
+.engrave-host { position: absolute; inset: 0; overflow: hidden; }
+.engrave-host canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.zoomable, .cart-item__thumb { position: relative; }
+.hero__visual > img, .hero__visual > .engrave-host { z-index: 1; }
+.cart-item__thumb { padding: 0; overflow: hidden; }
+.mini-preview { padding: 0; overflow: hidden; }
+.mini-preview .engrave-host { border-radius: 50%; }
+.gallery__thumb { padding: 0; }
+.gallery__slide img { object-fit: cover; }
+.lookbook img { object-position: center 30%; }

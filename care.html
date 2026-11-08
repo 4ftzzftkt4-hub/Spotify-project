@@ -40,12 +40,13 @@
 </main>
 <script src="assets/js/store-config.js"></script>
 <script src="assets/js/pendant.js"></script>
+<script src="assets/js/engrave.js"></script>
 <script src="assets/js/site.js"></script>
 <script src="assets/js/content.js"></script>
 <script>
   const { S, esc } = Site;
   document.getElementById("care").innerHTML = S.care.map((c, i) => `<div class="feature"><span class="num">${String(i + 1).padStart(2, "0")}</span><h3>${esc(c.title)}</h3><p>${esc(c.body)}</p></div>`).join("");
-  document.getElementById("macro").innerHTML = '<div class="shot-illus">' + Pendant.render({ finish: "steel", view: "macro" }) + "</div>";
+  document.getElementById("macro").innerHTML = Site.shot(S.images.macro, S.images.macroAlt, "", { finish: "steel", zoom: 2 });
   document.getElementById("supplier-care").textContent = "This is general guidance for polished stainless steel jewellery. If anything in the instructions supplied with your necklace differs, follow those instructions.";
 </script>
 </body>
