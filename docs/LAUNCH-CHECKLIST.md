@@ -4,27 +4,25 @@ The site runs in **preview mode** (`STORE.mode = "preview"` in `assets/js/store-
 Anything marked `confirmed: false` shows with a ◇ marker in preview and is **hidden in live mode**.
 Work through this list, set each item to `confirmed: true`, then switch `mode` to `"live"`.
 
-## 1. Get the product into Shopify
-- [ ] In Shopify admin → Apps → CJdropshipping, list the necklace to the store as a **draft**:
-      https://www.cjdropshipping.com/product/personalized-simple-round-brand-necklace-polished-mirror-stainless-steel-p-1563137380192890880.html
-- [ ] Copy each finish variant's numeric ID into `shopify.variantIds` and the store domain into `shopify.domain`.
+## 1. Product in Shopify ✅
+- [x] Listed via the CJ app → Shopify product `9117655629942`
+- [x] Variant IDs and store domain added to `shopify` in the config (checkout tested: correct variant + engraving properties posted)
+- [ ] **Set the Shopify product to Draft or Unlisted** — it was synced as *Active* at the CJ app's default prices (A$28–32) with product type "Linear Shower Drain"
+- [ ] Set the Shopify variant prices to match `product.price` (Shopify charges its own price, not the website's)
 
-## 2. Confirm with the supplier (CJ listing / CJ support)
-| Config field | Current value | Status |
-|---|---|---|
-| `specs.pendantMaterial` | Stainless steel (from title) | verify |
-| `specs.diameter` | 20 mm (search-index summary) | verify |
-| `specs.chainWidth` | 1.5 mm (search-index summary) | verify |
-| `specs.finish` | Polished mirror finish (from title) | verify |
-| `specs.chainMaterial`, `thickness`, `chainType`, `length`, `weight` | — | fill in |
-| `specs.method` (laser / engraved / printed?) | — | fill in |
-| `specs.packaging` | — | fill in |
-| `finishes` (silver / gold / rose gold) | listing summary | verify each |
-| `chainLengths` | none | add verified lengths |
-| `engraving.front` / `.back` — is custom engraving offered, max characters, lines, both sides? | assumed | **critical** |
-| `fonts` — which lettering styles can CJ produce? | 4 assumed | remove any they can't |
-| `shipping.*` to Australia — processing time, delivery time, tracking, cost | — | fill in |
-| `giftWrap` / `giftMessage` | off | enable only if offered |
+## 2. Supplier facts
+Verified from the CJ listing (now `confirmed: true`): stainless steel · 20 mm disc · 1.5 mm chain · polished mirror finish ·
+silver / gold-tone / rose gold-tone (electroplated). Cost per item A$9.79–10.23.
+
+Still to confirm with CJ:
+| Config field | Why |
+|---|---|
+| `engraving.front` / `.back` | **Critical.** The listing never mentions engraving — "Personalized" is only in the title. Ask CJ whether they engrave custom text on SKU CJLX1550569, how (laser?), max characters, both sides, and the extra cost/lead time. |
+| `fonts` | Which lettering styles CJ can produce. Remove any they can't. |
+| `specs.length`, `chainType`, `chainMaterial` | Not stated on the listing. |
+| `specs.weight` | 11 g synced by the app — may be shipping weight. |
+| `specs.packaging` | CJ packing list is **necklace only — no box**. Source gift boxes or pouches before advertising packaging. |
+| `shipping.*` to Australia | Processing time, delivery time, tracking, cost. |
 
 ## 3. Business details
 - [ ] `brand.name` (working name "Keep Close"), `brand.email`, social links

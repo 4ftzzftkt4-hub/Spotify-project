@@ -59,6 +59,14 @@
       { id: "model", label: "Worn", html: () => Site.shot(imgs.onModel, "The necklace worn", "On model, collarbone close-up", { finish: f, view: "full" }), photo: !!imgs.onModel },
       { id: "chain", label: "Chain detail", html: () => Pendant.render({ finish: f, view: "chain", title: "Chain and bail detail" }) },
     ];
+    const photos = (imgs.supplier || []).map((src, i) => ({
+      id: "photo" + i, label: "Product photo", photo: true,
+      html: () => `<img src="${esc(src)}" alt="The round stainless steel pendant necklace, product photo ${i + 1}" loading="lazy" style="object-fit:contain;background:#fff">`,
+    }));
+    // Real photos replace the illustrated product views; the live design slide stays first.
+    if (photos.length) list.splice(1, 3, ...photos);
+    const chainIdx = list.findIndex((x) => x.id === "chain");
+    if (photos.length && chainIdx > -1) list.splice(chainIdx, 1);
     if (hasValue(dia)) {
       list.push({
         id: "scale", label: "Scale",
@@ -68,7 +76,7 @@
       });
     }
     const pack = spec("packaging");
-    if (imgs.packaging || (PREVIEW && pack)) {
+    if (imgs.packaging) {
       list.push({ id: "pack", label: "Packaging", html: () => Site.shot(imgs.packaging, "Packaging presentation", "Packaging — confirm before showing", { finish: f, view: "pendant" }), photo: !!imgs.packaging });
     }
     return list;

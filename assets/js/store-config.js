@@ -32,14 +32,18 @@ window.STORE = {
      store domain and each variant's numeric ID below. Personalisation is sent
      as line-item properties, visible on every order in Shopify admin. */
   shopify: {
-    domain: null,                  // e.g. "your-store.myshopify.com"
-    variantIds: { steel: null, gold: null, rose: null },
+    domain: "emiqwd-sr.myshopify.com",
+    // From the CJ-synced Shopify product (gid://shopify/Product/9117655629942)
+    variantIds: { steel: "49307011907702", gold: "49307011842166", rose: "49307011874934" },
+    // Supplier SKUs per finish, for reference: steel CJLX155056901AZ · gold CJLX155056902BY · rose CJLX155056903CX
   },
 
   supplier: {
     name: "CJdropshipping",
     productUrl: "https://www.cjdropshipping.com/product/personalized-simple-round-brand-necklace-polished-mirror-stainless-steel-p-1563137380192890880.html",
-    sku: null,
+    sku: "CJLX1550569",
+    shopifyProductId: "9117655629942",
+    unitCostAUD: { steel: 9.79, gold: 10.10, rose: 10.23 }, // from Shopify cost per item, synced by CJ app
     personalisationWorkflow: null, // e.g. "CJ POD engraving" / "manual — email supplier" once tested
   },
 
@@ -49,7 +53,16 @@ window.STORE = {
     hero: null,               // Model wearing the necklace, minimalist luxury setting
     heroAlt: "Model wearing the personalised round pendant necklace",
     onModel: null,            // Close-up portrait, necklace worn
-    packaging: null,          // Packaging / gift presentation (only once packaging confirmed)
+    packaging: null,          // Packaging / gift presentation (CJ ships the necklace only — source your own boxes first)
+    /* Real product photos synced to Shopify by the CJ app. Shown in the product gallery. */
+    supplier: [
+      "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/02976d29-d2d3-4e7a-aa64-82cc2628584c.jpg?v=1794178519",
+      "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/d7eab10e-16d2-4521-bf9f-1478c03a9e49.jpg?v=1794178519",
+      "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/5c6f78fd-f538-45cf-9268-c30bdcb9cd29.jpg?v=1794178519",
+      "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/06f68416-92ec-4449-b634-d84a37ca15c7.jpg?v=1794178519",
+      "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/c45f952e-38ba-4554-9d19-1d6cd805446f.jpg?v=1794178519",
+      "https://cdn.shopify.com/s/files/1/0721/3609/7910/files/24da8f72-6abb-46c9-bb09-4523c011822f.jpg?v=1794178519",
+    ],
     lifestyle: [
       { src: null, alt: "Necklace worn with a casual knit and denim", brief: "Everyday — knitwear, daylight" },
       { src: null, alt: "Necklace layered with a fine chain over a white shirt", brief: "Layered — open-collar shirt" },
@@ -71,28 +84,30 @@ window.STORE = {
 
     /* Specifications. `source` records where the value came from. */
     specs: [
-      { key: "pendantMaterial", label: "Pendant material", value: "Stainless steel", source: "Supplier product title", confirmed: false },
+      { key: "pendantMaterial", label: "Material", value: "Stainless steel", source: "CJ listing: Material: Stainless steel", confirmed: true },
       { key: "chainMaterial",   label: "Chain material",   value: null, source: null, confirmed: false },
-      { key: "diameter",        label: "Pendant diameter", value: "20 mm", source: "Supplier listing summary (search index) — verify on listing", confirmed: false },
+      { key: "diameter",        label: "Pendant diameter", value: "20 mm", source: "CJ listing: disc 20mm", confirmed: true },
       { key: "thickness",       label: "Pendant thickness", value: null, source: null, confirmed: false },
-      { key: "chainWidth",      label: "Chain width",      value: "1.5 mm", source: "Supplier listing summary (search index) — verify on listing", confirmed: false },
+      { key: "chainWidth",      label: "Chain thickness",  value: "1.5 mm", source: "CJ listing: chain thickness 1.5mm", confirmed: true },
       { key: "chainType",       label: "Chain style",      value: null, source: null, confirmed: false },
       { key: "length",          label: "Necklace length",  value: null, source: null, confirmed: false },
-      { key: "finish",          label: "Surface finish",   value: "Polished mirror finish", source: "Supplier product title", confirmed: false },
-      { key: "weight",          label: "Weight",           value: null, source: null, confirmed: false },
+      { key: "finish",          label: "Surface finish",   value: "Polished mirror finish", source: "CJ product title: Polished Mirror", confirmed: true },
+      { key: "weight",          label: "Weight",           value: "Approx. 11 g", source: "Shopify variant weight synced by CJ app (may be shipping weight) — confirm", confirmed: false },
       { key: "method",          label: "Personalisation method", value: null, source: null, confirmed: false },
-      { key: "packaging",       label: "Packaging",        value: null, source: null, confirmed: false },
+      { key: "packaging",       label: "Packaging",        value: null, source: "CJ packing list: Necklace ×1 — no box or pouch included", confirmed: false },
     ],
 
     finishes: [
-      { id: "steel", label: "Silver",    detail: "Polished steel",      priceDelta: 0, confirmed: false },
-      { id: "gold",  label: "Gold",      detail: "Gold-tone plating",   priceDelta: 0, confirmed: false },
-      { id: "rose",  label: "Rose gold", detail: "Rose gold-tone plating", priceDelta: 0, confirmed: false },
+      { id: "steel", label: "Silver",    detail: "Stainless steel",           priceDelta: 0, confirmed: true },
+      { id: "gold",  label: "Gold",      detail: "Gold-tone electroplated",   priceDelta: 0, confirmed: true },
+      { id: "rose",  label: "Rose gold", detail: "Rose gold-tone electroplated", priceDelta: 0, confirmed: true },
     ],
 
     /* Add verified lengths, e.g. { id: "45", label: "45 cm", detail: "Sits at the collarbone", priceDelta: 0, confirmed: true } */
     chainLengths: [],
 
+    /* ⚠ The CJ listing says nothing about engraving — "Personalized" appears only in the title.
+       Keep these unconfirmed until CJ confirms they will engrave customer text on this SKU. */
     engraving: {
       front: { enabled: true, maxLines: 3, maxCharsPerLine: 12, confirmed: false },
       back:  { enabled: true, maxLines: 3, maxCharsPerLine: 14, priceDelta: 10, confirmed: false },
