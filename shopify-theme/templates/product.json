@@ -14,7 +14,7 @@
           "type": "tab",
           "settings": {
             "title": "Care",
-            "content": "<p>Wipe with a soft, dry cloth. Remove before swimming, showering or exercise. Put perfume and lotion on before your necklace. Store it on its own in a soft pouch.</p><p><a href=\"/pages/jewellery-care\">Full care guide</a></p>"
+            "content": "<p>Wipe with a soft, dry cloth. Remove before swimming, showering or exercise. Put perfume and lotion on before your necklace. Store it on its own in a soft pouch.</p>"
           }
         },
         "tab-3": {
@@ -95,8 +95,8 @@
         "square": true,
         "background": "section--linen",
         "text": "<p>A mirror polish turns a simple disc into something that catches the light, and leaves the surface clear for the words you choose.</p><p>Polished surfaces show fingerprints and fine marks with everyday wear. A soft cloth is all it needs; avoid abrasive cleaners, which can dull the finish.</p>",
-        "button": "Read the care guide",
-        "link": "/pages/jewellery-care",
+        "button": "",
+        "link": "",
         "asset": "macro.jpg",
         "alt": "Close-up of the polished mirror edge"
       }
@@ -148,7 +148,7 @@
       "settings": {
         "heading": "Good to know.",
         "link_label": "All FAQs",
-        "link": "/pages/faq"
+        "link": "/pages/keep-close-faq"
       },
       "blocks": {
         "question-1": {

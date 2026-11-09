@@ -2,8 +2,8 @@
   assign left = linklists[section.settings.menu_left].links
   assign right = linklists[section.settings.menu_right].links
   assign product_url = routes.all_products_collection_url
-  if section.settings.product != blank
-    assign product_url = section.settings.product.url
+  if settings.signature_product != blank
+    assign product_url = settings.signature_product.url
   endif
 -%}
 <header class="site-header">
@@ -22,7 +22,7 @@
         {%- if right.size > 0 -%}
           {%- for link in right -%}<a href="{{ link.url }}" {% if link.current %}aria-current="page"{% endif %}>{{ link.title }}</a>{%- endfor -%}
         {%- else -%}
-          <a href="/pages/jewellery-care">Jewellery Care</a><a href="/pages/faq">FAQ</a><a href="/pages/contact">Contact</a>
+          <a href="/pages/keep-close-faq">FAQ</a><a href="/pages/keep-close-contact">Contact</a>
         {%- endif -%}
       </nav>
       <a class="shop-link" href="{{ product_url }}#personalise">Shop</a>
@@ -37,7 +37,7 @@
       {%- for link in left -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
       {%- for link in right -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
     {%- else -%}
-      <a href="{{ product_url }}">The Necklace</a><a href="/pages/our-story">Our Story</a><a href="/pages/jewellery-care">Jewellery Care</a><a href="/pages/faq">FAQ</a><a href="/pages/contact">Contact</a>
+      <a href="{{ product_url }}">The Necklace</a><a href="{{ product_url }}#personalise">Personalise</a><a href="/pages/our-story">Our Story</a><a href="/pages/keep-close-faq">FAQ</a><a href="/pages/keep-close-contact">Contact</a>
     {%- endif -%}
     <a class="btn btn--dark" href="{{ product_url }}#personalise">Create your necklace</a>
   </nav>
@@ -47,9 +47,8 @@
   "name": "Header",
   "class": "header-wrapper",
   "settings": [
-    { "type": "product", "id": "product", "label": "Signature product", "info": "Used for the Shop and Personalise links." },
     { "type": "link_list", "id": "menu_left", "label": "Left menu", "info": "Leave empty to use The Necklace, Personalise and Our Story." },
-    { "type": "link_list", "id": "menu_right", "label": "Right menu", "info": "Leave empty to use Jewellery Care, FAQ and Contact." }
+    { "type": "link_list", "id": "menu_right", "label": "Right menu", "info": "Leave empty to use FAQ and Contact." }
   ]
 }
 {% endschema %}

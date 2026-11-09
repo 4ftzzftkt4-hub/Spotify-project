@@ -2,7 +2,7 @@
 <section class="section section--tight">
   <div class="wrap narrow">
   {%- if cart.item_count == 0 -%}
-    <div class="cart-empty"><p>{{ 'cart.empty' | t }}</p><a class="btn btn--dark" href="{{ routes.all_products_collection_url }}">Create your necklace</a></div>
+    <div class="cart-empty"><p>{{ 'cart.empty' | t }}</p><a class="btn btn--dark" href="{{ settings.signature_product.url | default: routes.all_products_collection_url }}#personalise">Create your necklace</a></div>
   {%- else -%}
     <form action="{{ routes.cart_url }}" method="post" id="cart-page">
       {%- for item in cart.items -%}

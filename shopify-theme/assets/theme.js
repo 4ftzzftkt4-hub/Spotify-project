@@ -42,7 +42,7 @@
     const cart = await getCart();
     $$(".cart-count").forEach((el) => { el.textContent = cart.item_count; el.dataset.empty = String(!cart.item_count); });
     if (!cart.items.length) {
-      body.innerHTML = `<div class="cart-empty"><p>Your bag is empty.</p><a class="btn btn--dark" href="/collections/all">Create your necklace</a></div>`;
+      body.innerHTML = `<div class="cart-empty"><p>Your bag is empty.</p><a class="btn btn--dark" href="${esc((S.productUrl || "/collections/all") + "#personalise")}">Create your necklace</a></div>`;
       foot.innerHTML = ""; return;
     }
     body.innerHTML = cart.items.map((it, i) => {

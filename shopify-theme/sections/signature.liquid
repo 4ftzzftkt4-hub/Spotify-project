@@ -1,4 +1,4 @@
-{%- assign product = section.settings.product -%}
+{%- assign product = section.settings.product | default: settings.signature_product -%}
 <section class="section section--ivory signature" id="details" aria-labelledby="sig-{{ section.id }}">
   <div class="wrap">
     <div class="section-head" data-reveal>

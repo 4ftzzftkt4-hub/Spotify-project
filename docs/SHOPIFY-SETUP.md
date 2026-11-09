@@ -27,10 +27,9 @@ Tell Claude "I've made the Keep Close store" and it will:
   | Page title | Handle | Template |
   |---|---|---|
   | Our Story | `our-story` | `page.story` |
-  | Jewellery Care | `jewellery-care` | `page.care` |
-  | FAQ | `faq` | `page.faq` |
-  | Contact | `contact` | `page.contact` |
-- Set the header's **Signature product** and the homepage **Signature product** section to the necklace.
+  | FAQ | `keep-close-faq` | `page.faq` |
+  | Contact | `keep-close-contact` | `page.contact` |
+- Give the necklace the handle `signature-round-necklace` (the theme's **Signature product** setting points at it).
 
 ## 5. Policies (you)
 **Settings → Policies**: add Refund, Privacy, Terms of service and Shipping policies. They appear in the footer automatically.

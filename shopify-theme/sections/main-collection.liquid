@@ -2,12 +2,20 @@
 <section class="section"><div class="wrap">
   {%- paginate collection.products by 12 -%}
   <div class="tiles">
+    {%- if settings.signature_product != blank -%}
+      {%- assign product = settings.signature_product -%}
+      <a class="tile" href="{{ product.url }}">
+        <div class="frame">{%- if product.featured_image -%}{{ product.featured_image | image_url: width: 800 | image_tag: alt: product.title, loading: 'lazy' }}{%- endif -%}</div>
+        <h3>{{ product.title }}</h3><p>{{ product.price_min | money }}</p>
+      </a>
+    {%- else -%}
     {%- for product in collection.products -%}
       <a class="tile" href="{{ product.url }}">
         <div class="frame">{%- if product.featured_image -%}{{ product.featured_image | image_url: width: 800 | image_tag: alt: product.title, loading: 'lazy' }}{%- endif -%}</div>
         <h3>{{ product.title }}</h3><p>{{ product.price_min | money }}</p>
       </a>
     {%- else -%}<p>No products yet.</p>{%- endfor -%}
+    {%- endif -%}
   </div>
   {%- endpaginate -%}
 </div></section>

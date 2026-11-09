@@ -4,7 +4,9 @@
       "type": "hero",
       "settings": {
         "asset": "hero.jpg",
-        "alt": "A woman in an ivory linen shirt wearing the silver round pendant necklace"
+        "alt": "A woman in an ivory linen shirt wearing the silver round pendant necklace",
+        "link_1": "/products/signature-round-necklace#personalise",
+        "link_2": "#details"
       }
     },
     "trust": {
@@ -93,7 +95,10 @@
         "disc-1",
         "disc-2",
         "disc-3"
-      ]
+      ],
+      "settings": {
+        "product": "signature-round-necklace"
+      }
     },
     "why": {
       "type": "tiles",
@@ -291,7 +296,7 @@
         "flip": true,
         "text": "<p>Their initials. The date you met. A name that changed everything. Personalise the necklace for someone special and give them something that is unmistakably theirs.</p><p>Birthdays · Anniversaries · Valentine’s Day · Mother’s Day · Christmas · Graduations · Friendship · Milestones</p>",
         "button": "Personalise a gift",
-        "link": "/collections/all",
+        "link": "/products/signature-round-necklace#personalise",
         "button_style": "button",
         "asset": "gift.jpg",
         "alt": "Hands holding the rose gold necklace with a ribbon"
@@ -305,8 +310,8 @@
         "square": true,
         "background": "section--linen",
         "text": "<p>Crafted in stainless steel and finished to a polished mirror finish. A clean, reflective surface with nothing to distract from what you choose to add to it.</p>",
-        "button": "How to care for it",
-        "link": "/pages/jewellery-care",
+        "button": "Personalise yours",
+        "link": "/products/signature-round-necklace#personalise",
         "asset": "macro.jpg",
         "alt": "Close-up of the polished mirror edge"
       }
@@ -319,7 +324,7 @@
       "type": "faq",
       "settings": {
         "link_label": "All questions",
-        "link": "/pages/faq"
+        "link": "/pages/keep-close-faq"
       },
       "blocks": {
         "question-1": {

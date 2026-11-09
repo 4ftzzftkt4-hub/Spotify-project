@@ -1,1 +1,10 @@
-{ "current": "Default", "presets": { "Default": {} } }
+{
+  "current": {
+    "signature_product": "signature-round-necklace"
+  },
+  "presets": {
+    "Default": {
+      "signature_product": "signature-round-necklace"
+    }
+  }
+}

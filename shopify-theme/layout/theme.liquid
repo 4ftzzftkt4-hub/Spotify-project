@@ -21,6 +21,7 @@
       currency: {{ cart.currency.iso_code | json }},
       moneyFormat: {{ shop.money_format | json }},
       shippingNote: {{ settings.shipping_note | json }},
+      productUrl: {{ settings.signature_product.url | default: routes.all_products_collection_url | json }},
       images: {
         engraveBase: {
           steel: { src: {{ 'base-steel.jpg' | asset_url | json }}, cx: 0.501, cy: 0.586, rx: 0.162, ry: 0.141 },
