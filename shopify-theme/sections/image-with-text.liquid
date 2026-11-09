@@ -1,0 +1,47 @@
+<section class="section {{ section.settings.background }}" aria-labelledby="iwt-{{ section.id }}">
+  <div class="wrap split {% if section.settings.flip %}split--flip{% endif %}">
+    <div class="frame {% if section.settings.square %}frame--square{% endif %}" data-reveal>{% render 'visual', s: section.settings, alt: section.settings.alt %}</div>
+    <div class="story-copy" data-reveal data-reveal-delay="1">
+      {%- if section.settings.eyebrow != blank %}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{% endif -%}
+      <h2 id="iwt-{{ section.id }}" class="h1">{{ section.settings.heading | newline_to_br }}</h2>
+      <hr class="rule" style="margin-left:0">
+      {%- if section.settings.lead != blank %}<p class="first">{{ section.settings.lead }}</p>{% endif -%}
+      <div class="rte">{{ section.settings.text }}</div>
+      {%- if section.settings.button != blank %}<p style="margin-top:1.6rem"><a class="{% if section.settings.button_style == 'link' %}link{% else %}btn btn--dark{% endif %}" href="{{ section.settings.link }}">{{ section.settings.button }}</a></p>{% endif -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Image with text",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our story" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "More than just a necklace." },
+    { "type": "text", "id": "lead", "label": "Lead sentence" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Tell your story here.</p>" },
+    { "type": "text", "id": "button", "label": "Button label" },
+    { "type": "url", "id": "link", "label": "Button link" },
+    { "type": "select", "id": "button_style", "label": "Button style", "default": "link", "options": [ { "value": "link", "label": "Underlined link" }, { "value": "button", "label": "Solid button" } ] },
+    { "type": "checkbox", "id": "flip", "label": "Image on the right", "default": false },
+    { "type": "checkbox", "id": "square", "label": "Square image", "default": false },
+    { "type": "select", "id": "background", "label": "Background", "default": "", "options": [ { "value": "", "label": "Paper" }, { "value": "section--ivory", "label": "Ivory" }, { "value": "section--linen", "label": "Linen" } ] },
+    { "type": "text", "id": "alt", "label": "Image description" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "select", "id": "asset", "label": "Or bundled photo", "default": "engraving", "options": [
+        { "value": "engraving", "label": "Engraved disc (live)" },
+        { "value": "hero.jpg", "label": "Worn — linen shirt" },
+        { "value": "onmodel.jpg", "label": "Gold on collarbone" },
+        { "value": "macro.jpg", "label": "Mirror edge macro" },
+        { "value": "gift.jpg", "label": "Gifting — hands & ribbon" },
+        { "value": "life-knit.jpg", "label": "Everyday — knit" },
+        { "value": "life-shirt.jpg", "label": "Layered — white shirt" },
+        { "value": "life-evening.jpg", "label": "Evening — black dress" }
+      ] },
+      { "type": "text", "id": "engrave_text", "label": "Engraved disc: text", "info": "Separate lines with |" },
+      { "type": "select", "id": "finish", "label": "Engraved disc: finish", "default": "steel", "options": [ { "value": "steel", "label": "Silver" }, { "value": "gold", "label": "Gold" }, { "value": "rose", "label": "Rose gold" } ] },
+      { "type": "select", "id": "font", "label": "Engraved disc: lettering", "default": "classic", "options": [ { "value": "classic", "label": "Classic" }, { "value": "modern", "label": "Modern" }, { "value": "script", "label": "Script" }, { "value": "minimal", "label": "Minimal" } ] },
+      { "type": "range", "id": "zoom", "label": "Engraved disc: zoom", "min": 1, "max": 2.5, "step": 0.1, "default": 1.3 }
+  ],
+  "presets": [{ "name": "Image with text" }]
+}
+{% endschema %}

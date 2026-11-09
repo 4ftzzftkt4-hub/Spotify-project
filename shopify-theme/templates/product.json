@@ -1,0 +1,199 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "tab-1": {
+          "type": "tab",
+          "settings": {
+            "title": "Personalisation guide",
+            "content": "<p>Names, initials, dates and single words look best. Shorter text is engraved larger.</p><p>Check spelling, spacing and the order of day and month in dates. Your engraving is produced exactly as entered.</p>"
+          }
+        },
+        "tab-2": {
+          "type": "tab",
+          "settings": {
+            "title": "Care",
+            "content": "<p>Wipe with a soft, dry cloth. Remove before swimming, showering or exercise. Put perfume and lotion on before your necklace. Store it on its own in a soft pouch.</p><p><a href=\"/pages/jewellery-care\">Full care guide</a></p>"
+          }
+        },
+        "tab-3": {
+          "type": "tab",
+          "settings": {
+            "title": "Shipping & returns",
+            "content": "<p>Delivery options and estimates are shown at checkout.</p><p>Because each necklace is made to your personalisation, we can’t accept change-of-mind returns on personalised pieces. This doesn’t affect your rights under the Australian Consumer Law. <a href=\"/policies/refund-policy\">Returns policy</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "tab-1",
+        "tab-2",
+        "tab-3"
+      ]
+    },
+    "checklist": {
+      "type": "checklist",
+      "blocks": {
+        "item-1": {
+          "type": "item",
+          "settings": {
+            "text": "Check the spelling of every name and word."
+          }
+        },
+        "item-2": {
+          "type": "item",
+          "settings": {
+            "text": "Confirm your engraving text, line by line."
+          }
+        },
+        "item-3": {
+          "type": "item",
+          "settings": {
+            "text": "Review your selected lettering style."
+          }
+        },
+        "item-4": {
+          "type": "item",
+          "settings": {
+            "text": "Confirm your chosen finish."
+          }
+        },
+        "item-5": {
+          "type": "item",
+          "settings": {
+            "text": "Check the pendant size: a 20 mm disc."
+          }
+        },
+        "item-6": {
+          "type": "item",
+          "settings": {
+            "text": "Review the estimated delivery time at checkout."
+          }
+        },
+        "item-7": {
+          "type": "item",
+          "settings": {
+            "text": "Understand our personalised product returns policy."
+          }
+        }
+      },
+      "block_order": [
+        "item-1",
+        "item-2",
+        "item-3",
+        "item-4",
+        "item-5",
+        "item-6",
+        "item-7"
+      ]
+    },
+    "material": {
+      "type": "image-with-text",
+      "settings": {
+        "eyebrow": "Material & finish",
+        "heading": "The beauty of a clean finish.",
+        "square": true,
+        "background": "section--linen",
+        "text": "<p>A mirror polish turns a simple disc into something that catches the light, and leaves the surface clear for the words you choose.</p><p>Polished surfaces show fingerprints and fine marks with everyday wear. A soft cloth is all it needs; avoid abrasive cleaners, which can dull the finish.</p>",
+        "button": "Read the care guide",
+        "link": "/pages/jewellery-care",
+        "asset": "macro.jpg",
+        "alt": "Close-up of the polished mirror edge"
+      }
+    },
+    "steps": {
+      "type": "steps",
+      "settings": {
+        "eyebrow": "Personalisation guide",
+        "heading": "How personalisation works."
+      },
+      "blocks": {
+        "step-1": {
+          "type": "step",
+          "settings": {
+            "title": "Make it yours",
+            "text": "Choose your options and enter your personalisation. Shorter words are engraved larger and read most clearly."
+          }
+        },
+        "step-2": {
+          "type": "step",
+          "settings": {
+            "title": "Preview your design",
+            "text": "Use the live preview to check layout and style, then confirm every letter and number before adding to your bag."
+          }
+        },
+        "step-3": {
+          "type": "step",
+          "settings": {
+            "title": "We prepare your order",
+            "text": "Your personalisation travels with your order through fulfilment for production and dispatch."
+          }
+        }
+      },
+      "block_order": [
+        "step-1",
+        "step-2",
+        "step-3"
+      ]
+    },
+    "reviews": {
+      "type": "reviews",
+      "settings": {
+        "empty_title": "No reviews yet.",
+        "empty_text": "We only publish genuine reviews from verified customers. Be one of the first to wear the Signature Round Necklace."
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "heading": "Good to know.",
+        "link_label": "All FAQs",
+        "link": "/pages/faq"
+      },
+      "blocks": {
+        "question-1": {
+          "type": "question",
+          "settings": {
+            "question": "What is the necklace made from?",
+            "answer": "<p>Stainless steel, with a 20 mm round disc and a 1.5 mm chain. The gold and rose gold finishes are electroplated.</p>"
+          }
+        },
+        "question-2": {
+          "type": "question",
+          "settings": {
+            "question": "What can I engrave?",
+            "answer": "<p>Up to three short lines on the front: names, initials, dates, short words or coordinates. Letters, numbers and simple punctuation (. , ’ &amp; - / # + :) are supported.</p>"
+          }
+        },
+        "question-3": {
+          "type": "question",
+          "settings": {
+            "question": "Will the final product look exactly like the preview?",
+            "answer": "<p>The preview is a digital illustration to help you check your text, layout and style. The finished engraving may vary slightly in size, spacing and depth. Every piece is produced from the exact text on your order.</p>"
+          }
+        },
+        "question-4": {
+          "type": "question",
+          "settings": {
+            "question": "Can I return a personalised necklace?",
+            "answer": "<p>Because each necklace is made to your personalisation, we can’t accept change-of-mind returns on personalised pieces. This doesn’t affect your rights under the Australian Consumer Law.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question-1",
+        "question-2",
+        "question-3",
+        "question-4"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "checklist",
+    "material",
+    "steps",
+    "reviews",
+    "faq"
+  ]
+}

@@ -1,0 +1,38 @@
+<section class="section section--ivory" aria-labelledby="look-{{ section.id }}">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2 id="look-{{ section.id }}" class="h1">{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.text }}</p>
+    </div>
+    <div class="lookbook" data-reveal>
+      {%- for block in section.blocks -%}
+        <figure class="frame" {{ block.shopify_attributes }}>
+          {%- render 'image-or-asset', image: block.settings.image, fallback: block.settings.asset, alt: block.settings.alt -%}
+          {%- if block.settings.caption != blank %}<figcaption>{{ block.settings.caption }}</figcaption>{% endif -%}
+        </figure>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Lookbook",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Styling" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Made to be worn your way." },
+    { "type": "textarea", "id": "text", "label": "Text" }
+  ],
+  "blocks": [{ "type": "look", "name": "Look", "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "select", "id": "asset", "label": "Or bundled photo", "default": "life-knit.jpg", "options": [
+      { "value": "life-knit.jpg", "label": "Everyday — knit" }, { "value": "life-shirt.jpg", "label": "Layered — white shirt" },
+      { "value": "life-evening.jpg", "label": "Evening — black dress" }, { "value": "gift.jpg", "label": "Gifting" },
+      { "value": "hero.jpg", "label": "Linen shirt" }, { "value": "onmodel.jpg", "label": "Gold on collarbone" } ] },
+    { "type": "text", "id": "caption", "label": "Caption" },
+    { "type": "text", "id": "alt", "label": "Image description" }
+  ] }],
+  "max_blocks": 4,
+  "presets": [{ "name": "Lookbook", "blocks": [ { "type": "look" }, { "type": "look" }, { "type": "look" }, { "type": "look" } ] }]
+}
+{% endschema %}

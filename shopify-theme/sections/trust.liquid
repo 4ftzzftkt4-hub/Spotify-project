@@ -1,0 +1,28 @@
+<section class="trust" aria-label="Why customers choose us">
+  <div class="wrap"><ul>
+    {%- for block in section.blocks -%}
+      <li {{ block.shopify_attributes }}>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          {%- case block.settings.icon -%}
+            {%- when 'pen' -%}<path d="M4 20l4-1 11-11-3-3L5 16l-1 4z"/>
+            {%- when 'steel' -%}<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/>
+            {%- when 'gift' -%}<rect x="4" y="9" width="16" height="11"/><path d="M4 9h16M12 9v11"/>
+            {%- else -%}<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="5"/>
+          {%- endcase -%}
+        </svg>{{ block.settings.text }}
+      </li>
+    {%- endfor -%}
+  </ul></div>
+</section>
+{% schema %}
+{
+  "name": "Trust points",
+  "blocks": [{ "type": "point", "name": "Point", "settings": [
+    { "type": "text", "id": "text", "label": "Text", "default": "Personalised for you" },
+    { "type": "select", "id": "icon", "label": "Icon", "default": "circle", "options": [
+      { "value": "pen", "label": "Pen" }, { "value": "circle", "label": "Circle" }, { "value": "steel", "label": "Hexagon" }, { "value": "gift", "label": "Gift" } ] }
+  ] }],
+  "max_blocks": 4,
+  "presets": [{ "name": "Trust points", "blocks": [ { "type": "point" }, { "type": "point" }, { "type": "point" }, { "type": "point" } ] }]
+}
+{% endschema %}

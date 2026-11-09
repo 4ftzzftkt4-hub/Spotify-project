@@ -1,0 +1,14 @@
+<header class="page-head"><div class="wrap"><h1 class="h1">{{ collection.title | default: 'Shop' }}</h1>{% if collection.description != blank %}<div class="rte"><p>{{ collection.description | strip_html }}</p></div>{% endif %}</div></header>
+<section class="section"><div class="wrap">
+  {%- paginate collection.products by 12 -%}
+  <div class="tiles">
+    {%- for product in collection.products -%}
+      <a class="tile" href="{{ product.url }}">
+        <div class="frame">{%- if product.featured_image -%}{{ product.featured_image | image_url: width: 800 | image_tag: alt: product.title, loading: 'lazy' }}{%- endif -%}</div>
+        <h3>{{ product.title }}</h3><p>{{ product.price_min | money }}</p>
+      </a>
+    {%- else -%}<p>No products yet.</p>{%- endfor -%}
+  </div>
+  {%- endpaginate -%}
+</div></section>
+{% schema %}{ "name": "Collection" }{% endschema %}

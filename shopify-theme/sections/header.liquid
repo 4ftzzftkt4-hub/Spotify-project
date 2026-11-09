@@ -1,0 +1,55 @@
+{%- liquid
+  assign left = linklists[section.settings.menu_left].links
+  assign right = linklists[section.settings.menu_right].links
+  assign product_url = routes.all_products_collection_url
+  if section.settings.product != blank
+    assign product_url = section.settings.product.url
+  endif
+-%}
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span></button>
+    <nav class="nav nav--left" aria-label="Primary">
+      {%- if left.size > 0 -%}
+        {%- for link in left -%}<a href="{{ link.url }}" {% if link.current %}aria-current="page"{% endif %}>{{ link.title }}</a>{%- endfor -%}
+      {%- else -%}
+        <a href="{{ product_url }}">The Necklace</a><a href="{{ product_url }}#personalise">Personalise</a><a href="/pages/our-story">Our Story</a>
+      {%- endif -%}
+    </nav>
+    <a class="logo" href="{{ routes.root_url }}">{{ settings.brand_name | default: shop.name }}</a>
+    <div class="header-actions">
+      <nav class="nav nav--right" aria-label="Help">
+        {%- if right.size > 0 -%}
+          {%- for link in right -%}<a href="{{ link.url }}" {% if link.current %}aria-current="page"{% endif %}>{{ link.title }}</a>{%- endfor -%}
+        {%- else -%}
+          <a href="/pages/jewellery-care">Jewellery Care</a><a href="/pages/faq">FAQ</a><a href="/pages/contact">Contact</a>
+        {%- endif -%}
+      </nav>
+      <a class="shop-link" href="{{ product_url }}#personalise">Shop</a>
+      <a class="icon-btn cart-toggle" href="{{ routes.cart_url }}" aria-label="Open bag" aria-controls="cart">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+        <span class="cart-count" data-empty="{% if cart.item_count == 0 %}true{% else %}false{% endif %}" aria-live="polite">{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" hidden>
+    {%- if left.size > 0 or right.size > 0 -%}
+      {%- for link in left -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
+      {%- for link in right -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
+    {%- else -%}
+      <a href="{{ product_url }}">The Necklace</a><a href="/pages/our-story">Our Story</a><a href="/pages/jewellery-care">Jewellery Care</a><a href="/pages/faq">FAQ</a><a href="/pages/contact">Contact</a>
+    {%- endif -%}
+    <a class="btn btn--dark" href="{{ product_url }}#personalise">Create your necklace</a>
+  </nav>
+</header>
+{% schema %}
+{
+  "name": "Header",
+  "class": "header-wrapper",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Signature product", "info": "Used for the Shop and Personalise links." },
+    { "type": "link_list", "id": "menu_left", "label": "Left menu", "info": "Leave empty to use The Necklace, Personalise and Our Story." },
+    { "type": "link_list", "id": "menu_right", "label": "Right menu", "info": "Leave empty to use Jewellery Care, FAQ and Contact." }
+  ]
+}
+{% endschema %}

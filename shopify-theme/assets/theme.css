@@ -1,0 +1,15 @@
+/* Theme-only additions on top of site.css */
+.rte p:last-child { margin-bottom: 0; }
+.rte ul { padding-left: 1.2em; }
+.rte a { text-decoration: underline; text-underline-offset: 3px; }
+.rte h3 { font-size: 1.25rem; margin: 1.4rem 0 .5rem; }
+.accordion__inner.rte { color: var(--muted); }
+.cart-item__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.hero__visual > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+.frame > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.tile { display: block; }
+a.tile:hover h3 { text-decoration: underline; text-underline-offset: 4px; }
+.accordion .faq-group__title { font: 500 .74rem/1 var(--sans); text-transform: uppercase; letter-spacing: .22em; color: var(--champagne-deep); padding: 44px 0 14px; border-bottom: 1px solid var(--line); margin: 0; }
+.accordion .faq-group__title:first-child { padding-top: 8px; }
+.shopify-section:empty { display: none; }
+.toast:empty { display: none; }

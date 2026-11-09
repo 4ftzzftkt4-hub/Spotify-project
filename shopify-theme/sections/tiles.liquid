@@ -1,0 +1,48 @@
+<section class="section {{ section.settings.background }}" aria-labelledby="tiles-{{ section.id }}">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2 id="tiles-{{ section.id }}" class="h1">{{ section.settings.heading | newline_to_br }}</h2>
+    </div>
+    <div class="tiles">
+      {%- for block in section.blocks -%}
+        <article class="tile" data-reveal data-reveal-delay="{{ forloop.index0 | modulo: 4 }}" {{ block.shopify_attributes }}>
+          <div class="frame">{% render 'visual', s: block.settings, alt: block.settings.title %}</div>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Tiles",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Why this necklace" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Simple by design.\nPersonal by nature." },
+    { "type": "select", "id": "background", "label": "Background", "default": "", "options": [ { "value": "", "label": "Paper" }, { "value": "section--ivory", "label": "Ivory" } ] }
+  ],
+  "blocks": [{ "type": "tile", "name": "Tile", "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "A timeless silhouette" },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "select", "id": "asset", "label": "Or bundled photo", "default": "engraving", "options": [
+        { "value": "engraving", "label": "Engraved disc (live)" },
+        { "value": "hero.jpg", "label": "Worn — linen shirt" },
+        { "value": "onmodel.jpg", "label": "Gold on collarbone" },
+        { "value": "macro.jpg", "label": "Mirror edge macro" },
+        { "value": "gift.jpg", "label": "Gifting — hands & ribbon" },
+        { "value": "life-knit.jpg", "label": "Everyday — knit" },
+        { "value": "life-shirt.jpg", "label": "Layered — white shirt" },
+        { "value": "life-evening.jpg", "label": "Evening — black dress" }
+      ] },
+      { "type": "text", "id": "engrave_text", "label": "Engraved disc: text", "info": "Separate lines with |" },
+      { "type": "select", "id": "finish", "label": "Engraved disc: finish", "default": "steel", "options": [ { "value": "steel", "label": "Silver" }, { "value": "gold", "label": "Gold" }, { "value": "rose", "label": "Rose gold" } ] },
+      { "type": "select", "id": "font", "label": "Engraved disc: lettering", "default": "classic", "options": [ { "value": "classic", "label": "Classic" }, { "value": "modern", "label": "Modern" }, { "value": "script", "label": "Script" }, { "value": "minimal", "label": "Minimal" } ] },
+      { "type": "range", "id": "zoom", "label": "Engraved disc: zoom", "min": 1, "max": 2.5, "step": 0.1, "default": 1.3 }
+  ] }],
+  "max_blocks": 4,
+  "presets": [{ "name": "Tiles", "blocks": [ { "type": "tile" }, { "type": "tile" }, { "type": "tile" }, { "type": "tile" } ] }]
+}
+{% endschema %}

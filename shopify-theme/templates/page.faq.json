@@ -1,0 +1,177 @@
+{
+  "sections": {
+    "head": {
+      "type": "page-header",
+      "settings": {
+        "eyebrow": "Help",
+        "heading": "Frequently asked questions.",
+        "text": "Everything you need to know before you make it yours."
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "schema": true,
+        "background": ""
+      },
+      "blocks": {
+        "group-1": {
+          "type": "group",
+          "settings": {
+            "title": "The necklace"
+          }
+        },
+        "q-2": {
+          "type": "question",
+          "settings": {
+            "question": "What is the necklace made from?",
+            "answer": "<p>Stainless steel, with a 20 mm round disc and a 1.5 mm chain. The gold and rose gold finishes are electroplated.</p>"
+          }
+        },
+        "q-3": {
+          "type": "question",
+          "settings": {
+            "question": "Is the pendant polished?",
+            "answer": "<p>Yes. It has a polished mirror finish.</p>"
+          }
+        },
+        "q-4": {
+          "type": "question",
+          "settings": {
+            "question": "Is the necklace suitable for everyday wear?",
+            "answer": "<p>It’s designed as an everyday piece. Like all polished jewellery it will pick up fine marks with wear. Our <a href=\"/pages/jewellery-care\">care guide</a> explains how to keep it looking its best.</p>"
+          }
+        },
+        "group-5": {
+          "type": "group",
+          "settings": {
+            "title": "Personalisation"
+          }
+        },
+        "q-6": {
+          "type": "question",
+          "settings": {
+            "question": "What can I engrave?",
+            "answer": "<p>Up to three short lines on the front: names, initials, dates, short words or coordinates. Letters, numbers and simple punctuation (. , ’ &amp; - / # + :) are supported.</p>"
+          }
+        },
+        "q-7": {
+          "type": "question",
+          "settings": {
+            "question": "Can I add initials?",
+            "answer": "<p>Yes. Try separating them with a middle dot or ampersand, for example “A · J” or “A &amp; J”.</p>"
+          }
+        },
+        "q-8": {
+          "type": "question",
+          "settings": {
+            "question": "Can I add a date?",
+            "answer": "<p>Yes. Any format fits, such as 12.04.2019, 12/04/19 or Roman numerals.</p>"
+          }
+        },
+        "q-9": {
+          "type": "question",
+          "settings": {
+            "question": "Can I engrave both sides?",
+            "answer": "<p>Yes. Switch to “Back” in the personaliser to add a second engraving.</p>"
+          }
+        },
+        "q-10": {
+          "type": "question",
+          "settings": {
+            "question": "What happens if I make a spelling mistake?",
+            "answer": "<p>Engraving is produced exactly as entered. If a spelling error was entered at checkout, contact us as quickly as possible and we’ll do our best to update it if production hasn’t started.</p>"
+          }
+        },
+        "q-11": {
+          "type": "question",
+          "settings": {
+            "question": "Will the final product look exactly like the preview?",
+            "answer": "<p>The preview is a digital illustration to help you check your text, layout and style. The finished engraving may vary slightly in size, spacing and depth. Every piece is produced from the exact text on your order.</p>"
+          }
+        },
+        "group-12": {
+          "type": "group",
+          "settings": {
+            "title": "Care"
+          }
+        },
+        "q-13": {
+          "type": "question",
+          "settings": {
+            "question": "How should I clean the necklace?",
+            "answer": "<p>Wipe it gently with a soft, dry jewellery or microfibre cloth. For a deeper clean, use a little mild soap in lukewarm water, rinse, and dry straight away.</p>"
+          }
+        },
+        "q-14": {
+          "type": "question",
+          "settings": {
+            "question": "Can I wear it in the shower?",
+            "answer": "<p>We recommend taking it off before showering, swimming and exercising. Soap, chlorine, salt water and sweat can dull a polished finish over time.</p>"
+          }
+        },
+        "group-15": {
+          "type": "group",
+          "settings": {
+            "title": "Shipping & returns"
+          }
+        },
+        "q-16": {
+          "type": "question",
+          "settings": {
+            "question": "How long does delivery take?",
+            "answer": "<p>Personalised pieces are made to order. Delivery options and estimates are shown at checkout.</p>"
+          }
+        },
+        "q-17": {
+          "type": "question",
+          "settings": {
+            "question": "What happens if my order arrives damaged or faulty?",
+            "answer": "<p>Contact us with your order number and photos and we’ll arrange a remedy — a replacement, repair or refund as required by the Australian Consumer Law.</p>"
+          }
+        },
+        "q-18": {
+          "type": "question",
+          "settings": {
+            "question": "What if the wrong personalisation arrives?",
+            "answer": "<p>If the engraving doesn’t match the details on your order, we’ll remake it at no cost to you.</p>"
+          }
+        },
+        "q-19": {
+          "type": "question",
+          "settings": {
+            "question": "Can I return a personalised necklace?",
+            "answer": "<p>Because each necklace is made to your personalisation, we can’t accept change-of-mind returns on personalised pieces. This doesn’t affect your rights under the Australian Consumer Law.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "group-1",
+        "q-2",
+        "q-3",
+        "q-4",
+        "group-5",
+        "q-6",
+        "q-7",
+        "q-8",
+        "q-9",
+        "q-10",
+        "q-11",
+        "group-12",
+        "q-13",
+        "q-14",
+        "group-15",
+        "q-16",
+        "q-17",
+        "q-18",
+        "q-19"
+      ]
+    }
+  },
+  "order": [
+    "head",
+    "faq"
+  ]
+}

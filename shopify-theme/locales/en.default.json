@@ -1,0 +1,5 @@
+{
+  "general": { "404": { "title": "Page not found", "subtext": "The page you were looking for doesn’t exist." } },
+  "cart": { "title": "Your bag", "empty": "Your bag is empty.", "checkout": "Checkout", "subtotal": "Subtotal", "remove": "Remove" },
+  "products": { "add_to_cart": "Add to bag", "buy_now": "Buy now", "sold_out": "Sold out" }
+}

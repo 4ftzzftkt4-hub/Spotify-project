@@ -1,0 +1,44 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Keep Close",
+    "theme_version": "1.0.0",
+    "theme_author": "Keep Close",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://help.shopify.com/manual/online-store/themes"
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      { "type": "text", "id": "brand_name", "label": "Wordmark", "default": "Keep Close", "info": "Shown in the header and footer." },
+      { "type": "text", "id": "tagline", "label": "Footer tagline", "default": "One necklace. Your story." },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" }
+    ]
+  },
+  {
+    "name": "Engraving",
+    "settings": [
+      { "type": "paragraph", "content": "Only offer what your supplier has confirmed they can engrave." },
+      { "type": "checkbox", "id": "engraving_enabled", "label": "Offer engraving", "default": true },
+      { "type": "range", "id": "front_lines", "label": "Front: lines", "min": 1, "max": 3, "step": 1, "default": 3 },
+      { "type": "range", "id": "front_chars", "label": "Front: characters per line", "min": 4, "max": 20, "step": 1, "default": 12 },
+      { "type": "checkbox", "id": "back_enabled", "label": "Offer back engraving", "default": true },
+      { "type": "range", "id": "back_lines", "label": "Back: lines", "min": 1, "max": 3, "step": 1, "default": 3 },
+      { "type": "range", "id": "back_chars", "label": "Back: characters per line", "min": 4, "max": 20, "step": 1, "default": 14 },
+      { "type": "header", "content": "Lettering styles" },
+      { "type": "checkbox", "id": "font_classic", "label": "Classic (serif)", "default": true },
+      { "type": "checkbox", "id": "font_modern", "label": "Modern (sans-serif)", "default": true },
+      { "type": "checkbox", "id": "font_script", "label": "Script", "default": true },
+      { "type": "checkbox", "id": "font_minimal", "label": "Minimal (light capitals)", "default": true }
+    ]
+  },
+  {
+    "name": "Delivery & returns",
+    "settings": [
+      { "type": "text", "id": "processing_time", "label": "Processing time", "info": "e.g. 3–5 business days to personalise and dispatch. Leave blank until confirmed." },
+      { "type": "text", "id": "delivery_time", "label": "Delivery time", "info": "e.g. 6–10 business days after dispatch. Leave blank until confirmed." },
+      { "type": "text", "id": "shipping_note", "label": "Shipping cost note", "default": "Shipping calculated at checkout." },
+      { "type": "textarea", "id": "returns_note", "label": "Personalised returns note", "default": "Because each necklace is made to your personalisation, we can’t accept change-of-mind returns on personalised pieces. This doesn’t affect your rights under the Australian Consumer Law." }
+    ]
+  }
+]

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fbf9f5">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <title>{{ page_title }}{% unless page_title contains shop.name %} | {{ shop.name }}{% endunless %}</title>
+  {%- if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+  {%- render 'meta-tags' -%}
+  {%- if settings.favicon %}<link rel="icon" href="{{ settings.favicon | image_url: width: 64 }}">{% endif %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&family=Josefin+Sans:wght@300&display=swap" rel="stylesheet">
+  {{ 'site.css' | asset_url | stylesheet_tag }}
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+  <script>
+    /* Shared data for the engraving preview (engrave.js) and the theme scripts. */
+    window.STORE = {
+      locale: {{ request.locale.iso_code | json }},
+      currency: {{ cart.currency.iso_code | json }},
+      moneyFormat: {{ shop.money_format | json }},
+      shippingNote: {{ settings.shipping_note | json }},
+      images: {
+        engraveBase: {
+          steel: { src: {{ 'base-steel.jpg' | asset_url | json }}, cx: 0.501, cy: 0.586, rx: 0.162, ry: 0.141 },
+          gold:  { src: {{ 'base-gold.jpg'  | asset_url | json }}, cx: 0.497, cy: 0.566, rx: 0.169, ry: 0.155 },
+          rose:  { src: {{ 'base-rose.jpg'  | asset_url | json }}, cx: 0.500, cy: 0.578, rx: 0.211, ry: 0.200 }
+        }
+      },
+      product: { fonts: {% render 'engrave-fonts' %} },
+      routes: { cart: {{ routes.cart_url | json }}, cartAdd: {{ routes.cart_add_url | json }}, cartChange: {{ routes.cart_change_url | json }} }
+    };
+  </script>
+  <script src="{{ 'pendant.js' | asset_url }}" defer></script>
+  <script src="{{ 'engrave.js' | asset_url }}" defer></script>
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  {{ content_for_header }}
+</head>
+<body class="template-{{ template.name }}">
+  <a class="sr-only" href="#main">Skip to content</a>
+  {% sections 'header-group' %}
+  <main id="main" role="main">
+    {{ content_for_layout }}
+  </main>
+  {% sections 'footer-group' %}
+  {% render 'cart-drawer' %}
+</body>
+</html>

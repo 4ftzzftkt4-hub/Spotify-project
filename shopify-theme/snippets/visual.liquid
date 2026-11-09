@@ -1,0 +1,11 @@
+{%- comment -%}
+  A visual slot: merchant image → bundled photo → live engraved disc.
+  Params: s (settings object with image, asset, engrave_text, finish, font, zoom), alt
+{%- endcomment -%}
+{%- if s.image != blank -%}
+  {{ s.image | image_url: width: 1600 | image_tag: alt: alt, loading: 'lazy', widths: '480, 800, 1200, 1600' }}
+{%- elsif s.asset != blank and s.asset != 'engraving' -%}
+  <img src="{{ s.asset | asset_url }}" alt="{{ alt | escape }}" loading="lazy" width="1280" height="1280">
+{%- else -%}
+  {%- render 'engrave-sample', finish: s.finish, text: s.engrave_text, font: s.font, zoom: s.zoom -%}
+{%- endif -%}

@@ -1,0 +1,376 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "asset": "hero.jpg",
+        "alt": "A woman in an ivory linen shirt wearing the silver round pendant necklace"
+      }
+    },
+    "trust": {
+      "type": "trust",
+      "blocks": {
+        "point-1": {
+          "type": "point",
+          "settings": {
+            "text": "Personalised for you",
+            "icon": "pen"
+          }
+        },
+        "point-2": {
+          "type": "point",
+          "settings": {
+            "text": "Timeless minimalist design",
+            "icon": "circle"
+          }
+        },
+        "point-3": {
+          "type": "point",
+          "settings": {
+            "text": "Stainless steel construction",
+            "icon": "steel"
+          }
+        },
+        "point-4": {
+          "type": "point",
+          "settings": {
+            "text": "Thoughtful gifting",
+            "icon": "gift"
+          }
+        }
+      },
+      "block_order": [
+        "point-1",
+        "point-2",
+        "point-3",
+        "point-4"
+      ]
+    },
+    "story": {
+      "type": "image-with-text",
+      "settings": {
+        "eyebrow": "Our story",
+        "heading": "More than just a necklace.",
+        "lead": "Some things are worth keeping close.",
+        "text": "<p>A name, a date, a memory — or a person who means everything.</p><p>Our signature necklace brings personal meaning into a timeless everyday piece, designed to be worn, remembered and treasured.</p><p>We believe the most meaningful jewellery doesn’t need to be complicated. It simply needs to mean something to you.</p>",
+        "button": "Read our story",
+        "link": "/pages/our-story",
+        "asset": "onmodel.jpg",
+        "alt": "The gold pendant resting below the collarbone"
+      }
+    },
+    "signature": {
+      "type": "signature",
+      "blocks": {
+        "disc-1": {
+          "type": "disc",
+          "settings": {
+            "engrave_text": "",
+            "finish": "steel",
+            "caption": "Polished silver"
+          }
+        },
+        "disc-2": {
+          "type": "disc",
+          "settings": {
+            "engrave_text": "Mia",
+            "finish": "gold",
+            "font": "classic",
+            "caption": "Personalised"
+          }
+        },
+        "disc-3": {
+          "type": "disc",
+          "settings": {
+            "engrave_text": "12.04.2019",
+            "finish": "rose",
+            "font": "modern",
+            "caption": "A date to keep"
+          }
+        }
+      },
+      "block_order": [
+        "disc-1",
+        "disc-2",
+        "disc-3"
+      ]
+    },
+    "why": {
+      "type": "tiles",
+      "blocks": {
+        "tile-1": {
+          "type": "tile",
+          "settings": {
+            "title": "A timeless silhouette",
+            "text": "A simple round pendant designed to complement everyday outfits and personal styles.",
+            "asset": "macro.jpg"
+          }
+        },
+        "tile-2": {
+          "type": "tile",
+          "settings": {
+            "title": "Made personal",
+            "text": "Add a name, initials, a date or a word, and a simple accessory becomes unmistakably yours.",
+            "asset": "engraving",
+            "engrave_text": "E · R",
+            "font": "minimal",
+            "zoom": 1.6
+          }
+        },
+        "tile-3": {
+          "type": "tile",
+          "settings": {
+            "title": "Everyday style",
+            "text": "Light enough to forget you’re wearing it; considered enough to be noticed.",
+            "asset": "life-knit.jpg"
+          }
+        },
+        "tile-4": {
+          "type": "tile",
+          "settings": {
+            "title": "A meaningful gift",
+            "text": "A thoughtful piece for someone important — chosen by you, personalised for them.",
+            "asset": "engraving",
+            "engrave_text": "Love, Mum",
+            "finish": "rose",
+            "font": "script",
+            "zoom": 1.6
+          }
+        }
+      },
+      "block_order": [
+        "tile-1",
+        "tile-2",
+        "tile-3",
+        "tile-4"
+      ]
+    },
+    "steps": {
+      "type": "steps",
+      "settings": {
+        "note": "<p>Personalised pieces are made to order and have different return conditions. <a href=\"/policies/refund-policy\">Read our returns policy</a>.</p>"
+      },
+      "blocks": {
+        "step-1": {
+          "type": "step",
+          "settings": {
+            "title": "Make it yours",
+            "text": "Choose your necklace options and enter your personalisation — a name, initials, a date or a word that matters."
+          }
+        },
+        "step-2": {
+          "type": "step",
+          "settings": {
+            "title": "Preview your design",
+            "text": "See your details on the live preview, then check every letter and number before adding the necklace to your bag."
+          }
+        },
+        "step-3": {
+          "type": "step",
+          "settings": {
+            "title": "We prepare your order",
+            "text": "Your personalisation is sent through our fulfilment process for production and dispatch, exactly as you entered it."
+          }
+        }
+      },
+      "block_order": [
+        "step-1",
+        "step-2",
+        "step-3"
+      ]
+    },
+    "features": {
+      "type": "features",
+      "settings": {
+        "numbered": true
+      },
+      "blocks": {
+        "feature-1": {
+          "type": "feature",
+          "settings": {
+            "title": "Personalised design",
+            "text": "Your words, your dates, your initials — on a piece made for you."
+          }
+        },
+        "feature-2": {
+          "type": "feature",
+          "settings": {
+            "title": "Minimalist round pendant",
+            "text": "A clean 20 mm circle: the most timeless shape in jewellery."
+          }
+        },
+        "feature-3": {
+          "type": "feature",
+          "settings": {
+            "title": "Polished mirror finish",
+            "text": "A reflective surface that catches the light as you move."
+          }
+        },
+        "feature-4": {
+          "type": "feature",
+          "settings": {
+            "title": "Stainless steel",
+            "text": "Made in stainless steel for an everyday piece."
+          }
+        },
+        "feature-5": {
+          "type": "feature",
+          "settings": {
+            "title": "Versatile styling",
+            "text": "Wear it alone, layer it, dress it up or down."
+          }
+        },
+        "feature-6": {
+          "type": "feature",
+          "settings": {
+            "title": "Meaningful gifting",
+            "text": "Personal by nature, which makes it a gift that lasts."
+          }
+        }
+      },
+      "block_order": [
+        "feature-1",
+        "feature-2",
+        "feature-3",
+        "feature-4",
+        "feature-5",
+        "feature-6"
+      ]
+    },
+    "lookbook": {
+      "type": "lookbook",
+      "settings": {
+        "text": "On its own with a white shirt, layered with finer chains, or under an evening neckline — a quiet piece that goes with everything."
+      },
+      "blocks": {
+        "look-1": {
+          "type": "look",
+          "settings": {
+            "asset": "life-knit.jpg",
+            "caption": "Everyday",
+            "alt": "Silver necklace worn over an oatmeal knit jumper with denim"
+          }
+        },
+        "look-2": {
+          "type": "look",
+          "settings": {
+            "asset": "life-shirt.jpg",
+            "caption": "Layered",
+            "alt": "Silver necklace layered with a fine chain over a white shirt"
+          }
+        },
+        "look-3": {
+          "type": "look",
+          "settings": {
+            "asset": "life-evening.jpg",
+            "caption": "Evening",
+            "alt": "Gold necklace worn with a black square-neck dress"
+          }
+        },
+        "look-4": {
+          "type": "look",
+          "settings": {
+            "asset": "gift.jpg",
+            "caption": "Gifting",
+            "alt": "Rose gold necklace held in open hands with a ribbon"
+          }
+        }
+      },
+      "block_order": [
+        "look-1",
+        "look-2",
+        "look-3",
+        "look-4"
+      ]
+    },
+    "gifting": {
+      "type": "image-with-text",
+      "settings": {
+        "eyebrow": "Gifting",
+        "heading": "A gift that\nmeans more.",
+        "flip": true,
+        "text": "<p>Their initials. The date you met. A name that changed everything. Personalise the necklace for someone special and give them something that is unmistakably theirs.</p><p>Birthdays · Anniversaries · Valentine’s Day · Mother’s Day · Christmas · Graduations · Friendship · Milestones</p>",
+        "button": "Personalise a gift",
+        "link": "/collections/all",
+        "button_style": "button",
+        "asset": "gift.jpg",
+        "alt": "Hands holding the rose gold necklace with a ribbon"
+      }
+    },
+    "material": {
+      "type": "image-with-text",
+      "settings": {
+        "eyebrow": "Material & finish",
+        "heading": "The beauty of a clean finish.",
+        "square": true,
+        "background": "section--linen",
+        "text": "<p>Crafted in stainless steel and finished to a polished mirror finish. A clean, reflective surface with nothing to distract from what you choose to add to it.</p>",
+        "button": "How to care for it",
+        "link": "/pages/jewellery-care",
+        "asset": "macro.jpg",
+        "alt": "Close-up of the polished mirror edge"
+      }
+    },
+    "reviews": {
+      "type": "reviews",
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "link_label": "All questions",
+        "link": "/pages/faq"
+      },
+      "blocks": {
+        "question-1": {
+          "type": "question",
+          "settings": {
+            "question": "What is the necklace made from?",
+            "answer": "<p>Stainless steel, with a 20 mm round disc and a 1.5 mm chain. The gold and rose gold finishes are electroplated.</p>"
+          }
+        },
+        "question-2": {
+          "type": "question",
+          "settings": {
+            "question": "What can I engrave?",
+            "answer": "<p>Up to three short lines on the front: names, initials, dates, short words or coordinates. Letters, numbers and simple punctuation (. , ’ &amp; - / # + :) are supported.</p>"
+          }
+        },
+        "question-3": {
+          "type": "question",
+          "settings": {
+            "question": "Will the final product look exactly like the preview?",
+            "answer": "<p>The preview is a digital illustration to help you check your text, layout and style. The finished engraving may vary slightly in size, spacing and depth. Every piece is produced from the exact text on your order.</p>"
+          }
+        },
+        "question-4": {
+          "type": "question",
+          "settings": {
+            "question": "Can I return a personalised necklace?",
+            "answer": "<p>Because each necklace is made to your personalisation, we can’t accept change-of-mind returns on personalised pieces. This doesn’t affect your rights under the Australian Consumer Law.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question-1",
+        "question-2",
+        "question-3",
+        "question-4"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "story",
+    "signature",
+    "why",
+    "steps",
+    "features",
+    "lookbook",
+    "gifting",
+    "material",
+    "reviews",
+    "faq"
+  ]
+}

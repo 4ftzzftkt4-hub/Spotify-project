@@ -18,3 +18,6 @@ engraving preview, cart and Shopify checkout hand-off.
 - `assets/js/site.js` handles layout, the bag and checkout.
 
 Before launch, work through **`docs/LAUNCH-CHECKLIST.md`**. Checkout and supplier details are in **`docs/FULFILMENT.md`**.
+
+## Shopify theme
+`shopify-theme/` is the same site as a Shopify Online Store 2.0 theme (zip: `keep-close-theme.zip`). See **`docs/SHOPIFY-SETUP.md`**.

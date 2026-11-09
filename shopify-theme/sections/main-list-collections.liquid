@@ -1,0 +1,5 @@
+<header class="page-head"><div class="wrap"><h1 class="h1">Collections</h1></div></header>
+<section class="section"><div class="wrap tiles">
+  {%- for c in collections -%}<a class="tile" href="{{ c.url }}"><div class="frame">{% if c.featured_image %}{{ c.featured_image | image_url: width: 800 | image_tag: alt: c.title, loading: 'lazy' }}{% endif %}</div><h3>{{ c.title }}</h3></a>{%- endfor -%}
+</div></section>
+{% schema %}{ "name": "Collections list" }{% endschema %}

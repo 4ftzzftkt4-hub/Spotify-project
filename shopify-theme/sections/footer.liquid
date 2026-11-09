@@ -1,0 +1,45 @@
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a class="logo logo--footer" href="{{ routes.root_url }}">{{ settings.brand_name | default: shop.name }}</a>
+      <p>{{ settings.tagline }}</p>
+      <p class="social">
+        {%- if section.settings.instagram != blank %}<a href="{{ section.settings.instagram }}" rel="noopener">Instagram</a>{% endif -%}
+        {%- if section.settings.tiktok != blank %}<a href="{{ section.settings.tiktok }}" rel="noopener">TikTok</a>{% endif -%}
+        {%- if section.settings.pinterest != blank %}<a href="{{ section.settings.pinterest }}" rel="noopener">Pinterest</a>{% endif -%}
+      </p>
+    </div>
+    {%- for block in section.blocks -%}
+      <div {{ block.shopify_attributes }}>
+        <h3>{{ block.settings.heading }}</h3>
+        {%- for link in linklists[block.settings.menu].links -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
+      </div>
+    {%- endfor -%}
+    <div>
+      <h3>Policies</h3>
+      {%- for policy in shop.policies -%}<a href="{{ policy.url }}">{{ policy.title }}</a>{%- endfor -%}
+      {%- if shop.policies.size == 0 -%}<a href="/policies/refund-policy">Returns</a><a href="/policies/privacy-policy">Privacy</a>{%- endif -%}
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <span>© {{ 'now' | date: '%Y' }} {{ settings.brand_name | default: shop.name }}</span>
+    <span>Prices in {{ cart.currency.iso_code }}</span>
+  </div>
+</footer>
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "url", "id": "instagram", "label": "Instagram URL" },
+    { "type": "url", "id": "tiktok", "label": "TikTok URL" },
+    { "type": "url", "id": "pinterest", "label": "Pinterest URL" }
+  ],
+  "blocks": [
+    { "type": "menu", "name": "Menu column", "settings": [
+      { "type": "text", "id": "heading", "label": "Heading", "default": "Help" },
+      { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" }
+    ] }
+  ],
+  "max_blocks": 3
+}
+{% endschema %}

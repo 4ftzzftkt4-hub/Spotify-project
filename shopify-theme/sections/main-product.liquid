@@ -1,0 +1,139 @@
+{%- liquid
+  assign current = product.selected_or_first_available_variant
+  assign finish_option = product.options_with_values | where: 'name', section.settings.finish_option | first
+  if finish_option == blank
+    assign finish_option = product.options_with_values | first
+  endif
+-%}
+<div class="wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{{ routes.root_url }}">Home</a> / <span>{{ product.title }}</span></nav>
+  <div class="pdp">
+    <section class="gallery" aria-label="Product images">
+      <div class="gallery__thumbs" id="gallery-thumbs"></div>
+      <div>
+        <div class="gallery__main" id="gallery-main" tabindex="0" aria-roledescription="carousel" aria-label="Necklace images — click to zoom, arrow keys to browse"></div>
+        <div class="gallery__dots" id="gallery-dots"></div>
+        {%- if settings.engraving_enabled -%}<p class="preview__note">The preview is a digital illustration. The finished engraving may vary slightly from what you see here.</p>{%- endif -%}
+      </div>
+    </section>
+
+    <section class="buy" id="personalise" aria-labelledby="title">
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h1 id="title">{{ product.title }}</h1>
+      {%- if section.settings.intro != blank %}<p class="buy__intro">{{ section.settings.intro }}</p>{% endif -%}
+      <p class="buy__price" id="price" aria-live="polite">{{ current.price | money }}</p>
+
+      <div id="controls"></div>
+
+      <div class="summary" aria-labelledby="sum-title">
+        <h3 id="sum-title">Your necklace</h3>
+        <dl id="summary-rows"></dl>
+        <div class="summary__total" id="summary-total" aria-live="polite"></div>
+      </div>
+
+      <label class="confirm" id="confirm"><input type="checkbox" id="confirm-box"><span id="confirm-text"></span></label>
+
+      <div class="buy-row">
+        <div class="qty" role="group" aria-label="Quantity">
+          <button type="button" id="qty-dec" aria-label="Decrease quantity">−</button>
+          <output id="qty-out" aria-live="polite">1</output>
+          <button type="button" id="qty-inc" aria-label="Increase quantity">+</button>
+        </div>
+        <button class="btn btn--dark" type="button" id="add">{{ 'products.add_to_cart' | t }}</button>
+      </div>
+      <div class="buy-actions">
+        <button class="btn btn--ghost btn--block" type="button" id="buy">{{ 'products.buy_now' | t }}</button>
+        <p class="fine" id="blocker" aria-live="polite" style="margin:0;text-align:center"></p>
+      </div>
+
+      <ul class="meta-list">
+        <li><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6"/></svg><span>Made to order — personalised for you</span></li>
+        {%- if settings.processing_time != blank %}<li><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6"/></svg><span>Processing: {{ settings.processing_time }}</span></li>{% endif -%}
+        {%- if settings.delivery_time != blank %}<li><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6"/></svg><span>Delivery: {{ settings.delivery_time }}</span></li>{% endif -%}
+        <li><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6"/></svg><span>Personalised pieces: <a href="{{ shop.refund_policy.url | default: '/policies/refund-policy' }}" style="text-decoration:underline">returns policy</a></span></li>
+      </ul>
+
+      <div class="accordion" style="margin-top:36px">
+        <div class="accordion__item">
+          <h3><button class="accordion__btn" type="button" aria-expanded="false" aria-controls="acc-desc">Product details<span aria-hidden="true"></span></button></h3>
+          <div id="acc-desc" class="accordion__panel" role="region"><div class="accordion__inner rte">{{ product.description }}</div></div>
+        </div>
+        {%- for block in section.blocks -%}
+        <div class="accordion__item" {{ block.shopify_attributes }}>
+          <h3><button class="accordion__btn" type="button" aria-expanded="false" aria-controls="acc-{{ block.id }}">{{ block.settings.title }}<span aria-hidden="true"></span></button></h3>
+          <div id="acc-{{ block.id }}" class="accordion__panel" role="region"><div class="accordion__inner rte">{{ block.settings.content }}</div></div>
+        </div>
+        {%- endfor -%}
+      </div>
+    </section>
+  </div>
+</div>
+
+<button class="mini-preview" id="mini-preview" type="button" aria-label="Back to your design preview"></button>
+<div class="sticky-buy" id="sticky-buy">
+  <div class="sticky-buy__info"><strong>{{ product.title }}</strong><span id="sticky-price"></span></div>
+  <button class="btn btn--dark" type="button" id="sticky-add">{{ 'products.add_to_cart' | t }}</button>
+</div>
+
+{%- comment -%} Data for product.js {%- endcomment -%}
+<script type="application/json" id="product-data">
+{
+  "title": {{ product.title | json }},
+  "finishOption": {{ finish_option.name | json }},
+  "finishIndex": {{ finish_option.position | minus: 1 }},
+  "selectedVariant": {{ current.id }},
+  "maxQty": {{ section.settings.max_qty }},
+  "engraving": {
+    "enabled": {{ settings.engraving_enabled }},
+    "front": { "lines": {{ settings.front_lines }}, "chars": {{ settings.front_chars }} },
+    "back": { "enabled": {{ settings.back_enabled }}, "lines": {{ settings.back_lines }}, "chars": {{ settings.back_chars }} }
+  },
+  "variants": [
+    {%- for v in product.variants -%}
+      {"id": {{ v.id }}, "title": {{ v.title | json }}, "options": {{ v.options | json }}, "price": {{ v.price }}, "available": {{ v.available }}}{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ],
+  "media": [
+    {%- assign shown = 0 -%}
+    {%- for m in product.media -%}{%- if m.media_type == 'image' -%}
+      {%- if shown > 0 %},{% endif -%}
+      {"src": {{ m | image_url: width: 1400 | json }}, "thumb": {{ m | image_url: width: 200 | json }}, "alt": {{ m.alt | default: product.title | json }}}
+      {%- assign shown = shown | plus: 1 -%}
+    {%- endif -%}{%- endfor -%}
+  ]
+}
+</script>
+<script src="{{ 'product.js' | asset_url }}" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "description": {{ product.description | strip_html | truncate: 500 | json }},
+  "brand": { "@type": "Brand", "name": {{ settings.brand_name | default: shop.name | json }} },
+  {%- if product.featured_image %}"image": {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }},{% endif %}
+  "offers": [
+    {%- for v in product.variants -%}
+    { "@type": "Offer", "name": {{ v.title | json }}, "sku": {{ v.sku | json }}, "price": {{ v.price | divided_by: 100.0 | json }}, "priceCurrency": {{ cart.currency.iso_code | json }},
+      "availability": "https://schema.org/{% if v.available %}InStock{% else %}OutOfStock{% endif %}", "url": {{ request.origin | append: v.url | json }} }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+
+{% schema %}
+{
+  "name": "Product + personaliser",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Personalised · Made for you" },
+    { "type": "textarea", "id": "intro", "label": "Intro", "default": "A personalised stainless steel pendant designed to make everyday jewellery more meaningful." },
+    { "type": "text", "id": "finish_option", "label": "Finish option name", "default": "Finish", "info": "The product option that holds Silver / Gold / Rose gold." },
+    { "type": "range", "id": "max_qty", "label": "Max quantity per design", "min": 1, "max": 10, "step": 1, "default": 5 }
+  ],
+  "blocks": [{ "type": "tab", "name": "Info tab", "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Care" },
+    { "type": "richtext", "id": "content", "label": "Content", "default": "<p>Wipe with a soft, dry cloth.</p>" }
+  ] }]
+}
+{% endschema %}

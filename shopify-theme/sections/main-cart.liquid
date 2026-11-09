@@ -1,0 +1,42 @@
+<header class="page-head"><div class="wrap"><h1 class="h1">{{ 'cart.title' | t }}</h1></div></header>
+<section class="section section--tight">
+  <div class="wrap narrow">
+  {%- if cart.item_count == 0 -%}
+    <div class="cart-empty"><p>{{ 'cart.empty' | t }}</p><a class="btn btn--dark" href="{{ routes.all_products_collection_url }}">Create your necklace</a></div>
+  {%- else -%}
+    <form action="{{ routes.cart_url }}" method="post" id="cart-page">
+      {%- for item in cart.items -%}
+        <article class="cart-item">
+          <div class="cart-item__thumb">
+            {%- if item.properties._finish -%}
+              {%- capture cfg -%}{"finish":{{ item.properties._finish | json }},"lines":{{ item.properties._front | default: '[]' }},"font":{{ item.properties._font | json }},"zoom":2.2}{%- endcapture -%}
+              <div class="engrave-host" data-engrave="{{ cfg | escape }}"></div>
+            {%- elsif item.image -%}{{ item.image | image_url: width: 300 | image_tag: alt: item.title }}{%- endif -%}
+          </div>
+          <div class="cart-item__info">
+            <h3><a href="{{ item.url }}">{{ item.product.title }}</a></h3>
+            <dl>
+              {%- unless item.product.has_only_default_variant -%}{%- for o in item.options_with_values -%}<dt>{{ o.name }}</dt><dd>{{ o.value }}</dd>{%- endfor -%}{%- endunless -%}
+              {%- for p in item.properties -%}{%- assign first = p.first | slice: 0 -%}{%- unless first == '_' or p.last == blank -%}<dt>{{ p.first }}</dt><dd>{{ p.last }}</dd>{%- endunless -%}{%- endfor -%}
+            </dl>
+            <div class="cart-item__row">
+              <label class="sr-only" for="q-{{ forloop.index }}">Quantity</label>
+              <input class="input" style="width:90px" type="number" min="0" id="q-{{ forloop.index }}" name="updates[]" value="{{ item.quantity }}">
+              <strong>{{ item.final_line_price | money }}</strong>
+            </div>
+            <a class="link-btn" href="{{ item.url_to_remove }}">{{ 'cart.remove' | t }}</a>
+          </div>
+        </article>
+      {%- endfor -%}
+      <div class="cart-total" style="margin-top:28px"><span>{{ 'cart.subtotal' | t }}</span><strong>{{ cart.total_price | money }}</strong></div>
+      <p class="fine">{{ settings.shipping_note }}</p>
+      <p class="fine">{{ settings.returns_note }}</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
+        <button class="btn btn--ghost" type="submit" name="update">Update bag</button>
+        <button class="btn btn--dark" type="submit" name="checkout">{{ 'cart.checkout' | t }}</button>
+      </div>
+    </form>
+  {%- endif -%}
+  </div>
+</section>
+{% schema %}{ "name": "Cart" }{% endschema %}

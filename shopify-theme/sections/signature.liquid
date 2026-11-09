@@ -1,0 +1,42 @@
+{%- assign product = section.settings.product -%}
+<section class="section section--ivory signature" id="details" aria-labelledby="sig-{{ section.id }}">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2 id="sig-{{ section.id }}" class="h1">{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.text }}</p>
+    </div>
+    <div class="signature__stage">
+      {%- for block in section.blocks -%}
+        <figure data-reveal data-reveal-delay="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <div class="frame">{% render 'engrave-sample', finish: block.settings.finish, text: block.settings.engrave_text, font: block.settings.font, zoom: 1.35 %}</div>
+          <figcaption>{{ block.settings.caption }}</figcaption>
+        </figure>
+      {%- endfor -%}
+    </div>
+    <div data-reveal>
+      {%- if product != blank -%}<p class="signature__price">From {{ product.price_min | money }}</p>{%- endif -%}
+      <a class="btn btn--dark" href="{% if product != blank %}{{ product.url }}#personalise{% else %}{{ routes.all_products_collection_url }}{% endif %}">{{ section.settings.button }}</a>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Signature product",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "One necklace. Your story." },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The Signature Round Necklace" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "A simple round pendant with a polished mirror finish, personalised with the details that matter to you." },
+    { "type": "text", "id": "button", "label": "Button", "default": "Make it yours" }
+  ],
+  "blocks": [{ "type": "disc", "name": "Engraved disc", "settings": [
+    { "type": "text", "id": "engrave_text", "label": "Text", "info": "Separate lines with |. Leave blank for a plain disc." },
+    { "type": "select", "id": "finish", "label": "Finish", "default": "steel", "options": [ { "value": "steel", "label": "Silver" }, { "value": "gold", "label": "Gold" }, { "value": "rose", "label": "Rose gold" } ] },
+    { "type": "select", "id": "font", "label": "Lettering", "default": "classic", "options": [ { "value": "classic", "label": "Classic" }, { "value": "modern", "label": "Modern" }, { "value": "script", "label": "Script" }, { "value": "minimal", "label": "Minimal" } ] },
+    { "type": "text", "id": "caption", "label": "Caption", "default": "Personalised" }
+  ] }],
+  "max_blocks": 3,
+  "presets": [{ "name": "Signature product", "blocks": [ { "type": "disc" }, { "type": "disc" }, { "type": "disc" } ] }]
+}
+{% endschema %}

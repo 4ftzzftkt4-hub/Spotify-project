@@ -1,0 +1,12 @@
+{%- comment -%}
+  Lettering styles offered in the personaliser. Keep only styles your supplier can produce
+  (Theme settings → Engraving). Rendered as JSON for engrave.js and product.js.
+{%- endcomment -%}
+[
+  {%- assign first = true -%}
+  {%- if settings.font_classic -%}{"id":"classic","label":"Classic","css":"'Cormorant Garamond', Georgia, serif","weight":600}{%- assign first = false -%}{%- endif -%}
+  {%- if settings.font_modern -%}{% unless first %},{% endunless %}{"id":"modern","label":"Modern","css":"'Jost', 'Helvetica Neue', sans-serif","weight":500}{%- assign first = false -%}{%- endif -%}
+  {%- if settings.font_script -%}{% unless first %},{% endunless %}{"id":"script","label":"Script","css":"'Pinyon Script', cursive","weight":400}{%- assign first = false -%}{%- endif -%}
+  {%- if settings.font_minimal -%}{% unless first %},{% endunless %}{"id":"minimal","label":"Minimal","css":"'Josefin Sans', sans-serif","weight":300,"upper":true}{%- assign first = false -%}{%- endif -%}
+  {%- if first -%}{"id":"classic","label":"Classic","css":"'Cormorant Garamond', Georgia, serif","weight":600}{%- endif -%}
+]

@@ -1,0 +1,96 @@
+{
+  "sections": {
+    "head": {
+      "type": "page-header",
+      "settings": {
+        "eyebrow": "Our story",
+        "heading": "One necklace.\nYour story.",
+        "text": "We specialise in making simple, timeless jewellery personal."
+      }
+    },
+    "story": {
+      "type": "image-with-text",
+      "settings": {
+        "eyebrow": "",
+        "heading": "Something worth keeping close.",
+        "lead": "The jewellery we treasure most is rarely the most elaborate.",
+        "text": "<p>It’s the piece we reach for every morning. The one that carries a name, a date, a place, a person. The one that means something only we fully understand.</p><p>That’s why we make one necklace, and focus on making it well: a simple round pendant with a polished mirror finish, made personal by the details you choose.</p>",
+        "asset": "hero.jpg",
+        "alt": "A woman wearing the silver necklace"
+      }
+    },
+    "beliefs": {
+      "type": "features",
+      "settings": {
+        "eyebrow": "What we believe",
+        "heading": "Personal by design. Timeless by nature.",
+        "numbered": true,
+        "background": "section--ivory"
+      },
+      "blocks": {
+        "feature-1": {
+          "type": "feature",
+          "settings": {
+            "title": "Focus",
+            "text": "One signature piece, rather than a catalogue. Every decision we make is about this necklace."
+          }
+        },
+        "feature-2": {
+          "type": "feature",
+          "settings": {
+            "title": "Meaning",
+            "text": "A name, initials, a date or a word turns a simple accessory into something that is unmistakably yours."
+          }
+        },
+        "feature-3": {
+          "type": "feature",
+          "settings": {
+            "title": "Simplicity",
+            "text": "A clean circle and a reflective finish. Nothing extra, so what you add is what stands out."
+          }
+        },
+        "feature-4": {
+          "type": "feature",
+          "settings": {
+            "title": "Care",
+            "text": "We ask you to check every detail before you order, because your personalisation deserves to be right."
+          }
+        },
+        "feature-5": {
+          "type": "feature",
+          "settings": {
+            "title": "Honesty",
+            "text": "We only publish product details we’ve confirmed, and only share genuine reviews from real customers."
+          }
+        },
+        "feature-6": {
+          "type": "feature",
+          "settings": {
+            "title": "Gifting",
+            "text": "Many of our necklaces are made for someone else. We design the whole experience with that in mind."
+          }
+        }
+      },
+      "block_order": [
+        "feature-1",
+        "feature-2",
+        "feature-3",
+        "feature-4",
+        "feature-5",
+        "feature-6"
+      ]
+    },
+    "content": {
+      "type": "main-page",
+      "settings": {
+        "show_title": false
+      }
+    }
+  },
+  "order": [
+    "head",
+    "story",
+    "beliefs",
+    "content"
+  ]
+}

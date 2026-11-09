@@ -1,0 +1,49 @@
+<section class="section {{ section.settings.background }}" aria-labelledby="faq-{{ section.id }}">
+  <div class="wrap narrow">
+    {%- if section.settings.heading != blank -%}
+      <div class="section-head" style="margin-bottom:40px"><span class="eyebrow">{{ section.settings.eyebrow }}</span><h2 id="faq-{{ section.id }}" class="h2">{{ section.settings.heading }}</h2></div>
+    {%- endif -%}
+    <div class="accordion">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'group' -%}
+          <h2 class="faq-group__title" {{ block.shopify_attributes }}>{{ block.settings.title }}</h2>
+        {%- else -%}
+        <div class="accordion__item" {{ block.shopify_attributes }}>
+          <h3><button class="accordion__btn" type="button" aria-expanded="false" aria-controls="acc-{{ block.id }}">{{ block.settings.question }}<span aria-hidden="true"></span></button></h3>
+          <div id="acc-{{ block.id }}" class="accordion__panel" role="region"><div class="accordion__inner rte">{{ block.settings.answer }}</div></div>
+        </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.link_label != blank %}<p style="text-align:center;margin-top:36px"><a class="link" href="{{ section.settings.link }}">{{ section.settings.link_label }}</a></p>{% endif -%}
+  </div>
+  {%- if section.settings.schema -%}
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+      {%- assign sep = '' -%}
+      {%- for block in section.blocks -%}{%- if block.type == 'question' -%}{{ sep }}{"@type":"Question","name":{{ block.settings.question | json }},"acceptedAnswer":{"@type":"Answer","text":{{ block.settings.answer | strip_html | json }}}}{%- assign sep = ',' -%}{%- endif -%}{%- endfor -%}
+    ]}
+  </script>
+  {%- endif -%}
+</section>
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Questions" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Before you make it yours." },
+    { "type": "text", "id": "link_label", "label": "Link label" },
+    { "type": "url", "id": "link", "label": "Link" },
+    { "type": "checkbox", "id": "schema", "label": "Add FAQ data for Google", "default": false, "info": "Turn on for the main FAQ page only." },
+    { "type": "select", "id": "background", "label": "Background", "default": "section--ivory", "options": [ { "value": "", "label": "Paper" }, { "value": "section--ivory", "label": "Ivory" } ] }
+  ],
+  "blocks": [
+    { "type": "group", "name": "Group heading", "settings": [ { "type": "text", "id": "title", "label": "Title", "default": "Personalisation" } ] },
+    { "type": "question", "name": "Question", "settings": [
+      { "type": "text", "id": "question", "label": "Question", "default": "Question" },
+      { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Answer</p>" }
+    ] }
+  ],
+  "presets": [{ "name": "FAQ", "blocks": [ { "type": "question" }, { "type": "question" } ] }]
+}
+{% endschema %}

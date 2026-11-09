@@ -1,0 +1,4 @@
+{%- comment -%} A live-rendered engraved disc. Params: finish (steel|gold|rose), text (lines separated by |), font, zoom {%- endcomment -%}
+{%- assign lines = text | split: '|' -%}
+{%- capture cfg -%}{"finish":{{ finish | default: "steel" | json }},"lines":{{ lines | json }},"font":{{ font | default: "classic" | json }},"zoom":{{ zoom | default: 1 }}}{%- endcapture -%}
+<div class="engrave-host" data-engrave="{{ cfg | escape }}"></div>
