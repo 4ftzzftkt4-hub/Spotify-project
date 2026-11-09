@@ -261,9 +261,14 @@
     main.addEventListener("touchend", (e) => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) go(current + (dx < 0 ? 1 : -1)); x0 = null; });
 
     const sticky = $("#sticky-buy"), gal = $(".gallery");
+    // the floating preview only appears once the customer starts personalising
+    let galleryHidden = false, touched = false;
+    const syncMini = () => $("#mini-preview").classList.toggle("is-shown", galleryHidden && touched);
+    root.addEventListener("input", () => { touched = true; syncMini(); });
+    root.addEventListener("click", (e) => { if (e.target.closest("[data-finish],[data-font],[data-tab],[data-idea]")) { touched = true; syncMini(); } });
     const io = new IntersectionObserver((ents) => ents.forEach((en) => {
       if (en.target.classList.contains("buy-actions")) sticky.classList.toggle("is-shown", !en.isIntersecting && en.boundingClientRect.top > 0);
-      if (en.target === gal) $("#mini-preview").classList.toggle("is-shown", !en.isIntersecting && en.boundingClientRect.top < 0);
+      if (en.target === gal) { galleryHidden = !en.isIntersecting && en.boundingClientRect.top < 0; syncMini(); }
     }));
     io.observe($(".buy-actions")); io.observe(gal);
     document.body.classList.add("has-sticky");

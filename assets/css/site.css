@@ -479,3 +479,6 @@ textarea.input { min-height: 140px; resize: vertical; }
 .gallery__thumb { padding: 0; }
 .gallery__slide img { object-fit: cover; }
 .lookbook img { object-position: center 30%; }
+
+/* when the bag is open, show messages at the top so they never cover Checkout */
+.no-scroll .toast { top: calc(20px + env(safe-area-inset-top, 0px)); bottom: auto; }

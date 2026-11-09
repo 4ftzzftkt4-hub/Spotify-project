@@ -376,10 +376,14 @@
     const sticky = $("#sticky-buy");
     const buyBtns = $(".buy-actions");
     const gallery = $(".gallery");
+    let galleryHidden = false, touched = false;
+    const syncMini = () => $("#mini-preview").classList.toggle("is-shown", galleryHidden && touched);
+    $("#personalise").addEventListener("input", () => { touched = true; syncMini(); });
+    $("#personalise").addEventListener("click", (e) => { if (e.target.closest("[data-finish],[data-font],[data-tab],[data-idea]")) { touched = true; syncMini(); } });
     const io = new IntersectionObserver((entries) => {
       entries.forEach((en) => {
         if (en.target === buyBtns) sticky.classList.toggle("is-shown", !en.isIntersecting && en.boundingClientRect.top > 0);
-        if (en.target === gallery) $("#mini-preview").classList.toggle("is-shown", !en.isIntersecting && en.boundingClientRect.top < 0);
+        if (en.target === gallery) { galleryHidden = !en.isIntersecting && en.boundingClientRect.top < 0; syncMini(); }
       });
     });
     io.observe(buyBtns);
