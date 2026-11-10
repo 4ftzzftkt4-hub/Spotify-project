@@ -36,10 +36,29 @@
     await renderCart();
   }
 
+  /* Save a proof link for every personalised necklace on the order.
+     Cart attributes appear in Shopify admin -> Orders -> Additional details;
+     customers don't see them. */
+  async function syncProofs(cart) {
+    const lines = cart.items.filter((it) => it.properties && it.properties._finish).map((it) => {
+      const p = it.properties;
+      const q = new URLSearchParams({ ref: p["Personalisation ref"] || "", finish: p._finish, font: p._font || "", front: p._front || "[]", back: p._back || "[]" });
+      const opt = (it.options_with_values || []).map((o) => o.value).join(" ");
+      return `${p["Personalisation ref"] || "Necklace"} (${opt} x${it.quantity}): ${location.origin}/pages/engraving-proof?${q}`;
+    });
+    const want = lines.join("\n");
+    const have = (cart.attributes && cart.attributes["Engraving proofs"]) || "";
+    if (want === have) return;
+    try {
+      await fetch("/cart/update.js", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ attributes: { "Engraving proofs": want } }) });
+    } catch (e) {}
+  }
+
   async function renderCart() {
     const body = $(".cart-drawer__body"), foot = $(".cart-drawer__foot");
     if (!body) return;
     const cart = await getCart();
+    syncProofs(cart);
     $$(".cart-count").forEach((el) => { el.textContent = cart.item_count; el.dataset.empty = String(!cart.item_count); });
     if (!cart.items.length) {
       body.innerHTML = `<div class="cart-empty"><p>Your bag is empty.</p><a class="btn btn--dark" href="${esc((S.productUrl || "/collections/all") + "#personalise")}">Create your necklace</a></div>`;
@@ -127,6 +146,7 @@
     addEventListener("scroll", onScroll, { passive: true }); onScroll();
     initAccordions(); initReveal();
     window.Engrave && Engrave.mountAll(document);
+    getCart().then((c) => c.item_count && syncProofs(c)).catch(() => {});
   }
 
   // Theme editor: re-run when a section is added or changed

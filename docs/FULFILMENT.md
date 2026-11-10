@@ -1,32 +1,36 @@
-# Checkout & fulfilment
+# Fulfilling an order with CJdropshipping
 
-## How an order flows
-1. The customer personalises the necklace on `necklace.html`. Their choices are saved in the bag (browser `localStorage`).
-2. **Checkout** posts the bag to `https://{shopify.domain}/cart/add` with one line per necklace and
-   redirects to Shopify checkout. Each line carries these **line-item properties**:
-   - `Engraving – front`, `Engraving – back`, `Engraving style`, `Chain length`,
-     `Gift presentation`, `Gift message`, `Personalisation ref` (e.g. `KC-NZ2L91`)
-   - Finish is selected by the variant ID.
-3. The properties appear on the order in **Shopify admin → Orders**, under the line item.
-4. The CJdropshipping app (already installed — it's registered as a fulfilment service on the store)
-   syncs the order to CJ.
+CJ engraves this necklace (SKU CJLX1550569) through its Print on Demand (POD) service — no minimum order,
+different text on every piece. CJ doesn't read the engraving from the Keep Close personaliser automatically,
+so each order takes about 2–3 minutes to pass on.
 
-## ⚠️ Not yet verified: does CJ receive the engraving?
-The CJ app syncs Shopify orders, but **it has not been tested whether CJ reads line-item properties
-as engraving instructions**. Until a test order proves it does, assume it does not.
+## Every order
 
-Test: place one real order with distinctive text, then check the order inside the CJ app/dashboard
-for the engraving text. Outcomes:
-- **CJ shows the text and confirms it will engrave it** → automatic flow works.
-- **Text is missing** → use the manual workflow below, or ask CJ support about their
-  POD/customisation order process for this SKU.
+1. **Shopify → Orders → open the order.**
+   - Each necklace shows its engraving: *Engraving – front*, *Engraving – back*, *Engraving style*, *Personalisation ref*.
+   - Under **Additional details → Engraving proofs** there's one link per necklace.
+2. **Open the proof link.** The Engraving proof page shows the front and back exactly as the customer designed them.
+   - Add the Shopify order number to *Order / reference* (e.g. `#1001 · KC-R95HSK`).
+   - **Download engrave file** for the front (and the back if it has text). These are the files for CJ.
+   - **Copy** the text in *Text for CJ’s product description*.
+3. **In CJ, open the necklace → Start Design.**
+   - Add the downloaded engrave file as an image (or type the text with the Word tool if images aren't offered).
+   - **Product title:** the order number and reference, e.g. `#1001 KC-R95HSK`.
+   - **Available colour:** tick **only** the finish the customer ordered.
+   - **Product description:** paste the copied text.
+   - **Shipping method:** the tracked Australian option.
+4. **Save, order one unit, and pay.** Unpaid orders don't move.
+5. CJ engraves and ships; tracking returns to Shopify and the customer gets the shipping email.
+   If tracking doesn't appear in Shopify within a few days of dispatch, add it to the order by hand from CJ's order page.
 
-## Manual workflow (fallback)
-1. Turn off automatic order sync for this product in the CJ app.
-2. For each new order, open it in Shopify admin and copy the line-item properties.
-3. Submit the order in CJ with the engraving text (via CJ's custom/POD order flow or a note to your agent).
-4. Keep the `Personalisation ref` code in the CJ order note so issues can be traced back.
+## Notes
+- The proof page is `/pages/engraving-proof`. It's hidden from search engines and not linked anywhere on the site.
+  If the link is missing, open the page and type the engraving from the order yourself.
+- Engrave files: 2000 × 2000 px for the 20 mm disc, black = engraved, transparent background.
+  *Proof with outline* adds the disc edge and jump-ring hole for checking only — don't send it to CJ.
+- Before launch: place one real order to yourself and check the finished piece against the proof.
 
-## Checkout not connected?
-If `shopify.domain` or a variant ID is missing, the Checkout button shows the exact data that would be
-sent, with a "Copy order details" button — useful for testing.
+## Store setup (already done)
+- Stock for all three finishes sits at the **cjdropshipping** location, so orders route to CJ.
+- The necklace uses the *General shipping profile* (free standard shipping in Australia) from that location.
+- Keep **Settings → Checkout → Order processing** on "Don't fulfill any of the order's line items automatically".

@@ -61,6 +61,7 @@
     p["_finish"] = fkey();
     p["_font"] = state.font;
     p["_front"] = JSON.stringify(f);
+    p["_back"] = JSON.stringify(canBack ? b : []);
     return p;
   }
 

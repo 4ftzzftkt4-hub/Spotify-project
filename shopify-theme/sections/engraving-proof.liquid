@@ -1,0 +1,67 @@
+{%- comment -%}
+  Engraving proof — for the shop owner, not customers.
+  Opened from the link in each order's "Additional details" in Shopify admin.
+  Renders the customer's engraving as print-ready black-on-transparent PNGs
+  (front and back) at the real 20 mm disc size, plus the text for CJ's
+  description box.
+{%- endcomment -%}
+<section class="section section--tight proof" data-px="{{ section.settings.px }}">
+  <div class="wrap">
+    <div class="proof__head">
+      <span class="eyebrow">For fulfilment · not shown to customers</span>
+      <h1 class="h2">Engraving proof <span id="proof-ref" class="muted"></span></h1>
+      <p class="muted">Download the engrave files and add them to CJ’s design tool as an image, or paste the instructions into CJ’s product description.</p>
+    </div>
+
+    <div class="proof__grid">
+      <form class="proof__form" id="proof-form" autocomplete="off">
+        <div class="field"><label for="pf-front">Front — one line per row</label><textarea class="input" id="pf-front" rows="3"></textarea></div>
+        <div class="field"><label for="pf-back">Back — one line per row</label><textarea class="input" id="pf-back" rows="3"></textarea></div>
+        <div class="field"><label for="pf-font">Lettering</label><select class="input" id="pf-font"></select></div>
+        <div class="field"><label for="pf-finish">Finish</label>
+          <select class="input" id="pf-finish"><option value="steel">Silver</option><option value="gold">Gold</option><option value="rose">Rose gold</option></select></div>
+        <div class="field"><label for="pf-ref">Order / reference</label><input class="input" id="pf-ref" placeholder="#1001 · KC-ABC123"></div>
+      </form>
+
+      <div class="proof__sides">
+        <figure class="proof__side">
+          <figcaption>Front</figcaption>
+          <div class="proof__art"><canvas id="proof-front" width="1000" height="1000" aria-label="Front engraving proof"></canvas></div>
+          <div class="proof__actions">
+            <button type="button" class="btn btn--dark" data-download="front">Download engrave file</button>
+            <button type="button" class="btn btn--ghost" data-download-guide="front">Proof with outline</button>
+          </div>
+        </figure>
+        <figure class="proof__side">
+          <figcaption>Back</figcaption>
+          <div class="proof__art"><canvas id="proof-back" width="1000" height="1000" aria-label="Back engraving proof"></canvas></div>
+          <div class="proof__actions">
+            <button type="button" class="btn btn--dark" data-download="back">Download engrave file</button>
+            <button type="button" class="btn btn--ghost" data-download-guide="back">Proof with outline</button>
+          </div>
+        </figure>
+      </div>
+
+      <div class="proof__photo">
+        <figcaption class="label">What the customer saw</figcaption>
+        <div class="frame frame--square"><div class="engrave-host" id="proof-photo"></div></div>
+      </div>
+    </div>
+
+    <div class="proof__cj">
+      <div class="opt__head"><span class="label">Text for CJ’s product description</span>
+        <button type="button" class="btn btn--ghost" id="proof-copy" style="min-height:40px">Copy</button></div>
+      <textarea class="input" id="proof-cj" rows="7" readonly></textarea>
+      <p class="fine">Engrave files are {{ section.settings.px }} × {{ section.settings.px }} px for the full 20 mm disc (black on transparent). The outline version adds the disc edge and jump-ring hole for checking only — don’t send it for engraving.</p>
+    </div>
+  </div>
+</section>
+<script src="{{ 'engraving-proof.js' | asset_url }}" defer></script>
+{% schema %}
+{
+  "name": "Engraving proof",
+  "settings": [
+    { "type": "range", "id": "px", "label": "Engrave file size (px)", "min": 1000, "max": 3000, "step": 100, "default": 2000, "info": "Pixels across the 20 mm disc." }
+  ]
+}
+{% endschema %}

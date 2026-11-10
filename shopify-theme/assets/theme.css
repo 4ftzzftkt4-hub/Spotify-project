@@ -42,3 +42,17 @@ body.nl-open { overflow: hidden; }
   .nl-popup__body { padding: 24px 20px calc(20px + env(safe-area-inset-bottom, 0px)); }
 }
 @media (prefers-reduced-motion: reduce) { .nl-popup__card, .nl-popup__scrim { transition: none; } }
+
+/* ---------- Engraving proof (owner tool) ---------- */
+.proof__head { margin-bottom: 28px; max-width: 760px; }
+.proof__grid { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr) minmax(0, 260px); gap: clamp(20px, 3vw, 40px); align-items: start; }
+.proof__sides { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.proof__side figcaption, .proof__photo .label { display: block; font: 500 .7rem/1 var(--sans); text-transform: uppercase; letter-spacing: .18em; margin-bottom: 10px; }
+.proof__art { background: repeating-conic-gradient(#f3efe8 0% 25%, #fbf9f5 0% 50%) 0 0 / 22px 22px; border: 1px solid var(--line); }
+.proof__art canvas { display: block; width: 100%; height: auto; }
+.proof__actions { display: grid; gap: 8px; margin-top: 12px; }
+.proof__actions .btn { min-height: 44px; padding: 0 1em; }
+.proof__cj { margin-top: 36px; max-width: 760px; }
+.proof__cj textarea { font: 400 .9rem/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+@media (max-width: 980px) { .proof__grid { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .proof__sides { grid-template-columns: 1fr; } }
