@@ -39,18 +39,33 @@
   /* Save a proof link for every personalised necklace on the order.
      Cart attributes appear in Shopify admin -> Orders -> Additional details;
      customers don't see them. */
+  /* Also writes plain engraving instructions into the order note, which the
+     CJ app can carry to the supplier as the order remark. */
   async function syncProofs(cart) {
-    const lines = cart.items.filter((it) => it.properties && it.properties._finish).map((it) => {
+    const items = cart.items.filter((it) => it.properties && it.properties._finish);
+    const parse = (v) => { try { return JSON.parse(v || "[]"); } catch (e) { return []; } };
+    const lines = items.map((it) => {
       const p = it.properties;
       const q = new URLSearchParams({ ref: p["Personalisation ref"] || "", finish: p._finish, font: p._font || "", front: p._front || "[]", back: p._back || "[]" });
       const opt = (it.options_with_values || []).map((o) => o.value).join(" ");
       return `${p["Personalisation ref"] || "Necklace"} (${opt} x${it.quantity}): ${location.origin}/pages/engraving-proof?${q}`;
     });
+    const note = items.map((it) => {
+      const p = it.properties;
+      const opt = (it.options_with_values || []).map((o) => o.value).join(" ");
+      const side = (arr) => (arr.length ? arr.map((l) => `"${l}"`).join(" / ") : "none");
+      return [
+        `ENGRAVING ${p["Personalisation ref"] || ""} — ${opt} x${it.quantity}`,
+        `Front: ${side(parse(p._front))}`,
+        `Back: ${side(parse(p._back))}`,
+        `Font: ${p["Engraving style"] || "Classic"}. Centre on the 20mm disc, clear of the hole.`,
+      ].join("\n");
+    }).join("\n\n");
     const want = lines.join("\n");
     const have = (cart.attributes && cart.attributes["Engraving proofs"]) || "";
-    if (want === have) return;
+    if (want === have && (cart.note || "") === note) return;
     try {
-      await fetch("/cart/update.js", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ attributes: { "Engraving proofs": want } }) });
+      await fetch("/cart/update.js", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ attributes: { "Engraving proofs": want }, note }) });
     } catch (e) {}
   }
 
