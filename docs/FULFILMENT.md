@@ -1,10 +1,22 @@
 # Fulfilling an order with CJdropshipping
 
-CJ engraves this necklace (SKU CJLX1550569) through its Print on Demand (POD) service — no minimum order,
-different text on every piece. CJ doesn't read the engraving from the Keep Close personaliser automatically,
-so each order takes about 2–3 minutes to pass on.
+The supplier engraves names on this necklace (SKU CJLX1550569), one piece at a time.
 
-## Every order
+## Every order (tested with order #1001)
+
+The theme writes the engraving into the Shopify **order note**, and the CJ app carries it to CJ's
+**Remark** column automatically, e.g. `ENGRAVING KC-PC93F3 — Silver x1 Front: "Test" Back: "13.11.26" …`.
+
+1. **CJ → Store Orders.** New orders appear within minutes (or press **Sync Store Orders**).
+2. Check the **Remark** shows the engraving.
+3. Check the shipping method is a **tracked** one.
+4. Tick the order → **Add to Orders Picking** → submit → **pay**. Unpaid orders don't move.
+5. CJ engraves and ships; tracking returns to Shopify and the customer gets the shipping email.
+
+Cost seen on the first order: US$1.95 product + US$4.78 CJPacket shipping from China = US$6.73
+(engraving charge, if any, to be confirmed with the supplier).
+
+## If the Remark is ever missing — manual fallback
 
 1. **Shopify → Orders → open the order.**
    - Each necklace shows its engraving: *Engraving – front*, *Engraving – back*, *Engraving style*, *Personalisation ref*.
